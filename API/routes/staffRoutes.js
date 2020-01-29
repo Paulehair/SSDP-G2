@@ -1,5 +1,5 @@
-const router = require('express').Router()
-const staffController = require('./../controllers/staffController')
+const router = require('express').Router();
+const staffController = require('./../controllers/staffController');
 
 /* 
   Staff route for path /api/staff/
@@ -10,9 +10,7 @@ const staffController = require('./../controllers/staffController')
     create a new staff member
     @returns {} response with confirmation
 */
-router
-  .route('/')
-  .get(staffController.getStaffMembers)
+router.route('/').get(staffController.getStaffMembers);
 
 /* 
   Staff route for path /api/staff/:id
@@ -27,9 +25,9 @@ router
     @returns {} response with confirmation
 */
 router
-  .route('/:id')
-  .get(staffController.getStaffMember)
-  .patch(staffController.updateStaffMember)
-  .delete(staffController.deleteStaffMember)
+	.route('/:id')
+	.get(staffController.getStaffMember)
+	.patch(staffController.updateStaffMember)
+	.delete(staffController.deleteStaffMember);
 
-module.exports = router
+module.exports = router;
