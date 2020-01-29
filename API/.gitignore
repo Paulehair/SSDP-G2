@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 ../data-samu
+/data
 
 # testing
 /coverage
