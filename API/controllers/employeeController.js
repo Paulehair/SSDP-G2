@@ -1,6 +1,8 @@
+const Employee = require('./../models/employeeModel');
+
 exports.getEmployees = (req, res) => {
 	try {
-		const employees = [];
+		const employees = Employee.find();
 
 		res.status(200).json({
 			status: 'success',
@@ -18,8 +20,7 @@ exports.getEmployees = (req, res) => {
 
 exports.getEmployee = (req, res) => {
 	try {
-		// find staffMembers._id === req.params.id
-		const employee = {};
+		const employee = Employee.find(req.params.id);
 
 		res.status(200).json({
 			status: 'success',
@@ -37,14 +38,16 @@ exports.getEmployee = (req, res) => {
 
 exports.updateEmployee = (req, res) => {
 	try {
-		// find staffMembers._id === req.params.id and update
-		const employee = {};
+		await User.findByIdAndUpdate(
+				req.params.id,
+				req.body, {
+						new: true,
+						runValidators: true
+				}
+		)
 
 		res.status(200).json({
-			status: 'success',
-			data: {
-				employee
-			}
+			status: 'success'
 		});
 	} catch (err) {
 		res.status(404).json({
@@ -56,7 +59,7 @@ exports.updateEmployee = (req, res) => {
 
 exports.deleteEmployee = (req, res) => {
 	try {
-		// find staffMembers._id === req.params.id and delete
+		await Employee.findByIdAndDelete(req.params.id);
 
 		res.status(200).json({
 			status: 'success'
