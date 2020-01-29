@@ -24,22 +24,22 @@ services:
                 volumes: 
                         - ./API:/usr/src/app
                         - /API/node_modules
-                # depends_on: 
-                #         - mongodb
+                depends_on: 
+                        - mongodb
                 networks: 
                         - webappnetwork
                 entrypoint: ["npm", "start"]
         
-        # mongodb: 
-        #         image: mongo:3.2
-        #         restart: always
-        #         container_name: mongodb
-        #         volumes: 
-        #                 - ./data-node:/data/db
-        #         ports: 
-        #                 - "27017:27017"
-        #         networks: 
-        #                 - webappnetwork
+        mongodb: 
+                image: mongo:3.2
+                restart: always
+                container_name: mongodb
+                volumes: 
+                        - ./data-samu:/data/db
+                ports: 
+                        - "27017:27017"
+                networks: 
+                        - webappnetwork
                 
 networks:
         webappnetwork:
