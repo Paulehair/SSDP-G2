@@ -20,5 +20,7 @@ app.use(cors());
 // Router imports
 const employeeRouter = require('./routes/employeeRoutes');
 app.use('/api/employees', employeeRouter);
+const hotelRouter = require('./routes/hotelRoutes');
+app.use('/api/hotels', hotelRouter);
 
 module.exports = app;

@@ -38,13 +38,10 @@ exports.getEmployee = (req, res) => {
 
 exports.updateEmployee = (req, res) => {
 	try {
-		await User.findByIdAndUpdate(
-				req.params.id,
-				req.body, {
-						new: true,
-						runValidators: true
-				}
-		)
+		Employee.findByIdAndUpdate(req.params.id, req.body, {
+			new: true,
+			runValidators: true
+		});
 
 		res.status(200).json({
 			status: 'success'
@@ -59,7 +56,7 @@ exports.updateEmployee = (req, res) => {
 
 exports.deleteEmployee = (req, res) => {
 	try {
-		await Employee.findByIdAndDelete(req.params.id);
+		Employee.findByIdAndDelete(req.params.id);
 
 		res.status(200).json({
 			status: 'success'
