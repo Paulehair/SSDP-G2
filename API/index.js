@@ -1,10 +1,11 @@
-const express = require('express')
-const app = express()
+const PORT = 9000
 
-app.get('/', function (req, res) {
-  res.send('Hello les puputes!')
-})
+// Import Express app and start server listener
+const app = require('./app');
+const server = app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
-app.listen(9000, function () {
-  console.log('App listening on port 9000!')
-})
+// Close server if an error is caught
+process.on('unhandledRejection', err => {
+  console.error(err.name, err.message);
+  server.close(() => process.exit(1));
+});
