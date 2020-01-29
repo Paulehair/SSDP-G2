@@ -17,4 +17,8 @@ app.use(bodyParser.json())
 app.use(morgan('dev'))
 app.use(cors())
 
+// Router imports
+const staffRouter = require('./routes/staffRoutes')
+app.use('/api/staff', staffRouter)
+
 module.exports = app
