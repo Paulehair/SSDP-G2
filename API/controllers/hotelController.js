@@ -1,6 +1,6 @@
 const Hotel = require('./../models/hotelModel');
 
-exports.getHotels = (req, res) => {
+exports.getHotels = async (req, res) => {
 	try {
 		const hotels = Hotel.find();
 
@@ -18,7 +18,7 @@ exports.getHotels = (req, res) => {
 	}
 };
 
-exports.getHotel = (req, res) => {
+exports.getHotel = async (req, res) => {
 	try {
 		const hotel = Hotel.find(req.params.id);
 
@@ -38,13 +38,10 @@ exports.getHotel = (req, res) => {
 
 exports.updateHotel = (req, res) => {
 	try {
-		await Hotel.findByIdAndUpdate(
-				req.params.id,
-				req.body, {
-						new: true,
-						runValidators: true
-				}
-		)
+		Hotel.findByIdAndUpdate(req.params.id, req.body, {
+			new: true,
+			runValidators: true
+		});
 
 		res.status(200).json({
 			status: 'success'
@@ -59,7 +56,7 @@ exports.updateHotel = (req, res) => {
 
 exports.deleteHotel = (req, res) => {
 	try {
-		await Hotel.findByIdAndDelete(req.params.id);
+		Hotel.findByIdAndDelete(req.params.id);
 
 		res.status(200).json({
 			status: 'success'
