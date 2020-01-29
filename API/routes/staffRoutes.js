@@ -31,3 +31,5 @@ router
   .get(staffController.getStaffMember)
   .patch(staffController.updateStaffMember)
   .delete(staffController.deleteStaffMember)
+
+module.exports = router
