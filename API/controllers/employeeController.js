@@ -1,9 +1,8 @@
 const Employee = require('./../models/employeeModel');
 
-exports.getEmployees = (req, res) => {
+exports.getEmployees = async (req, res) => {
 	try {
-		const employees = Employee.find();
-
+		const employees = await Employee.find();
 		res.status(200).json({
 			status: 'success',
 			data: {
@@ -18,9 +17,9 @@ exports.getEmployees = (req, res) => {
 	}
 };
 
-exports.getEmployee = (req, res) => {
+exports.getEmployee = async (req, res) => {
 	try {
-		const employee = Employee.find(req.params.id);
+		const employee = await Employee.findById(req.params.id);
 
 		res.status(200).json({
 			status: 'success',
@@ -36,15 +35,28 @@ exports.getEmployee = (req, res) => {
 	}
 };
 
-exports.updateEmployee = (req, res) => {
+exports.createEmployee = async (req, res, next) => {
+	const newEmployee = await Employee.create(req.body);
+	res.status(200).json({
+		status: 'Success',
+		data: {
+			employee: newEmployee
+		}
+	});
+};
+
+exports.updateEmployee = async (req, res) => {
 	try {
-		Employee.findByIdAndUpdate(req.params.id, req.body, {
+		const employee = await Employee.findByIdAndUpdate(req.params.id, req.body, {
 			new: true,
 			runValidators: true
 		});
 
 		res.status(200).json({
-			status: 'success'
+			status: 'success',
+			data: {
+				employee
+			}
 		});
 	} catch (err) {
 		res.status(404).json({
@@ -54,12 +66,13 @@ exports.updateEmployee = (req, res) => {
 	}
 };
 
-exports.deleteEmployee = (req, res) => {
+exports.deleteEmployee = async (req, res) => {
 	try {
-		Employee.findByIdAndDelete(req.params.id);
+		await Employee.findByIdAndDelete(req.params.id);
 
 		res.status(200).json({
-			status: 'success'
+			status: 'success',
+			data: null
 		});
 	} catch (err) {
 		res.status(404).json({
