@@ -2,7 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import LogoImg from '../assets/Logo.png'
 
-const Logo = styled.div``
+const Logo = styled.div`
+  flex: 1;
+`
 
 export default () => {
   return (

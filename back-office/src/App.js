@@ -1,5 +1,6 @@
 import React from 'react'
 import './App.css'
+import './index.css'
 import styled, { ThemeProvider } from 'styled-components'
 import Header from './elements/Header'
 import Sidebar from './elements/Sidebar'
