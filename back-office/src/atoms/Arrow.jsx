@@ -8,7 +8,7 @@ const Arrow = styled.div`
   width: 30px;
   height: 30px;
   box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
-  background: url('${ ArrowAsset }') no-repeat;
+  background: url('${ ArrowAsset}') no-repeat;
   background-position: calc(50% - 1px) 50%;
   position: absolute;
   top: calc( 50% - 15px);
@@ -16,11 +16,11 @@ const Arrow = styled.div`
   cursor: pointer;
 
   &:first-child {
-    left: 0;
+    left: 15px;
   }
 
   &:last-child {
-    right: 0;
+    right: 15px;
     transform: rotate(180deg);
   }
 `

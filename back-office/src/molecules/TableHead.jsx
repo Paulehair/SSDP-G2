@@ -15,7 +15,7 @@ const TableHead = styled.div`
   width: 100%;
   height: 100%;
   max-width: 1115px;
-  min-height: 70px;
+  max-height: 70px;
   margin: 0 auto;
   border-bottom: 1px solid ${ ({ theme }) => theme.grey};
 `
