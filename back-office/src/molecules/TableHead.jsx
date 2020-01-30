@@ -11,6 +11,7 @@ const TableHead = styled.div`
   grid-template-rows: 1fr;
   grid-template-columns: repeat(5, 1fr);
   grid-column-gap: 0;
+  position: relative;
   width: 100%;
   height: 100%;
   max-width: 1115px;
