@@ -14,6 +14,14 @@ const Input = styled.input`
   &:focus {
     outline: none;
   }
+  &[type='text'] {
+    width: 100%;
+  }
+  &[type='checkbox'] {
+    width: 18px;
+    height: 18px;
+    margin-right: 12px;
+  }
 `
 
 export default ({ type, placeholder }) => (
