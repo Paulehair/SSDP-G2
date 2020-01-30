@@ -10,6 +10,7 @@ const Planning = styled.section`
   margin: 0 0 0 15px;
   background: ${ ({ theme }) => theme.white};
   border-radius: 8px;
+  overflow: hidden;
 `
 
 export default ({ day, month }) => {

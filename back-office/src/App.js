@@ -12,7 +12,7 @@ const theme = {
   red: 'linear-gradient(180deg, #C63D2B 0%, #DE5543 100%)'
 }
 
-const App = styled.div`
+const App = styled.main`
   width: 100%;
   margin: 0 auto;
 
@@ -23,6 +23,11 @@ const App = styled.div`
     margin: 0 auto;
     width: 100%;
     padding: 20px;
+
+    /* -64px = hauteur du header */
+    &.--main {
+      height: calc(100vh - 64px);
+    }
   }
 `
 export default () => {
@@ -30,7 +35,7 @@ export default () => {
     <ThemeProvider theme={theme}>
       <App>
         <Header />
-        <div className='wrapper'>
+        <div className='wrapper --main'>
           <Sidebar />
           <Planning />
         </div>
