@@ -3,9 +3,6 @@ const Hotel = require('./../models/hotelModel');
 exports.getHotels = async (req, res) => {
 	try {
 		const hotels = await Hotel.find();
-
-		console.log('!!!!!', hotels);
-
 		res.status(200).json({
 			status: 'success',
 			data: {
@@ -22,8 +19,7 @@ exports.getHotels = async (req, res) => {
 
 exports.getHotel = async (req, res) => {
 	try {
-		const hotel = Hotel.find(req.params.id);
-
+		const hotel = await Hotel.findById(req.params.id);
 		res.status(200).json({
 			status: 'success',
 			data: {
@@ -39,11 +35,7 @@ exports.getHotel = async (req, res) => {
 };
 
 exports.createHotel = async (req, res, next) => {
-	const newHotel = await Hotel.create({
-		uuid: req.body.uuid,
-		name: req.body.name
-	});
-
+	const newHotel = await Hotel.create(req.body);
 	res.status(200).json({
 		status: 'Success',
 		data: {
@@ -52,15 +44,17 @@ exports.createHotel = async (req, res, next) => {
 	});
 };
 
-exports.updateHotel = (req, res) => {
+exports.updateHotel = async (req, res) => {
 	try {
-		Hotel.findByIdAndUpdate(req.params.id, req.body, {
+		const hotel = await Hotel.findByIdAndUpdate(req.params.id, req.body, {
 			new: true,
 			runValidators: true
 		});
-
 		res.status(200).json({
-			status: 'success'
+			status: 'success',
+			data: {
+				hotel
+			}
 		});
 	} catch (err) {
 		res.status(404).json({
@@ -70,12 +64,12 @@ exports.updateHotel = (req, res) => {
 	}
 };
 
-exports.deleteHotel = (req, res) => {
+exports.deleteHotel = async (req, res) => {
 	try {
-		Hotel.findByIdAndDelete(req.params.id);
-
+		await Hotel.findByIdAndDelete(req.params.id);
 		res.status(200).json({
-			status: 'success'
+			status: 'success',
+			data: null
 		});
 	} catch (err) {
 		res.status(404).json({

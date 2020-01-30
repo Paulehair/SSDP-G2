@@ -22,5 +22,7 @@ const employeeRouter = require('./routes/employeeRoutes');
 app.use('/api/employees', employeeRouter);
 const hotelRouter = require('./routes/hotelRoutes');
 app.use('/api/hotels', hotelRouter);
+const visitRouter = require('./routes/visitRoutes');
+app.use('/api/visits', visitRouter);
 
 module.exports = app;
