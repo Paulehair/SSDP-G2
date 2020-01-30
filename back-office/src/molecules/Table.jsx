@@ -12,7 +12,8 @@ const Table = styled.div`
   max-width: 1115px;
   max-height: 704px;
   margin: 0 auto;
-  overflow: hidden;
+  overflow-y: scroll;
+  
 `
 export default () => {
   return (

@@ -7,11 +7,18 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 196px;
-  height: 126px;
-  background: #9bb7cd;
+  background: ${ ({ theme }) => theme.red};
   border-radius: 8px;
   padding: 16px 10px 10px 16px;
+  margin: 8px 0 0 0;
+
+  :first-child {
+    margin: 15px 0 0 0;
+  }
+
+  :last-child {
+    margin: 8px 0;
+  }
 `
 
 const info = {

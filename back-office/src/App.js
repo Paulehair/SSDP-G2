@@ -8,12 +8,14 @@ import Planning from './elements/Planning'
 const theme = {
   black: '#241F1F',
   white: '#FFFFFF',
-  grey: '#F3F3F3'
+  grey: '#F3F3F3',
+  red: 'linear-gradient(180deg, #C63D2B 0%, #DE5543 100%)'
 }
 
 const App = styled.div`
   width: 100%;
   margin: 0 auto;
+
   .wrapper {
     display: flex;
     justify-content: space-between;
@@ -23,7 +25,6 @@ const App = styled.div`
     padding: 20px;
   }
 `
-
 export default () => {
   return (
     <ThemeProvider theme={theme}>
