@@ -5,6 +5,7 @@ import styled, { ThemeProvider } from 'styled-components'
 import Header from './elements/Header'
 import Sidebar from './elements/Sidebar'
 import Planning from './elements/Planning'
+import EmployeList from './elements/EmployeList'
 
 const theme = {
   black: '#241F1F',
@@ -32,6 +33,7 @@ export default () => {
       <App>
         <Header />
         <div className='wrapper'>
+          {/* <EmployeList /> */}
           <Sidebar />
           <Planning />
         </div>
