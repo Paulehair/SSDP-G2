@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 const Link = styled.a`
   padding: 8px;
-  color: black;
+  color: ${ ({ theme }) => theme.black };
   text-decoration: none;
 `
 
