@@ -7,11 +7,9 @@ import Table from '../molecules/Table'
 const Planning = styled.section`
   width: 100%;
   height: 100%;
-  margin: 0 auto;
-  max-width: 1115px;
-  background: white;
+  margin: 0 0 0 15px;
+  background: ${ ({ theme }) => theme.white};
   border-radius: 8px;
-  box-shadow: 1px 2px 5px #000000;
 `
 
 export default ({ day, month }) => {

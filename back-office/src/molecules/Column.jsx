@@ -12,20 +12,28 @@ const Column = styled.div`
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  border-right: 1px solid grey;
-  overflow-y: scroll;
+  padding: 0 14px;
+  border-right: 1px solid ${ ({ theme }) => theme.grey };
 
   &:last-child {
     border-right: none;
   }
 `
 export default () => {
+
   return (
+
     <Column>
       <Card />
       <Card />
       <Card />
       <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
     </Column>
+
   )
+
 }
