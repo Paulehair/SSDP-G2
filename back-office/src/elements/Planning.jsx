@@ -1,13 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-
-// import vars from '../../global/variables.scss'
 
 import TableHead from '../molecules/TableHead'
 import Table from '../molecules/Table'
 
-
-const Planning = styled.div`
+const Planning = styled.section`
   width: 100%;
   height: 100%;
   margin: 0 auto;
@@ -18,17 +15,10 @@ const Planning = styled.div`
 `
 
 export default ({ day, month }) => {
-
-
-
   return (
-
     <Planning>
-
       <TableHead />
       <Table />
-
     </Planning>
-
   )
 }

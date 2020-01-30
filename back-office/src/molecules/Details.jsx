@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import SecondaryText from './../atoms/SecondaryText'
 import Text from './../atoms/Text'
 
 const Div = styled.div`
@@ -8,8 +9,9 @@ const Div = styled.div`
   }
 `
 
-export default ({ rooms, hour }) => (
+export default ({ hotel, rooms, hour }) => (
   <Div>
+    <SecondaryText black={false} text={hotel} />
     <Text text={rooms} />
     <Text text={hour} />
   </Div>
