@@ -18,7 +18,7 @@ export default ({ nav: { list, logout } }) => {
       {list.map(el => (
         <li className='navBar'>
           <Link>
-            <PrimaryText text={el} />
+            <PrimaryText textColor='black' text={el} />
           </Link>
         </li>
       ))}

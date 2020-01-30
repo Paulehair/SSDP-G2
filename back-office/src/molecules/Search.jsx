@@ -3,11 +3,17 @@ import PrimaryText from './../atoms/PrimaryText'
 import Input from './../atoms/Input'
 import styled from 'styled-components'
 
-const Search = styled.div``
+const Search = styled.div`
+  .searchTitle {
+    margin-bottom: 10px;
+  }
+`
 
-export default () => (
+export default (searchIcon) => (
   <Search>
-    <PrimaryText text='Chercher' />
+    <div className='searchTitle'>
+      <PrimaryText text='Chercher ...' />
+    </div>
     <Input type='text' placeholder='Une personne, un groupe' />
   </Search>
 )
