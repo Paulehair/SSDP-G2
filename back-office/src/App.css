@@ -1,4 +1,16 @@
+.ant-fullcalendar-header {
+  display: -webkit-box;
+  display: flex;
+  margin: 0 auto 10px;
+  width: 100%;
+  min-width: 260px;
+  padding: 0 !important;
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
+}
+
 /* HIDE SCROLLBAR, STILL SCROLLABLE */
 ::-webkit-scrollbar {
   display: none;
 }
+
