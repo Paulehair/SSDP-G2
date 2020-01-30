@@ -15,8 +15,6 @@ router
 	.get(hotelController.getHotels)
 	.post(hotelController.createHotel);
 
-router.route('/sorted').get(hotelController.getHotelsSortByAnomalyInParis);
-
 /* 
   Staff route for path /api/hotels/:id
   @params: id String
