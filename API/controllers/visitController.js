@@ -26,10 +26,9 @@ exports.getVisit = async (req, res) => {
 		const maxVisit = 4;
 		mainHotels.forEach((hotel, i) => {
 			if (!planning[i]) {
-				planning[i] = {};
-				planning[i]['visits'] = [];
+				planning[i] = [];
 			}
-			planning[i]['visits'].push(hotel);
+			planning[i].push(hotel);
 		});
 
 		planning.forEach((day, index) => {
@@ -37,7 +36,7 @@ exports.getVisit = async (req, res) => {
 
 			remainingHotels.forEach((hotel, i) => {
 				if (i < maxVisit - 1) {
-					day.visits.push(hotel);
+					day.push(hotel);
 				}
 			});
 		});
@@ -46,10 +45,11 @@ exports.getVisit = async (req, res) => {
 
 		const binome1 = employees.slice(0, 2);
 		const binome2 = employees.slice(2);
+		const index = 1;
 
-		planning.forEach(day => {
-			day.visits.forEach((visit, i) => {
-				if (i > 1) {
+		planning.forEach((day, a) => {
+			day.forEach((visit, i) => {
+				if (i % 2 == 0) {
 					visit['team'] = binome1;
 				} else {
 					visit['team'] = binome2;
@@ -62,13 +62,13 @@ exports.getVisit = async (req, res) => {
 			numberOfHotels: hotels.length,
 			numberOfEmployees: employees.length,
 			data: {
-				planning,
-				hotels,
-				employees,
-				visit: {
-					hotel1: hotels[1],
-					visitor1: employees[1]
-				}
+				planning
+				// hotels,
+				// employees,
+				// visit: {
+				// 	hotel1: hotels[1],
+				// 	visitor1: employees[1]
+				// }
 			}
 		});
 	} catch (err) {
