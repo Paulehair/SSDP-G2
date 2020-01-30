@@ -5,24 +5,23 @@ import PrimaryText from '../atoms/PrimaryText'
 
 const Nav = styled.ul`
   display: flex;
-  margin-right: 40px;
+  flex: 1;
+  justify-content: center;
+  .navBar {
+    margin-right: 40px;
+  }
 `
 
 export default ({ nav: { list, logout } }) => {
   return (
     <Nav>
       {list.map(el => (
-        <li>
+        <li className='navBar'>
           <Link>
             <PrimaryText text={el} />
           </Link>
         </li>
       ))}
-      <li>
-        <Link>
-          <PrimaryText text={logout} />
-        </Link>
-      </li>
     </Nav>
   )
 }

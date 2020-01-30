@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import Nav from '../molecules/Nav'
 import Logo from '../atoms/Logo'
+import Settings from '../molecules/Settings'
 
 const Header = styled.header`
   background-color: ${({ theme }) => theme.white};
@@ -39,6 +40,7 @@ export default () => {
       <div className='headerContent wrapper'>
         <Logo />
         <Nav nav={nav} />
+        <Settings />
       </div>
     </Header>
   )
