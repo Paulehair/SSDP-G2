@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
-
-// import Card from './Card'
+import Card from './../elements/Card'
 
 // import vars from '../../global/variables.scss'
 
@@ -19,47 +18,14 @@ const Column = styled.div`
   &:last-child {
     border-right: none;
   }
-
-
-  /* TODO : A ENLEVER QUAND VRAIE CARD IMPLEMENTEE */
-  div {
-    background: lightgreen;
-    min-height: 100px;
-    border-radius: 8px;
-    margin: 15px;
-  }
 `
 export default () => {
-
   return (
-
     <Column>
-
-      <div>
-        card 1 👽😈
-      </div>
-
-      <div>
-        card 2 👽😈
-      </div>
-
-      <div>
-        card 3 👽😈
-      </div>
-
-      <div>
-        card 1 👽😈
-      </div>
-
-      <div>
-        card 2 👽😈
-      </div>
-
-      <div>
-        card 3 👽😈
-      </div>
-
+      <Card />
+      <Card />
+      <Card />
+      <Card />
     </Column>
-
   )
 }

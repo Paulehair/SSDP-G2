@@ -15,6 +15,7 @@ const Card = styled.div`
 `
 
 const info = {
+  hotel: 'Formule 1 Montreuil',
   rooms: '90 chambres',
   hour: '10h30 - 13h',
   initials: ['AA', 'BB']
@@ -22,7 +23,7 @@ const info = {
 
 export default () => (
   <Card>
-    <Details rooms={info.rooms} hour={info.hour} />
+    <Details hotel={info.hotel} rooms={info.rooms} hour={info.hour} />
     <Binome />
   </Card>
 )

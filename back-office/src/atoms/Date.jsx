@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 // import vars from '../../global/variables.scss'
-
 
 const Date = styled.div`
   width: 100%;
@@ -25,10 +24,7 @@ const Date = styled.div`
   }
 `
 
-export default ( { day, month } ) => {
-
-
-
+export default ({ day, month }) => {
   return (
 
     <Date classname='lol'>
@@ -36,6 +32,5 @@ export default ( { day, month } ) => {
       <p>{ day } { month }</p>
 
     </Date>
-
   )
 }

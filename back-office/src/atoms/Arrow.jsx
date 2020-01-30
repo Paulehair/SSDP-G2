@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 import ArrowAsset from '../assets/arrow.svg'
 
-// import vars from '../../global/variables.scss'
 
 const Arrow = styled.div`
   width: 30px;
@@ -27,13 +26,8 @@ const Arrow = styled.div`
 `
 
 export default ({ direction }) => {
-
-
   return (
-
     <Arrow>
-
     </Arrow>
-
   )
 }

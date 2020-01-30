@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 import Date from '../atoms/Date'
@@ -21,26 +21,21 @@ const TableHead = styled.div`
 `
 
 export default () => {
-
   return (
-
     <TableHead>
-
-      <Arrow direction={ "left" } />
+      <Arrow direction={'left'} />
 
       <Date day={'8'} month={'Juin'} />
 
-      <Date day={ '9' } month={ 'Juin' } />
+      <Date day={'9'} month={'Juin'} />
 
-      <Date day={ '10' } month={ 'Juin' } />
+      <Date day={'10'} month={'Juin'} />
 
-      <Date day={ '11' } month={ 'Juin' } />
+      <Date day={'11'} month={'Juin'} />
 
       <Date day={'12'} month={'Juin'} />
 
-      <Arrow direction={ "right" } />
-
+      <Arrow direction={'right'} />
     </TableHead>
-
   )
 }
