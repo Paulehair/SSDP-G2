@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Button from '../molecules/Button'
 import EmployeCard from './EmployeCard'
+import Input from '../atoms/Input'
 
 const EmployeList = styled.section`
     padding: 72px 120px;
@@ -13,7 +14,7 @@ const EmployeList = styled.section`
     .employeHeader {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 40px;
+        margin-bottom: 30px;
     }
     .employeList {
         display: grid;
@@ -32,6 +33,7 @@ export default () => {
                 </div>
                 <Button textColor='white' fontWeight='500' text='Ajouter un employé' />
             </div>
+            <Input searchIcon={true} placeholder='Rechercher nom / prénom...' type='text' />
             <div className='employeList'>
                 <EmployeCard />
             </div>
