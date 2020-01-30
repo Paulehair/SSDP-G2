@@ -1,53 +1,45 @@
-import React, { useState, useRef } from 'react';
-import styled from "styled-components"
-import Nav from '../molecules/Nav';
-import Logo from '../atoms/Logo';
-import Logout from '../molecules/Logout';
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import Nav from '../molecules/Nav'
+import Logo from '../atoms/Logo'
 
-const HeaderStyle = styled.section`
-  height: 64px;
-  display: flex;
-  align-self: center;
-  justify-content: space-between;
-  background-color: white;
-  align-items: center;
-  border-bottom: 1px solid #EAEAEA;
-  padding: 0 50px;
-  .navComponent {
-      display: flex;
-  }
-  .logoutComponent {
-
+const Header = styled.header`
+  background-color: ${({ theme }) => theme.white};
+  .headerContent {
+    height: 64px;
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+    background-color: white;
+    align-items: center;
+    border-bottom: 1px solid #eaeaea;
+    color: ${({ theme }) => theme.black};
+    &.wrapper {
+      padding: 0 40px;
+    }
   }
 `
 
-export default function Header() {
-    const [currentNav, setCurrentNav] = useState("Planning")
-    const navRef = useRef(null)
+const nav = {
+  list: ['Planning', 'Salariés', 'Hôtels'],
+  logout: 'Se déconnecter'
+}
 
-    const handleclick = (el) => {
-        if (currentNav) {
-            setCurrentNav(el)
-        }
-        console.log(currentNav)
-        console.log(navRef)
+export default () => {
+  const [currentNav, setCurrentNav] = useState('Planning')
+
+  const handleclick = el => {
+    if (currentNav) {
+      setCurrentNav(el)
     }
+  }
 
-    return (
-        <HeaderStyle>
-            <Logo />
-            <div className='navComponent'>
-                {['Planning', 'Salariés', 'Hôtels'].map((label, i) => {
-                    return (
-                        <div ref={navRef} key={i} onClick={() => handleclick(label)}>
-                            <Nav label={label} />
-                        </div>
-                    )
-                })}
-            </div>
-            <div className='logoutComponent'>
-                <Logout />
-            </div>
-        </HeaderStyle>
-    );
+  return (
+    <Header>
+      <div className='headerContent wrapper'>
+        <Logo />
+        <Nav nav={nav} />
+      </div>
+    </Header>
+  )
 }

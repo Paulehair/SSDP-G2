@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-
 import Column from './Column'
 
 const Table = styled.div`
@@ -16,22 +15,13 @@ const Table = styled.div`
   overflow: hidden;
 `
 export default () => {
-
   return (
-
     <Table>
-
       <Column />
-
       <Column />
-
       <Column />
-
       <Column />
-
       <Column />
-
     </Table>
-
   )
 }

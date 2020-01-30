@@ -1,15 +1,13 @@
-import React from 'react';
-import styled from "styled-components"
-import Logo from '../assets/Logo.png'
+import React from 'react'
+import styled from 'styled-components'
+import LogoImg from '../assets/Logo.png'
 
-const HeaderLogoStyle = styled.section`
-   
-`
+const Logo = styled.div``
 
 export default () => {
-    return (
-        <HeaderLogoStyle>
-            <img alt="logo" src={Logo}></img>
-        </HeaderLogoStyle>
-    )
+  return (
+    <Logo>
+      <img alt='logo' src={LogoImg}></img>
+    </Logo>
+  )
 }

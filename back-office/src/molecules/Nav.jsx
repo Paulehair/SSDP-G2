@@ -1,16 +1,28 @@
-import React from 'react';
-import styled from "styled-components"
-import PrimaryText from '../atoms/PrimaryText';
+import React from 'react'
+import styled from 'styled-components'
+import Link from '../atoms/Link'
+import PrimaryText from '../atoms/PrimaryText'
 
-const HeaderNavStyle = styled.section`
-    margin-right: 40px;
+const Nav = styled.ul`
+  display: flex;
+  margin-right: 40px;
 `
 
-export default function Nav({ label, navRef }) {
-
-    return (
-        <HeaderNavStyle>
-            <PrimaryText color={'black'} fontWeight={'400'} value={label} />
-        </HeaderNavStyle>
-    )
+export default ({ nav: { list, logout } }) => {
+  return (
+    <Nav>
+      {list.map(el => (
+        <li>
+          <Link>
+            <PrimaryText text={el} />
+          </Link>
+        </li>
+      ))}
+      <li>
+        <Link>
+          <PrimaryText text={logout} />
+        </Link>
+      </li>
+    </Nav>
+  )
 }

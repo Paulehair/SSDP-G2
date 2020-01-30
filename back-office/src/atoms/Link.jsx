@@ -3,31 +3,10 @@ import styled from 'styled-components'
 
 // import vars from '../../global/variables.scss'
 
-
-const CustomLink = styled.div`
-
-  a {
-    padding: 8px;
-    color: black;
-    text-decoration: none;
-  }
-
+const Link = styled.a`
+  padding: 8px;
+  color: black;
+  text-decoration: none;
 `
 
-export default ({ href, content }) => {
-
-
-  return (
-
-    <CustomLink>
-
-      <a href={ href }>
-
-        { content }
-
-      </a>
-
-    </CustomLink>
-
-  )
-}
+export default ({ href, children }) => <Link>{children}</Link>
