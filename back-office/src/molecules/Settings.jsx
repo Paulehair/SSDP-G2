@@ -13,11 +13,11 @@ const Settings = styled.div`
 `
 
 export default () => {
-    return (
-        <Settings>
-            <Button />
-            <Icon type='bell' />
-            <Icon type='logout' />
-        </Settings>
-    )
+  return (
+    <Settings>
+      <Button backgroundColor='#006CB1' fontWeight='500' text="Visite d'urgence" type='calplus' />
+      <Icon type='bell' />
+      <Icon type='logout' />
+    </Settings>
+  )
 }
