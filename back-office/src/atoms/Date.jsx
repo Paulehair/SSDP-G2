@@ -6,20 +6,22 @@ import styled from 'styled-components'
 
 const Date = styled.div`
   width: 100%;
+  height: 100%;
   align-self: center;
   text-align: center;
   border-right: 1px solid grey;
-  display: table;
+  /* TODO : CENTRER BIEN LES DATES */
 
-  &:last-child {
+  &:nth-last-child(2) {
     border-right: none;
   }
 
-  span {
+  p {
     font-size: 18px;
     line-height: 21px;
     font-weight: 500;
     color: black;
+    height: 100%;
   }
 `
 
@@ -29,9 +31,9 @@ export default ( { day, month } ) => {
 
   return (
 
-    <Date>
+    <Date classname='lol'>
 
-      <span>{ day } { month }</span>
+      <p>{ day } { month }</p>
 
     </Date>
 
