@@ -10,7 +10,10 @@ const employeeController = require('./../controllers/employeeController');
     create a new employee
     @returns {} response with confirmation
 */
-router.route('/').get(employeeController.getEmployees);
+router
+	.route('/')
+	.get(employeeController.getEmployees)
+	.post(employeeController.createEmployee);
 
 /* 
   Staff route for path /api/employees/:id
