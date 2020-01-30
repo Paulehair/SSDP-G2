@@ -2,6 +2,7 @@ import React from 'react'
 import './App.css'
 import './index.css'
 import styled, { ThemeProvider } from 'styled-components'
+import API from './utils/API'
 import Header from './elements/Header'
 import Sidebar from './elements/Sidebar'
 import Planning from './elements/Planning'
@@ -12,7 +13,7 @@ const theme = {
   opBlack: 'rgba(0, 0, 0, 0.35)',
   white: '#FFFFFF',
   grey: '#F3F3F3',
-  red: 'linear-gradient(180deg, #C63D2B 0%, #DE5543 100%)',
+  red: 'linear-gradient(180deg, #C63D2B 0%, #DE5543 100%)'
 }
 
 const App = styled.main`

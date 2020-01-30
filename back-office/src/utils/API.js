@@ -47,5 +47,11 @@ export default {
 
   deleteHotel(id) {
     return axios.delete(`${URL.global}/${URL.params.hotels}/${id}`)
+  },
+
+  getPlanning(sector) {
+    return axios.post(`${URL.global}/${URL.params.hotels}/${id}`, {
+      sector
+    })
   }
 }
