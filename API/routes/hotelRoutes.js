@@ -10,7 +10,10 @@ const hotelController = require('./../controllers/hotelController');
     create a new hotel
     @returns {} response with confirmation
 */
-router.route('/').get(hotelController.getHotels);
+router
+	.route('/')
+	.get(hotelController.getHotels)
+	.post(hotelController.createHotel);
 
 /* 
   Staff route for path /api/hotels/:id

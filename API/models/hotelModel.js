@@ -1,17 +1,22 @@
 const mongoose = require('mongoose');
 
 const hotelSchema = new mongoose.Schema({
+	uuid: {
+		type: Number,
+		required: true
+	},
 	name: {
 		type: String,
 		required: true
 	},
 	address: {
-		type: String,
-		required: true
+		type: String
 	},
-	postCode: {
-		type: Number,
-		required: true
+	zipCode: {
+		type: Number
+	},
+	sector: {
+		type: String
 	},
 	city: {
 		type: String
@@ -20,6 +25,12 @@ const hotelSchema = new mongoose.Schema({
 		type: String
 	},
 	rooms: {
+		type: Number
+	},
+	lastVisit: {
+		type: Date
+	},
+	anomaly: {
 		type: Number
 	}
 });

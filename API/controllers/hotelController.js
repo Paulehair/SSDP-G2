@@ -2,7 +2,9 @@ const Hotel = require('./../models/hotelModel');
 
 exports.getHotels = async (req, res) => {
 	try {
-		const hotels = Hotel.find();
+		const hotels = await Hotel.find();
+
+		console.log('!!!!!', hotels);
 
 		res.status(200).json({
 			status: 'success',
@@ -34,6 +36,20 @@ exports.getHotel = async (req, res) => {
 			error: err.message
 		});
 	}
+};
+
+exports.createHotel = async (req, res, next) => {
+	const newHotel = await Hotel.create({
+		uuid: req.body.uuid,
+		name: req.body.name
+	});
+
+	res.status(200).json({
+		status: 'Success',
+		data: {
+			hotel: newHotel
+		}
+	});
 };
 
 exports.updateHotel = (req, res) => {
