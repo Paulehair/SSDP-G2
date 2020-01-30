@@ -4,17 +4,21 @@ import styled, { ThemeProvider } from 'styled-components'
 import Header from './elements/Header'
 import Sidebar from './elements/Sidebar'
 import Planning from './elements/Planning'
+import Modal from './elements/Modal'
+
 
 const theme = {
   black: '#241F1F',
+  opBlack: 'rgba(0, 0, 0, 0.35)',
   white: '#FFFFFF',
   grey: '#F3F3F3',
-  red: 'linear-gradient(180deg, #C63D2B 0%, #DE5543 100%)'
+  red: 'linear-gradient(180deg, #C63D2B 0%, #DE5543 100%)',
 }
 
 const App = styled.main`
   width: 100%;
   margin: 0 auto;
+  position: relative;
 
   .wrapper {
     display: flex;
