@@ -15,10 +15,10 @@ const Sidebar = styled.section`
   background-color: ${({ theme }) => theme.white};
 `
 
-export default () => (
+export default ({ zones, onClick }) => (
   <Sidebar>
     <Calendar />
     <Search />
-    <Area />
+    <Area onClick={onClick} zones={zones} />
   </Sidebar>
 )
