@@ -10,14 +10,10 @@ const ModalHead = styled.div`
   margin: 0 0 40px 0;
 `
 
-export default () => {
-
+export default ({ data }) => {
   return (
-
     <ModalHead>
-
-      <Title title={"Formule 1 Montreuil"} />
-
+      <Title title={data.name} />
     </ModalHead>
   )
 }
