@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Binome from './../molecules/Binome'
 import Details from './../molecules/Details'
 import Modal from './../elements/Modal'
-import useToggle from '../helpers/openModal'
+import useToggle from '../helpers/Toggle'
 
 const Card = styled.div`
   display: flex;
