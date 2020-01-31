@@ -38,11 +38,10 @@ export default ({ team }) => {
   return (
     <Team>
       {team.map((e, i) => (
-        <div>
+        <div key={i}>
           <Vignette
             primary={i % 2 === 0 ? true : false}
             initials={`${e.firstName[0]}${e.lastName[0]}`}
-            key={i}
           />
           <SecondaryText text={`${e.firstName} ${e.lastName}`} key={i} />
         </div>

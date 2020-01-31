@@ -6,7 +6,6 @@ import API from './utils/API'
 import Header from './elements/Header'
 import Sidebar from './elements/Sidebar'
 import Planning from './elements/Planning'
-import EmployeList from './elements/EmployeList'
 
 const theme = {
   black: '#241F1F',
@@ -35,23 +34,52 @@ const App = styled.main`
     }
   }
 `
+
+const zonesStart = [
+  {
+    code: 'Paris',
+    active: true
+  },
+  {
+    code: '92/94',
+    active: false
+  },
+  {
+    code: '93',
+    active: false
+  },
+  {
+    code: '77/91',
+    active: false
+  },
+  {
+    code: '78/95',
+    active: false
+  }
+]
+
 export default () => {
   const [planning, setPlanning] = useState(null)
+  const [zones, setZones] = useState(zonesStart)
 
   useEffect(_ => {
     ;(async function getPlanning() {
-      const response = await API.getPlanning('93')
+      const response = await API.getPlanning('Paris')
       setPlanning(response.data.data.planning)
     })()
   }, [])
+
+  const handleClick = async event => {
+    const response = await API.getPlanning(event.target.value)
+    setPlanning(response.data.data.planning)
+  }
 
   return (
     <ThemeProvider theme={theme}>
       <App>
         <Header />
         <div className='wrapper --main'>
-          {/* <EmployeList /> */}
-          <Sidebar />
+          {zones && <Sidebar onClick={handleClick} zones={zones} />}
           {planning && <Planning planning={planning} />}
         </div>
       </App>
