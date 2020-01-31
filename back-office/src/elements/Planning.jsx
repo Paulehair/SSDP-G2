@@ -8,16 +8,16 @@ const Planning = styled.section`
   width: 100%;
   height: 100%;
   margin: 0 0 0 15px;
-  background: ${ ({ theme }) => theme.white};
+  background: ${({ theme }) => theme.white};
   border-radius: 8px;
   overflow: hidden;
 `
 
-export default ({ day, month }) => {
+export default ({ planning }) => {
   return (
     <Planning>
       <TableHead />
-      <Table />
+      <Table planning={planning} />
     </Planning>
   )
 }

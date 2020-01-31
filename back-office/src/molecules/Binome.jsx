@@ -10,13 +10,11 @@ const Binome = styled.div`
   margin-left: auto;
 `
 
-export default () => {
-  const employees = ['AA', 'BB']
-
+export default ({ initials }) => {
   return (
     <Binome>
-      {employees.map((e, i) => (
-        <Vignette primary={i % 2 === 0 ? true : false} initials={e} key={i} />
+      {initials.map((el, i) => (
+        <Vignette primary={i % 2 === 0 ? true : false} initials={el} key={i} />
       ))}
     </Binome>
   )

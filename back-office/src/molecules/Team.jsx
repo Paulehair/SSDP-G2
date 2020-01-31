@@ -4,11 +4,10 @@ import styled from 'styled-components'
 import Vignette from '../atoms/Vignette'
 import SecondaryText from '../atoms/SecondaryText'
 
-
 const Team = styled.div`
   width: 100%;
   height: 100%;
-  
+
   > div {
     display: grid;
     grid-template-columns: 20% 80%;
@@ -33,26 +32,21 @@ const Team = styled.div`
       padding-left: 20px;
     }
   }
-
 `
 
-export default () => {
-
-  const employees = ['AA', 'BB']
-
-
+export default ({ team }) => {
   return (
-
     <Team>
-
-      {employees.map((e, i) => (
+      {team.map((e, i) => (
         <div>
-          <Vignette primary={i % 2 === 0 ? true : false} initials={e} key={i} />
-          <SecondaryText text={'Peter Jackerson'} key={i} />
+          <Vignette
+            primary={i % 2 === 0 ? true : false}
+            initials={`${e.firstName[0]}${e.lastName[0]}`}
+            key={i}
+          />
+          <SecondaryText text={`${e.firstName} ${e.lastName}`} key={i} />
         </div>
       ))}
-
     </Team>
-
   )
 }

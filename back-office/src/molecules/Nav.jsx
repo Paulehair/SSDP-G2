@@ -15,8 +15,8 @@ const Nav = styled.ul`
 export default ({ nav: { list, logout } }) => {
   return (
     <Nav>
-      {list.map(el => (
-        <li className='navBar'>
+      {list.map((el, i) => (
+        <li key={i} className='navBar'>
           <Link>
             <PrimaryText textColor='black' text={el} />
           </Link>

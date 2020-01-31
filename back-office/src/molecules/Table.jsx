@@ -13,14 +13,13 @@ const Table = styled.div`
   margin: 0 auto;
   overflow-y: scroll;
 `
-export default () => {
+export default ({ planning }) => {
   return (
     <Table>
-      <Column />
-      <Column />
-      <Column />
-      <Column />
-      <Column />
+      {planning.map((day, i) => (
+        <Column key={i} visits={day} />
+      ))}
+      <Column visits={null} />
     </Table>
   )
 }
