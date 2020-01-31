@@ -9,7 +9,7 @@ import useToggle from '../helpers/openModal'
 const Modal = styled.section`
   width: 100vw;
   height: 100vh;
-  background: ${ ({ theme }) => theme.opBlack};
+  background: ${({ theme }) => theme.opBlack};
   position: absolute;
   top: 0;
   left: 0;
@@ -24,29 +24,22 @@ const Modal = styled.section`
     justify-self: center;
     align-self: center;
     border-radius: 8px;
-    background: ${ ({ theme }) => theme.red};
+    background: ${({ theme }) => theme.red};
   }
-
 `
 
-export default ({ toggle }) => {
-
-  const dontClose = (e) => {
+export default ({ toggle, data }) => {
+  const dontClose = e => {
     e.stopPropagation()
   }
 
   return (
-
     <Modal onClick={toggle}>
-
       <div onClick={dontClose}>
+        <ModalHead data={data} />
 
-        <ModalHead />
-
-        <ModalBody />
-
+        <ModalBody data={data} />
       </div>
-
     </Modal>
   )
 }

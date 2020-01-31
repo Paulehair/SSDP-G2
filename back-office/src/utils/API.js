@@ -1,11 +1,12 @@
 import axios from 'axios'
 
 const URL = {
-  global: 'http://localhost:9000/api/',
+  global: 'http://localhost:9000/api',
   params: {
     employees: 'employees',
     hotels: 'hotels',
-    planning: 'planning'
+    planning: 'planning',
+    visits: 'visits'
   }
 }
 export default {
@@ -50,7 +51,7 @@ export default {
   },
 
   getPlanning(sector) {
-    return axios.post(`${URL.global}/${URL.params.hotels}/${id}`, {
+    return axios.post(`${URL.global}/${URL.params.visits}/`, {
       sector
     })
   }

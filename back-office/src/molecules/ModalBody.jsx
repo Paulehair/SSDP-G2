@@ -4,7 +4,6 @@ import Text from '../atoms/Text'
 import Team from '../molecules/Team'
 import SecondaryText from '../atoms/SecondaryText'
 
-
 const ModalBody = styled.div`
   width: 100%;
   height: 100%;
@@ -46,54 +45,38 @@ const ModalBody = styled.div`
   }
 `
 
-export default () => {
-
+export default ({ data }) => {
   return (
-
     <ModalBody>
-
-      <div className="team">
-
+      <div className='team'>
         <Text text={'Equipiers'} />
 
-        <Team />
-
+        <Team team={data.team} />
       </div>
 
-      <div className="sector">
-
+      <div className='sector'>
         <Text text={'Secteur'} />
 
-        <SecondaryText text={'75 PARIS OUEST'} />
-
+        <SecondaryText text={data.sector} />
       </div>
 
-      <div className="rate">
+      <div className='rate'>
+        <Text text={"Taux d'anomalie"} />
 
-        <Text text={'Taux d\'anomalie'} />
-
-        <SecondaryText text={'20%'} />
-
+        <SecondaryText text={`${data.anomaly}%`} />
       </div>
 
-      <div className="hour">
-
+      <div className='hour'>
         <Text text={'Plage Horaire'} />
 
         <SecondaryText text={'12h30 - 20h'} />
-
       </div>
 
-      <div className="rooms">
+      <div className='rooms'>
+        <Text text='Chambre à visiter' />
 
-        <Text text={'Chambre à Visiter'} />
-
-        <SecondaryText text={'24'} />
-
+        <SecondaryText text={data.rooms} />
       </div>
-
-
     </ModalBody>
-
   )
 }

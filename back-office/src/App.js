@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css'
 import './index.css'
 import styled, { ThemeProvider } from 'styled-components'
@@ -36,6 +36,15 @@ const App = styled.main`
   }
 `
 export default () => {
+  const [planning, setPlanning] = useState(null)
+
+  useEffect(_ => {
+    ;(async function getPlanning() {
+      const response = await API.getPlanning('93')
+      setPlanning(response.data.data.planning)
+    })()
+  }, [])
+
   return (
     <ThemeProvider theme={theme}>
       <App>
@@ -43,7 +52,7 @@ export default () => {
         <div className='wrapper --main'>
           {/* <EmployeList /> */}
           <Sidebar />
-          <Planning />
+          {planning && <Planning planning={planning} />}
         </div>
       </App>
     </ThemeProvider>

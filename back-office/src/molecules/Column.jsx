@@ -13,27 +13,17 @@ const Column = styled.div`
   height: 100%;
   margin: 0 auto;
   padding: 0 14px;
-  border-right: 1px solid ${ ({ theme }) => theme.grey };
+  border-right: 1px solid ${({ theme }) => theme.grey};
 
   &:last-child {
     border-right: none;
   }
 `
-export default () => {
-
+export default ({ visits }) => {
   return (
-
     <Column>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      {visits !== null &&
+        visits.map((visit, i) => <Card key={i} visit={visit} />)}
     </Column>
-
   )
-
 }
