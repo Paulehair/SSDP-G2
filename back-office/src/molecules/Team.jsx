@@ -23,13 +23,15 @@ const Team = styled.div`
       grid-column: 1;
       justify-self: center;
       align-self: center;
-      left: 0;
+      /* FIX TEMPORAIRE */
+      left: 0px;
+      top: -8px;
     }
 
-    h4 {
+    p {
       grid-column: 2;
       align-self: center;
-      padding-left: 20px;
+      /* padding-left: 20px; */
     }
   }
 `
@@ -38,11 +40,10 @@ export default ({ team }) => {
   return (
     <Team>
       {team.map((e, i) => (
-        <div>
+        <div key={i}>
           <Vignette
             primary={i % 2 === 0 ? true : false}
             initials={`${e.firstName[0]}${e.lastName[0]}`}
-            key={i}
           />
           <SecondaryText text={`${e.firstName} ${e.lastName}`} key={i} />
         </div>

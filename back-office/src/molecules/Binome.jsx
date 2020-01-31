@@ -12,7 +12,7 @@ const Binome = styled.div`
 
 export default ({ initials }) => {
   return (
-    <Binome>
+    <Binome className={"BINOME"}>
       {initials.map((el, i) => (
         <Vignette primary={i % 2 === 0 ? true : false} initials={el} key={i} />
       ))}

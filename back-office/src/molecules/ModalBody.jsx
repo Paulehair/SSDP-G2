@@ -48,6 +48,7 @@ const ModalBody = styled.div`
 export default ({ data }) => {
   return (
     <ModalBody>
+      {/* TEMPORAIRE */}
       <div className='team'>
         <Text text={'Equipiers'} />
 
