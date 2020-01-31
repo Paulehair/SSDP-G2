@@ -7,9 +7,10 @@ const PrimaryText = styled.p`
   font-size: 16px;
 `
 
-export default ({ text, color, fontWeight, isSelected }) => {
+export default ({ text, textColor, fontWeight }) => {
+
   return (
-    <PrimaryText textColor={color} fontWeight={fontWeight}>
+    <PrimaryText textColor={textColor} fontWeight={fontWeight}>
       {text}
     </PrimaryText>
   )

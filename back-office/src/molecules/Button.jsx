@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 const Button = styled.button`
   display: flex;
-  background-color: #006CB1; /* Green */
+  background-color: ${({ backgroundColor }) => (backgroundColor ? backgroundColor : 'white')}; /* Green */
   border: none;
   padding: 12px;
   text-align: center;
@@ -19,16 +19,13 @@ const Button = styled.button`
   p {
       margin-right: 8px;
   }
-  div {
-      color: white;
-  }
 `
 
-export default () => {
+export default ({ color, fontWeight, text, type, backgroundColor }) => {
     return (
-        <Button>
-            <PrimaryText fontWeight={'500'} color={'white'} text={'Visite d\'urgence'} />
-            <Icon type='calplus' />
+        <Button backgroundColor={backgroundColor}>
+            <PrimaryText backgroundColor={backgroundColor} textColor={backgroundColor === '#006CB1' ? 'white' : 'black'} fontWeight={fontWeight} color={color} text={text} />
+            {type && <Icon type={type} />}
         </Button>
     )
 }

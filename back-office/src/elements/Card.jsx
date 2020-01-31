@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import styled from 'styled-components'
 import Binome from './../molecules/Binome'
 import Details from './../molecules/Details'
+import Modal from './../elements/Modal'
+import useToggle from '../helpers/openModal'
 
 const Card = styled.div`
   display: flex;
@@ -28,9 +30,21 @@ const info = {
   initials: ['AA', 'BB']
 }
 
-export default () => (
-  <Card>
-    <Details hotel={info.hotel} rooms={info.rooms} hour={info.hour} />
-    <Binome />
-  </Card>
-)
+export default () => {
+
+  const [open, toggle] = useToggle(false)
+
+  return (
+    <div>
+
+      {open && <Modal toggle={toggle} />}
+
+      <Card onClick={toggle}>
+        <Details hotel={info.hotel} rooms={info.rooms} hour={info.hour} />
+        <Binome />
+      </Card>
+    </div>
+
+
+  )
+}

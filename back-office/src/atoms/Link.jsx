@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
-// import vars from '../../global/variables.scss'
-
 const Link = styled.a`
   padding: 8px;
-  color: ${ ({ theme }) => theme.black };
+  color: ${ ({ theme }) => theme.black};
   text-decoration: none;
 `
 

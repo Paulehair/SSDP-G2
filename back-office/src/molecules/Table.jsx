@@ -10,10 +10,8 @@ const Table = styled.div`
   width: 100%;
   height: 100%;
   max-width: 1115px;
-  max-height: 704px;
   margin: 0 auto;
   overflow-y: scroll;
-  
 `
 export default () => {
   return (

@@ -9,6 +9,7 @@
   transform: scale(0.9);
 }
 
+/* HIDE SCROLLBAR, STILL SCROLLABLE */
 ::-webkit-scrollbar {
   display: none;
 }

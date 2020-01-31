@@ -18,5 +18,7 @@ const Vignette = styled.div`
 `
 
 export default ({ initials, primary }) => (
+
   <Vignette primary={primary}>{initials}</Vignette>
+
 )

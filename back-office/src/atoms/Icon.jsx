@@ -5,6 +5,9 @@ const Icon = styled.i`
     font-family: "fontello";
     font-size: 18px;
     align-self: center;
+    font-size: ${({ size }) => size + 'px'};
+    color:  ${({ iconColor }) => iconColor};
+    cursor: pointer;
 `
 
 const icons = [
@@ -45,10 +48,10 @@ const icons = [
     }
 ]
 
-export default ({ type }) => {
+export default ({ type, size, iconColor }) => {
     const { classIcon } = icons.find(icon => icon.name === type)
 
     return (
-        <Icon className={`demo-icon ${classIcon}`}></Icon>
+        <Icon iconColor={iconColor} size={size} className={`demo-icon ${classIcon}`}></Icon>
     )
 }
