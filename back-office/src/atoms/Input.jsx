@@ -19,10 +19,11 @@ const Input = styled.input`
   &[type='text'] {
     width: 100%;
     height: ${({ searchIcon }) => (searchIcon ? '56px' : 'none')};
-    border: ${({ searchIcon }) => (searchIcon ? '1px solid rgb(217, 217, 217)' : 'none')};
+    border: ${({ searchIcon }) =>
+      searchIcon ? '1px solid rgb(217, 217, 217)' : 'none'};
     padding-left: ${({ searchIcon }) => (searchIcon ? '43px' : 'none')};
   }
-  &[type='checkbox'] {
+  &[type='radio'] {
     width: 18px;
     height: 18px;
     margin-right: 12px;
@@ -34,13 +35,24 @@ const Input = styled.input`
   } */
 `
 
-export default ({ type, placeholder, searchIcon }) => (
-  <div style={{ marginBottom: 30 }}>
-    {searchIcon &&
-      <div style={{ position: 'absolute', marginTop: 21, marginLeft: 11, color: '#006DB2' }} className='inconSearch'>
-        <Icon type='search' />
-      </div>
-    }
-    <Input searchIcon={searchIcon} placeholder={placeholder} type={type} />
-  </div>
-)
+export default ({
+  type,
+  name,
+  placeholder,
+  value,
+  searchIcon,
+  checked,
+  onClick
+}) => {
+  return (
+    <Input
+      name={name}
+      onClick={onClick}
+      defaultChecked={checked}
+      searchIcon={searchIcon}
+      placeholder={placeholder}
+      type={type}
+      defaultValue={value}
+    />
+  )
+}
