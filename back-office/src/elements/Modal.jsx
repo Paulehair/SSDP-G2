@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import ModalHead from '../molecules/ModalHead'
 import ModalBody from '../molecules/ModalBody'
 
-import useToggle from '../helpers/openModal'
+import useToggle from '../helpers/Toggle'
 
 const Modal = styled.section`
   width: 100vw;
@@ -29,17 +29,23 @@ const Modal = styled.section`
 `
 
 export default ({ toggle, data }) => {
+
   const dontClose = e => {
     e.stopPropagation()
   }
 
   return (
     <Modal onClick={toggle}>
+
       <div onClick={dontClose}>
+
         <ModalHead data={data} />
 
         <ModalBody data={data} />
+
       </div>
+
     </Modal>
   )
+
 }
