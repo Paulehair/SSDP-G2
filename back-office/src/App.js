@@ -65,19 +65,34 @@ export default () => {
   useEffect(_ => {
     ;(async function getPlanning() {
       const response = await API.getPlanning('Paris')
+      localStorage.setItem('current', 'Paris')
       setPlanning(response.data.data.planning)
     })()
   }, [])
 
   const handleClick = async event => {
+    event.persist()
     const response = await API.getPlanning(event.target.value)
+    localStorage.setItem('current', event.target.value)
     setPlanning(response.data.data.planning)
+  }
+
+  const download = () => {
+    let current = localStorage.getItem('current')
+    window.open(
+      `http://localhost:9000/api/exportPlanning/${current.replace('/', '')}`
+    )
   }
 
   return (
     <ThemeProvider theme={theme}>
       <App>
         <Header />
+        <div className='wrapper --button'>
+          <button className='download' onClick={download}>
+            Télécharger le planning
+          </button>
+        </div>
         <div className='wrapper --main'>
           {zones && <Sidebar onClick={handleClick} zones={zones} />}
           {planning && <Planning planning={planning} />}

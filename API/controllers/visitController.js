@@ -9,7 +9,7 @@ exports.getVisit = async (req, res) => {
 		const hotels = await Hotel.aggregate([
 			{
 				$match: {
-					anomaly: {$gte: 45},
+					// anomaly: {$gte: 45},
 					lastVisit: {$lt: date},
 					sector: {$eq: req.body.sector}
 				}

@@ -24,5 +24,8 @@ const hotelRouter = require('./routes/hotelRoutes');
 app.use('/api/hotels', hotelRouter);
 const visitRouter = require('./routes/visitRoutes');
 app.use('/api/visits', visitRouter);
+// Router imports
+const fileRouter = require('./routes/fileRoutes');
+app.use('/api/exportPlanning/', fileRouter);
 
 module.exports = app;
