@@ -33,7 +33,7 @@ export default () => {
                 </div>
                 <Button textColor='white' fontWeight='500' text='Ajouter un employé' />
             </div>
-            <Input searchIcon={true} placeholder='Rechercher nom / prénom...' type='text' />
+            {/* <Input searchIcon={true} placeholder='Rechercher nom / prénom...' type='text' /> */}
             <div className='employeList'>
                 <EmployeCard />
             </div>

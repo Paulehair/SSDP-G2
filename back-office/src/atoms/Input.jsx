@@ -36,18 +36,18 @@ const Input = styled.input`
 `
 
 export default ({
-  type,
+  data: {type,
   name,
   placeholder,
   value,
-  searchIcon,
-  checked,
-  onClick
-}) => {
+  searchIcon = null,
+  checked = null,
+  onChange = null
+}}) => {
   return (
     <Input
       name={name}
-      onClick={onClick}
+      onChange={onChange}
       defaultChecked={checked}
       searchIcon={searchIcon}
       placeholder={placeholder}

@@ -4,7 +4,7 @@ import Binome from './../molecules/Binome'
 import Details from './../molecules/Details'
 import Modal from './../elements/Modal'
 import useToggle from '../helpers/openModal'
-
+import ThemeContext from '../context/ThemeContext.js'
 const Card = styled.div`
   display: flex;
   flex-direction: column;

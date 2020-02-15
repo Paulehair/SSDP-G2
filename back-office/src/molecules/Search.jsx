@@ -14,6 +14,6 @@ export default (searchIcon) => (
     <div className='searchTitle'>
       <PrimaryText text='Chercher ...' />
     </div>
-    <Input type='text' placeholder='Une personne, un groupe' />
+    {/* <Input type='text' placeholder='Une personne, un groupe' /> */}
   </Search>
 )
