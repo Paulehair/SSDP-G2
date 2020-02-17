@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const hotelSchema = new mongoose.Schema({
 	uuid: {
 		type: Number,
-		required: true
+		required: true,
+		unique: true
 	},
 	name: {
 		type: String,

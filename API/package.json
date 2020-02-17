@@ -2,6 +2,11 @@
 	"name": "api",
 	"version": "1.0.0",
 	"description": "API for the use of Samu Social de Paris",
+	"apidoc": {
+		"title": "API Documentation for SAMU Social project",
+		"url" : "http://localhost:9000/api",
+		"version": "0.1.0"
+	},
 	"main": "index.js",
 	"scripts": {
 		"start": "nodemon index.js",
@@ -10,6 +15,7 @@
 	"author": "Paule Herman",
 	"license": "ISC",
 	"dependencies": {
+		"apidoc": "^0.20.0",
 		"bcryptjs": "^2.4.3",
 		"body-parser": "^1.19.0",
 		"cors": "^2.8.5",
