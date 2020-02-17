@@ -35,14 +35,29 @@ const Input = styled.input`
 `
 
 export default ({
-  data: {type,
-  name,
-  placeholder,
-  value,
-  searchIcon = null,
-  checked = null,
-  onChange
-}}) => {
+  data: {
+    type,
+    name,
+    placeholder,
+    value,
+    searchIcon = null,
+    checked = null,
+    onChange
+  }}) => {
+  
+  if(type === 'radio') {
+    return (
+      <Input
+        type={type}
+        name={name}
+        onChange={onChange}
+        defaultChecked={checked}
+        placeholder={placeholder}
+        defaultValue={value}
+      />
+    )
+  }
+
   return (
     <Input
       name={name}
