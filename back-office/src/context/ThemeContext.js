@@ -1,6 +1,5 @@
 import React, { useState, createContext, useContext } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
-import { backgroundColor, textColor } from './../data/theme'
 
 const ThemeToggleContext = createContext()
 
@@ -8,12 +7,12 @@ export const useTheme = () => useContext(ThemeToggleContext)
 
 export const MyThemeProvider = ({ children }) => {
   const [themeState, setThemeState] = useState({
-    mode: 'light'
+    area: 'zone75'
   })
 
   const toggle = () => {
-    const mode = themeState.mode === 'light' ? `dark` : `light`
-    setThemeState({ mode: mode })
+    const area = themeState.area === 'zone75' ? `zone92` : `zone75`
+    setThemeState({ area: area })
   }
 
   return (

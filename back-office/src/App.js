@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
-import ThemeContext from './context/ThemeContext.js'
+import styled, { withTheme } from 'styled-components'
+import { useTheme } from './context/ThemeContext'
+import { color } from './data/theme'
 import './App.css'
 import './index.css'
 import styled, { ThemeProvider } from 'styled-components'
@@ -82,6 +84,7 @@ export default () => {
   const [planning, setPlanning] = useState(null)
   const [zones, setZones] = useState(zonesStart)
   const [themeState, setThemeState] = useState(theme.z75)
+  const themeToggle = useTheme()
   
   const toggleTheme = (zone) => {
     if(theme.zone === zone) {
