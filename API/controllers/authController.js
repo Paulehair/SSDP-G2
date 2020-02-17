@@ -7,7 +7,7 @@ exports.login = async (req, res) => {
     const user = await Employee.findOne({
       email
     });
-    
+
     if(!await bcrypt.compare(password, user.password)) {
       console.log('Mauvais mdp')
       return
@@ -23,5 +23,9 @@ exports.login = async (req, res) => {
 }
 
 exports.checkPermission = () => {
-
+  /**
+   * ADMIN INFO:
+   * mail : salarie.admin@samusocial.net
+   * password : admin
+   */
 }

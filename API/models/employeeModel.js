@@ -20,7 +20,13 @@ const employeeSchema = new mongoose.Schema({
 		default: 'intervenant'
 	},
 	role: {
-		type: String
+			type: String,
+			required: true,
+			enum: [
+					'user',
+					'admin'
+			],
+			default: 'user'
 	},
 	sector: {
 		type: String,
