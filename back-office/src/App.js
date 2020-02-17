@@ -58,6 +58,22 @@ const zonesStart = [
 export default () => {
   const [planning, setPlanning] = useState(null)
   const [zones, setZones] = useState(zonesStart)
+  const [themeState, setThemeState] = useState(theme.z75)
+  
+  const toggleTheme = (zone) => {
+    if(theme.zone === zone) {
+      return
+    }
+    const {primary, secondary} = colorData[`z${zone}`]
+    setThemeState(data => {
+      return {
+        ...data,
+        zone,
+        primary,
+        secondary
+      }
+    })
+  }
 
   useEffect(_ => {
     ;(async function getPlanning() {
