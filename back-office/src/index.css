@@ -134,7 +134,7 @@ table {
   border-spacing: 0;
 }
 
-* {
+body > * {
   box-sizing: border-box;
 }
 
@@ -258,3 +258,10 @@ code {
 .wrapper.--button {
   padding: 20px 20px 0 !important;
 }
+.icon-logout:before { content: '\e800'; } /* '' */
+.icon-trash:before { content: '\e801'; } /* '' */
+.icon-cancel:before { content: '\e802'; } /* '' */
+.icon-bell:before { content: '\e803'; } /* '' */
+.icon-search:before { content: '\e804'; } /* '' */
+.icon-calendarplus:before { content: '\f271'; } /* '' */
+.icon-calendartimes:before { content: '\f273'; } /* '' */

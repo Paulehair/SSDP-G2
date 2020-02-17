@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
 import Nav from '../molecules/Nav'
 import Logo from '../atoms/Logo'
@@ -15,6 +15,7 @@ const Header = styled.header`
     align-items: center;
     border-bottom: 1px solid #eaeaea;
     color: ${({ theme }) => theme.black};
+    background-color: ${({theme}) => theme.primary};
     &.wrapper {
       padding: 0 40px;
     }
@@ -34,9 +35,10 @@ export default () => {
       setCurrentNav(el)
     }
   }
-
+  
   return (
-    <Header>
+    <Header >
+    <button>toggle theme</button>
       <div className='headerContent wrapper'>
         <Logo />
         <Nav nav={nav} />
