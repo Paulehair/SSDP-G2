@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import {MyThemeProvider} from './context/ThemeContext'
+import {useTheme} from './context/ThemeContext'
 import './App.css'
 import './index.css'
 import API from './utils/API'
@@ -58,22 +58,7 @@ const zonesStart = [
 export default () => {
   const [planning, setPlanning] = useState(null)
   const [zones, setZones] = useState(zonesStart)
-  const [themeState, setThemeState] = useState(theme.z75)
-  
-  const toggleTheme = (zone) => {
-    if(theme.zone === zone) {
-      return
-    }
-    const {primary, secondary} = colorData[`z${zone}`]
-    setThemeState(data => {
-      return {
-        ...data,
-        zone,
-        primary,
-        secondary
-      }
-    })
-  }
+  const toggleTheme = useTheme()
 
   useEffect(_ => {
     ;(async function getPlanning() {
@@ -83,10 +68,11 @@ export default () => {
     })()
   }, [])
 
-  const handleClick = async event => {
+  const handleChange = async event => {
     event.persist()
     const response = await API.getPlanning(event.target.value)
     localStorage.setItem('current', event.target.value)
+    toggleTheme.toggle(event.target.value)
     setPlanning(response.data.data.planning)
   }
 
@@ -98,19 +84,17 @@ export default () => {
   }
 
   return (
-    <MyThemeProvider>
-      <App>
-        <Header />
-        <div className='wrapper --button'>
-          <button className='download' onClick={download}>
-            Télécharger le planning
-          </button>
-        </div>
-        <div className='wrapper --main'>
-          {zones && <Sidebar onClick={handleClick} zones={zones} />}
-          {planning && <Planning planning={planning} />}
-        </div>
-      </App>
-    </MyThemeProvider>
+    <App>
+      <Header />
+      <div className='wrapper --button'>
+        <button className='download' onClick={download}>
+          Télécharger le planning
+        </button>
+      </div>
+      <div className='wrapper --main'>
+        {zones && <Sidebar onChange={handleChange} zones={zones} />}
+        {planning && <Planning planning={planning} />}
+      </div>
+    </App>
   )
 }

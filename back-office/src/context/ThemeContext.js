@@ -6,7 +6,7 @@ const ThemeToggleContext = createContext()
 
 export const useTheme = () => useContext(ThemeToggleContext)
 
-export const MyThemeProvider = ({ children }) => {
+export const CustomThemeProvider = ({ children }) => {
   const [themeState, setThemeState] = useState({
     area: 'Paris'
   })

@@ -17,13 +17,8 @@ const Area = styled.div`
   }
 `
 
-export default ({ zones }) => {
+export default ({ zones, onChange }) => {
   const toggleTheme = useTheme()
-
-  const onChange = e => {
-    e.persist()
-    toggleTheme.toggle(e.target.value)
-  }
 
   const inputData = {
     ...data.zone,
