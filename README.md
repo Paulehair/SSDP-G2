@@ -2,16 +2,17 @@
 
 School project for the use of Le SAMU Social de Paris
 
-- Auto-generated Table of Content
-[ToC]
+-   Auto-generated Table of Content
+    [ToC]
 
-## :rocket:  Getting started
+## :rocket: Getting started
 
 ### Prerequisites
 
 Have docker and docker-compose installed
 
 ### Installing for development
+
 You'll need to install dependancies and write your database access in .env file
 :::info
 :pushpin: To get your access to database ➜ ask the team !
@@ -37,8 +38,11 @@ Start working !:tada:
 ### Tests
 
 To run tests run the followings commands
+
 ###### `in API`
+
 ###### `in back-office`
+
 ###### `in mobile app`
 
 ### API Documentation
@@ -62,21 +66,25 @@ Database-->API: 4 - Send Data
 API->Back Office or Mobile App: 5 - Send Data to front
 ```
 
+### Terraform
+
+See documentation in [here](https://github.com/Paulehair/SSDP-G2/tree/DEV/terraform)
+
 ## :link: Built with
 
-* Docker
-* Terraform
-* Ansible
-* Express
-* Mongoose
-* React
-* ESLint
-* Prettier
-* apiDoc
-* JEST
-* JWT
-* Styled Components
-* Storybook
+-   Docker
+-   Terraform
+-   Ansible
+-   Express
+-   Mongoose
+-   React
+-   ESLint
+-   Prettier
+-   apiDoc
+-   JEST
+-   JWT
+-   Styled Components
+-   Storybook
 
 ## Authors
 
