@@ -10,7 +10,7 @@ Have terraform installed
 
 ### Generate ssh key pair
 
-Run the folowing commands to generate your ssh key
+Run the folowing commands from project folder to generate your ssh key
 :::info
 :pushpin: You will need it to connect to your EC2 AWS instances
 :::
