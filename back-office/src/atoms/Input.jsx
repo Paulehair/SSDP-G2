@@ -62,7 +62,6 @@ export default ({
     <Input
       name={name}
       onChange={onChange}
-      defaultChecked={checked}
       searchIcon={searchIcon}
       placeholder={placeholder}
       type={type}
