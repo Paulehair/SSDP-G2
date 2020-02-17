@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import {useTheme} from './../context/ThemeContext'
 import PrimaryText from './../atoms/PrimaryText'
 import SecondaryText from './../atoms/SecondaryText'
 import Input from './../atoms/Input'
@@ -16,8 +17,14 @@ const Area = styled.div`
   }
 `
 
-export default ({ zones, onChange }) => {
-  
+export default ({ zones }) => {
+  const toggleTheme = useTheme()
+
+  const onChange = e => {
+    e.persist()
+    toggleTheme.toggle(e.target.value)
+  }
+
   const inputData = {
     ...data.zone,
     onChange,
@@ -32,7 +39,7 @@ export default ({ zones, onChange }) => {
       </div>
       {zones.map((zone, i) => (
         <div key={i}>
-          <Input data={inputData} />
+          <Input data={{...inputData, value: zone.code}} />
           <SecondaryText text={`Secteur du ${zone.code}`} black={true} />
         </div>
       ))}

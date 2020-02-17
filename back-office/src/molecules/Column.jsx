@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import Card from './../elements/Card'
 
@@ -13,7 +13,7 @@ const Column = styled.div`
   /* IDEM MARGIN BOTTOM ICI */
   margin: 0 auto 100px;
   padding: 0 14px;
-  border-right: 1px solid ${({ theme }) => theme.grey};
+  border-right: 1px solid ${({ theme: { variables } }) => variables.grey};
 
   &:last-child {
     border-right: none;

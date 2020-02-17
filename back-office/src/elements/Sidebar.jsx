@@ -12,7 +12,8 @@ const Sidebar = styled.section`
   max-width: 300px;
   padding: 24px;
   border-radius: 8px;
-  background-color: ${({ theme }) => theme.white};
+  background-color: ${({ theme: {variables} }) => variables.white};
+  overflow-y: scroll;
 `
 
 export default ({ zones, onChange }) => (

@@ -1,41 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react'
-import styled, { withTheme } from 'styled-components'
-import { useTheme } from './context/ThemeContext'
-import { color } from './data/theme'
+import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
+import {MyThemeProvider} from './context/ThemeContext'
 import './App.css'
 import './index.css'
-import styled, { ThemeProvider } from 'styled-components'
 import API from './utils/API'
 import Header from './elements/Header'
 import Sidebar from './elements/Sidebar'
 import Planning from './elements/Planning'
-
-const variables = {
-  black: '#241F1F',
-  opBlack: 'rgba(0, 0, 0, 0.35)',
-  white: '#FFFFFF',
-  grey: '#F3F3F3',
-  red: 'linear-gradient(180deg, #C63D2B 0%, #DE5543 100%)'
-}
-
-const colorData = {
-  z75: {
-    primary: '#FF0000',
-    secondary: '#FF0'
-  },
-  z92: {
-    primary: '#FF0',
-    secondary: '#FF0000',
-  }
-}
-
-const theme = {
-  zone: 75,
-  black: '#000',
-  white: '#FFF',
-  primary: '#FF0000',
-  secondary: '#FF0'
-}
 
 const App = styled.main`
   width: 100%;
@@ -53,6 +24,10 @@ const App = styled.main`
     /* -64px = hauteur du header */
     &.--main {
       height: calc(100vh - 64px);
+    }
+
+    &.--button {
+      display: none;
     }
   }
 `
@@ -83,23 +58,6 @@ const zonesStart = [
 export default () => {
   const [planning, setPlanning] = useState(null)
   const [zones, setZones] = useState(zonesStart)
-  const [themeState, setThemeState] = useState(theme.z75)
-  const themeToggle = useTheme()
-  
-  const toggleTheme = (zone) => {
-    if(theme.zone === zone) {
-      return
-    }
-    const {primary, secondary} = colorData[`z${zone}`]
-    setThemeState(data => {
-      return {
-        ...data,
-        zone,
-        primary,
-        secondary
-      }
-    })
-  }
 
   useEffect(_ => {
     ;(async function getPlanning() {
@@ -124,7 +82,7 @@ export default () => {
   }
 
   return (
-    <ThemeProvider theme={theme}>
+    <MyThemeProvider>
       <App>
         <Header />
         <div className='wrapper --button'>
@@ -137,6 +95,6 @@ export default () => {
           {planning && <Planning planning={planning} />}
         </div>
       </App>
-    </ThemeProvider>
+    </MyThemeProvider>
   )
 }

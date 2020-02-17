@@ -1,5 +1,6 @@
 import React, { useState, createContext, useContext } from 'react'
-import styled, { ThemeProvider } from 'styled-components'
+import { ThemeProvider } from 'styled-components'
+import {variables} from './../data/theme'
 
 const ThemeToggleContext = createContext()
 
@@ -7,19 +8,22 @@ export const useTheme = () => useContext(ThemeToggleContext)
 
 export const MyThemeProvider = ({ children }) => {
   const [themeState, setThemeState] = useState({
-    area: 'zone75'
+    area: 'Paris'
   })
 
-  const toggle = () => {
-    const area = themeState.area === 'zone75' ? `zone92` : `zone75`
-    setThemeState({ area: area })
+  const toggle = (zone) => {
+    if (themeState.area === zone) {
+      return
+    }
+    setThemeState({ area: zone })
   }
 
   return (
     <ThemeToggleContext.Provider value={{ toggle: toggle }}>
       <ThemeProvider
         theme={{
-          mode: themeState.mode
+          area: themeState.area,
+          variables 
         }}>
         {children}
       </ThemeProvider>
