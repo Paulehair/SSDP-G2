@@ -1,6 +1,5 @@
 import React from 'react'
 import PrimaryText from './../atoms/PrimaryText'
-import Input from './../atoms/Input'
 import styled from 'styled-components'
 
 const Search = styled.div`
@@ -14,6 +13,6 @@ export default (searchIcon) => (
     <div className='searchTitle'>
       <PrimaryText text='Chercher ...' />
     </div>
-    <Input type='text' placeholder='Une personne, un groupe' />
+    {/* <Input type='text' placeholder='Une personne, un groupe' /> */}
   </Search>
 )

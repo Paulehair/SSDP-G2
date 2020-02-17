@@ -10,9 +10,9 @@ const Vignette = styled.div`
   font-size: 12px;
   line-height: 24px;
   letter-spacing: 1px;
-  color: ${({ theme }) => theme.black};
+  color: ${({ theme: {variables} }) => variables.black};
   border-radius: 100%;
-  background-color: ${({ theme }) => theme.white};
+  background-color: ${({ theme: {variables} }) => variables.white};
   position: absolute;
   right: ${({ primary }) => (primary ? 'auto' : '0')};
 `
