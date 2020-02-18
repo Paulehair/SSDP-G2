@@ -22,10 +22,7 @@ const employeeSchema = new mongoose.Schema({
 	role: {
 		type: String
 	},
-	sector: {
-		_id: false,
-		sector_id: String
-	},
+	sector_id: String,
 	address: {
 		type: String
 	},
