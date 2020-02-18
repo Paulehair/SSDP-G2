@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import PrimaryText from './../atoms/PrimaryText'
 import SecondaryText from './../atoms/SecondaryText'
 import Input from './../atoms/Input'
-import data from './../data/inputData'
+import data from '../data/data'
 
 const Area = styled.div`
   div {
@@ -18,10 +18,10 @@ const Area = styled.div`
 
 export default ({ zones, onChange }) => {
   const inputData = {
-    ...data.zone,
+    ...data.input.zone,
     onChange,
-    placeholder: data.zone.name,
-    value: data.zone.name
+    placeholder: data.input.zone.name,
+    value: data.input.zone.name
   }
 
   return (
