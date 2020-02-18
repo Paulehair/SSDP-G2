@@ -7,6 +7,7 @@ import API from './utils/API';
 import Header from './elements/Header';
 import Sidebar from './elements/Sidebar';
 import Planning from './elements/Planning';
+import EmployeeList from './elements/EmployeList';
 import List from './elements/List';
 
 const App = styled.main`
@@ -88,6 +89,7 @@ export default () => {
 					<List />
 				</div>
 			</App>
+			<EmployeeList />
 		</SectorContext.Provider>
 	);
 };
