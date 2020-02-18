@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const Icon = styled.i`
@@ -50,7 +50,6 @@ const icons = [
 
 export default ({ type, size, iconColor }) => {
   const { classIcon } = icons.find(icon => icon.name === type)
-  console.log(icons.name)
 
   return (
     <Icon iconColor={iconColor} size={size} className={`demo-icon ${classIcon}`}></Icon>

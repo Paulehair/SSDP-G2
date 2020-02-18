@@ -6,13 +6,13 @@ const employeeController = require('./../controllers/employeeController');
  * This operation belongs to to the admin group.
  */
 
- /**
+/**
  * @api {get} /employees Request list of all employees
  * @apiName getEmployees
  * @apiGroup Employees
  * @apiVersion 0.1.0
  * @apiPermission none
- * 
+ *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     [{
@@ -28,15 +28,15 @@ const employeeController = require('./../controllers/employeeController');
  *     {
  *       ...
  *     }]
-*/
+ */
 
- /**
+/**
  * @api {post} /employees Create one employee
  * @apiName createEmployee
  * @apiGroup Employees
  * @apiVersion 0.1.0
  * @apiPermission admin
- * 
+ *
  * @apiSuccess {String} firstName First name of employee
  * @apiSuccess {String} lastName Last name of employee
  * @apiSuccess {String} email Email of employee
@@ -57,20 +57,20 @@ const employeeController = require('./../controllers/employeeController');
  *       "address": "123 Main St",
  *       "phone": "+33178674503"
  *     }
-*/
+ */
 
 router
-  .route('/')
-  .get(employeeController.getEmployees)
-  .post(employeeController.createEmployee);
-  
- /**
+	.route('/')
+	.get(employeeController.getEmployees)
+	.post(employeeController.createEmployee);
+
+/**
  * @api {get} /employees/:id Request employee information
  * @apiName getOneEmployee
  * @apiGroup Employees
  * @apiVersion 0.1.0
  * @apiPermission none
- * 
+ *
  * @apiSuccess {String} firstName First name of employee
  * @apiSuccess {String} lastName Last name of employee
  * @apiSuccess {String} email Email of employee
@@ -93,15 +93,15 @@ router
  *     }
  */
 
- /**
+/**
  * @api {patch} /employees/:id Update employee information
  * @apiName updateOneEmployee
  * @apiGroup Employees
  * @apiVersion 0.1.0
  * @apiPermission admin
- * 
+ *
  * @apiParam {Number} id Id of employee
- * 
+ *
  * @apiSuccess {String} firstName First name of employee
  * @apiSuccess {String} lastName Last name of employee
  * @apiSuccess {String} email Email of employee
@@ -124,15 +124,15 @@ router
  *     }
  */
 
- /**
+/**
  * @api {delete} /employees/:id Delete one employee
  * @apiName deleteOneEmployee
  * @apiGroup Employees
  * @apiVersion 0.1.0
  * @apiPermission admin
- * 
+ *
  * @apiParam {Number} id Id of employee
- * 
+ *
  * @apiSuccess {String} firstName First name of employee
  * @apiSuccess {String} lastName Last name of employee
  * @apiSuccess {String} email Email of employee

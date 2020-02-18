@@ -8,7 +8,7 @@ const Planning = styled.section`
   width: 100%;
   height: 100%;
   margin: 0 0 0 15px;
-  background: ${({ theme }) => theme.white};
+  background: ${({ theme: { variables } }) => variables.white};
   border-radius: 8px;
   overflow: hidden;
 `
