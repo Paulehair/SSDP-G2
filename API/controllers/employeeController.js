@@ -1,14 +1,22 @@
 const Employee = require('./../models/employeeModel');
+const Sector = require('./../models/sectorModel');
 const fs = require('fs');
 
 exports.getEmployees = async (req, res) => {
 	try {
-		const employees = await Employee.find();
+		const employees = await Employee.find()
+			.sort({sector_id: 1})
+			.lean();
+		const sectors = await Sector.find().lean();
+
+		employees.forEach(employee => {
+			const sector = sectors.find(sector => sector._id == employee.sector_id);
+			employee.sector = sector.zone;
+		});
+
 		res.status(200).json({
 			status: 'success',
-			data: {
-				employees
-			}
+			employees
 		});
 	} catch (err) {
 		res.status(404).json({

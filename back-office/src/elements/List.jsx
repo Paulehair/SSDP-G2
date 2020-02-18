@@ -67,9 +67,9 @@ export default () => {
 		_ => {
 			(async function getList() {
 				const response = await API.getList(currentSector);
-				setLoading(false);
 				const {hotels} = response.data.data;
 				setList(hotels);
+				setLoading(false);
 			})();
 		},
 		[currentSector]
@@ -83,7 +83,7 @@ export default () => {
 		}));
 	}, []);
 
-	if (loading || !list) {
+	if (loading) {
 		return <p>Loading...</p>;
 	}
 
@@ -95,6 +95,7 @@ export default () => {
 					const isDragging = state.draggedIndex === index;
 					const top = state.dragOrder.indexOf(index) * (HEIGHT + 10);
 					const draggedTop = state.order.indexOf(index) * (HEIGHT + 10);
+					const lastVisit = new Date(item.lastVisit).toLocaleDateString();
 
 					return (
 						<ListItem
@@ -104,7 +105,7 @@ export default () => {
 							onDragEnd={handleDragEnd}
 							isDragging={isDragging}
 							top={isDragging ? draggedTop : top}
-							data={item}
+							data={{...item, lastVisit}}
 						>
 							{index}
 						</ListItem>
