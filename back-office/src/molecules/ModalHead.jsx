@@ -21,9 +21,9 @@ export default ({ data }) => {
     <ModalHead>
       <Title title={data.name} />
 
-      <Icon iconColor={({ theme }) => theme.white} size={20} type={`calplus`} />
-      <Icon iconColor={({ theme }) => theme.white} size={20} type={`trash`} />
-      <Icon iconColor={({ theme }) => theme.white} size={20} type={`cancel`} />
+      <Icon iconColor={({ theme: {variables} }) => variables.white} size={20} type={`calplus`} />
+      <Icon iconColor={({ theme: {variables} }) => variables.white} size={20} type={`trash`} />
+      <Icon iconColor={({ theme: {variables} }) => variables.white} size={20} type={`cancel`} />
 
 
     </ModalHead>

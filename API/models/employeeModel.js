@@ -23,8 +23,8 @@ const employeeSchema = new mongoose.Schema({
 		type: String
 	},
 	sector: {
-		type: String,
-		required: [true, 'An employee must have a sector']
+		_id: false,
+		sector_id: String
 	},
 	address: {
 		type: String

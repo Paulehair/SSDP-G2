@@ -6,6 +6,8 @@ router
 	.get(hotelController.getHotels)
 	.post(hotelController.createHotel);
 
+router.route('/list').get(hotelController.getHotelList);
+
 router
 	.route('/:id')
 	.get(hotelController.getHotel)

@@ -17,27 +17,19 @@ const TableHead = styled.div`
   max-width: 1115px;
   max-height: 70px;
   margin: 0 auto;
-  border-bottom: 1px solid ${ ({ theme }) => theme.grey};
+  border-bottom: 1px solid ${({ theme: { variables } }) => variables.grey};
 `
 
 export default () => {
   return (
     <TableHead>
-
       <Arrow direction={'left'} />
-
       <Date day={'8'} month={'Juin'} />
-
       <Date day={'9'} month={'Juin'} />
-
       <Date day={'10'} month={'Juin'} />
-
       <Date day={'11'} month={'Juin'} />
-
       <Date day={'12'} month={'Juin'} />
-
       <Arrow direction={'right'} />
-
     </TableHead>
   )
 }

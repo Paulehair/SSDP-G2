@@ -1,4 +1,5 @@
 const Employee = require('./../models/employeeModel');
+const fs = require('fs');
 
 exports.getEmployees = async (req, res) => {
 	try {
@@ -79,5 +80,20 @@ exports.deleteEmployee = async (req, res) => {
 			status: 'fail',
 			error: err.message
 		});
+	}
+};
+
+exports.importEmployees = async (req, res) => {
+	try {
+		const data = JSON.parse(
+			fs.readFileSync(`${__dirname}/../data/employees.json`)
+		);
+
+		await Employee.create(data.employees);
+		res.json({
+			status: 'success'
+		});
+	} catch (err) {
+		console.warn(err);
 	}
 };

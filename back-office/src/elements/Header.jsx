@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import Nav from '../molecules/Nav'
 import Logo from '../atoms/Logo'
 import Settings from '../molecules/Settings'
 
 const Header = styled.header`
-  background-color: ${({ theme }) => theme.white};
+  background-color: ${({ theme: {variables} }) => variables.white};
   .headerContent {
     height: 64px;
     display: flex;
@@ -14,7 +14,7 @@ const Header = styled.header`
     background-color: white;
     align-items: center;
     border-bottom: 1px solid #eaeaea;
-    color: ${({ theme }) => theme.black};
+    color: ${({ theme: {variables} }) => variables.black};
     &.wrapper {
       padding: 0 40px;
     }
@@ -27,16 +27,8 @@ const nav = {
 }
 
 export default () => {
-  const [currentNav, setCurrentNav] = useState('Planning')
-
-  const handleclick = el => {
-    if (currentNav) {
-      setCurrentNav(el)
-    }
-  }
-
   return (
-    <Header>
+    <Header >
       <div className='headerContent wrapper'>
         <Logo />
         <Nav nav={nav} />
