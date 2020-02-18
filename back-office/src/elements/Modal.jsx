@@ -6,7 +6,7 @@ import ModalBody from '../molecules/ModalBody'
 const Modal = styled.section`
   width: 100vw;
   height: 100vh;
-  background: ${({ theme: {variables} }) => variables.opBlack};
+  background: ${({ theme: { variables } }) => variables.opBlack};
   position: absolute;
   top: 0;
   left: 0;
@@ -21,7 +21,7 @@ const Modal = styled.section`
     justify-self: center;
     align-self: center;
     border-radius: 8px;
-    background: ${({ theme: {variables} }) => variables.red};
+    background: ${({ theme: { variables } }) => variables.red};
   }
 `
 

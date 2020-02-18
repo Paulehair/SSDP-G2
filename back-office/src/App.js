@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import SectorContext from './context/SectorContext';
 import './App.css';
@@ -7,6 +7,7 @@ import API from './utils/API';
 import Header from './elements/Header';
 import Sidebar from './elements/Sidebar';
 import Planning from './elements/Planning';
+import List from './elements/List'
 
 const App = styled.main`
 	width: 100%;
@@ -32,59 +33,63 @@ const App = styled.main`
 	}
 `;
 
+
+
 export default () => {
-	const [loading, setLoading] = useState(true);
-	const [planning, setPlanning] = useState(null);
-	const [currentSector, setCurrentSector] = useState(null);
-	let sectors = useRef(null);
+  const [loading, setLoading] = useState(true);
+  const [planning, setPlanning] = useState(null);
+  const [currentSector, setCurrentSector] = useState(null);
+  let sectors = useRef(null);
 
-	useEffect(_ => {
-		(async function getPlanning() {
-			const response = await API.getSectors();
-			const zones = response.data.sectors;
-			sectors.current = zones;
-			setCurrentSector(zones[0]._id);
-			setLoading(false);
-		})();
-	}, []);
+  useEffect(_ => {
+    (async function getPlanning() {
+      const response = await API.getSectors();
+      const zones = response.data.sectors;
+      sectors.current = zones;
+      setCurrentSector(zones[0]._id);
+      setLoading(false);
+    })();
+  }, []);
 
-	const toggleSector = id => {
-		if (currentSector._id === id) {
-			return;
-		}
+  const toggleSector = id => {
+    if (currentSector._id === id) {
+      return;
+    }
 
-		const newSector = sectors.current.find(sector => sector._id === id);
-		setCurrentSector(newSector);
-	};
+    const newSector = sectors.current.find(sector => sector._id === id);
+    setCurrentSector(newSector);
+  };
 
-	const context = React.useMemo(
-		() => ({
-			currentSector,
-			toggleSector
-		}),
-		[currentSector]
-	);
+  const context = React.useMemo(
+    () => ({
+      currentSector,
+      toggleSector
+    }),
+    [currentSector]
+  );
 
-	const download = () => {
-		let current = localStorage.getItem('current');
-		window.open(
-			`http://localhost:9000/api/exportPlanning/${current.replace('/', '')}`
-		);
-	};
+  const download = () => {
+    let current = localStorage.getItem('current');
+    window.open(
+      `http://localhost:9000/api/exportPlanning/${current.replace('/', '')}`
+    );
+  };
 
-	if (loading) {
-		return <p>Loading...</p>;
-	}
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
-	return (
-		<SectorContext.Provider value={context}>
-			<App>
-				<Header />
-				<div className="wrapper --main">
-					{sectors.current && <Sidebar sectors={sectors.current} />}
-					{planning && <Planning planning={planning} />}
-				</div>
-			</App>
-		</SectorContext.Provider>
-	);
+  return (
+    <SectorContext.Provider value={context}>
+      <App>
+        <Header />
+        <div className="wrapper --main">
+          {sectors.current && <Sidebar sectors={sectors.current} />}
+          {planning && <Planning planning={planning} />}
+          {/* {list && <List list={list} />} */}
+          <List />
+        </div>
+      </App>
+    </SectorContext.Provider>
+  );
 };
