@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
-import Binome from './../molecules/Binome'
-import Details from './../molecules/Details'
-import Modal from './../elements/Modal'
-import useToggle from '../helpers/useToggle'
-import {backgroundColor} from './../data/theme'
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import Binome from "./../molecules/Binome";
+import Details from "./../molecules/Details";
+import Modal from "./../elements/Modal";
+import useToggle from "../helpers/useToggle";
+import { backgroundColor } from "./../data/theme";
 
 const Card = styled.div`
   display: flex;
@@ -22,22 +22,22 @@ const Card = styled.div`
   :last-child {
     margin: 8px 0;
   }
-`
+`;
 
 export default ({ visit }) => {
-  const [initials, setInitials] = useState(null)
-  const [open, toggle] = useToggle(false)
+  const [initials, setInitials] = useState(null);
+  const [open, toggle] = useToggle(false);
 
   useEffect(() => {
-    let newInitials = []
+    let newInitials = [];
     visit.team.forEach(el => {
-      newInitials.push(`${el.firstName[0]}${el.lastName[0]}`)
-    })
-    setInitials(newInitials)
-  }, [visit])
+      newInitials.push(`${el.firstName[0]}${el.lastName[0]}`);
+    });
+    setInitials(newInitials);
+  }, [visit]);
 
   if (!initials) {
-    return <p>loading...</p>
+    return <p>loading...</p>;
   }
 
   return (
@@ -48,10 +48,10 @@ export default ({ visit }) => {
         <Details
           hotel={visit.name}
           rooms={`${visit.rooms} chambres`}
-          hour='10h30 - 13h'
+          hour="10h30 - 13h"
         />
         <Binome initials={initials} />
       </Card>
     </div>
-  )
-}
+  );
+};

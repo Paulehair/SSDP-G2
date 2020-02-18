@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
-import Text from '../atoms/Text'
-import Team from '../molecules/Team'
-import SecondaryText from '../atoms/SecondaryText'
+import React from "react";
+import styled from "styled-components";
+import Text from "../atoms/Text";
+import Team from "../molecules/Team";
+import SecondaryText from "../atoms/SecondaryText";
 
 const ModalBody = styled.div`
   width: 100%;
@@ -43,41 +43,41 @@ const ModalBody = styled.div`
     grid-row: 2;
     grid-column: 3;
   }
-`
+`;
 
 export default ({ data }) => {
   return (
     <ModalBody>
       {/* TEMPORAIRE */}
-      <div className='team'>
-        <Text text={'Equipiers'} />
+      <div className="team">
+        <Text text={"Equipiers"} />
 
         <Team team={data.team} />
       </div>
 
-      <div className='sector'>
-        <Text text={'Secteur'} />
+      <div className="sector">
+        <Text text={"Secteur"} />
 
         <SecondaryText text={data.sector} />
       </div>
 
-      <div className='rate'>
+      <div className="rate">
         <Text text={"Taux d'anomalie"} />
 
         <SecondaryText text={`${data.anomaly}%`} />
       </div>
 
-      <div className='hour'>
-        <Text text={'Plage Horaire'} />
+      <div className="hour">
+        <Text text={"Plage Horaire"} />
 
-        <SecondaryText text={'12h30 - 20h'} />
+        <SecondaryText text={"12h30 - 20h"} />
       </div>
 
-      <div className='rooms'>
-        <Text text='Chambre à visiter' />
+      <div className="rooms">
+        <Text text="Chambre à visiter" />
 
         <SecondaryText text={data.rooms} />
       </div>
     </ModalBody>
-  )
-}
+  );
+};
