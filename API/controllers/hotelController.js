@@ -3,14 +3,11 @@ const fs = require('fs');
 
 exports.getHotelList = async (req, res) => {
 	try {
-		const hotels = await Hotel.aggregate([
-			{
-				$sort: {
-					lastVisit: -1,
-					anomaly: 1
-				}
-			}
-		]);
+		const sector_id = req.params.sector;
+		const hotels = await Hotel.find({sector_id}).sort({
+			lastVisit: -1,
+			anomaly: 1
+		});
 
 		res.status(200).json({
 			status: 'success',

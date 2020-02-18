@@ -18,10 +18,7 @@ const hotelSchema = new mongoose.Schema({
 		type: Number,
 		required: [true, 'A hotel must have a zip code']
 	},
-	sector: {
-		_id: false,
-		sector_id: String
-	},
+	sector_id: String,
 	city: {
 		type: String,
 		required: [true, 'A hotel must have a city']

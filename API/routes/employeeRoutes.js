@@ -1,6 +1,9 @@
 const router = require('express').Router();
 const employeeController = require('./../controllers/employeeController');
 
+// Uncomment route to import employees data
+// router.route('/import').get(employeeController.importEmployees);
+
 /**
  * @apiDefine admin User access only
  * This operation belongs to to the admin group.
