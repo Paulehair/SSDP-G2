@@ -22,10 +22,10 @@ const Button = styled.button`
 `
 
 export default ({ color, fontWeight, text, type, backgroundColor }) => {
-    return (
-        <Button backgroundColor={backgroundColor}>
-            <PrimaryText backgroundColor={backgroundColor} textColor={backgroundColor === '#006CB1' ? 'white' : 'black'} fontWeight={fontWeight} color={color} text={text} />
-            {type && <Icon type={type} />}
-        </Button>
-    )
+  return (
+    <Button backgroundColor={backgroundColor}>
+      <PrimaryText backgroundColor={backgroundColor} textColor={backgroundColor === '#006CB1' ? 'white' : 'black'} fontWeight={fontWeight} color={color} text={text} />
+      {type && <Icon type={type} />}
+    </Button>
+  )
 }

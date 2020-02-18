@@ -12,5 +12,6 @@ export const variables = {
   black: '#241F1F',
   opBlack: 'rgba(0, 0, 0, 0.35)',
   white: '#FFFFFF',
-  grey: '#F3F3F3'
+  grey: '#F3F3F3',
+  purple: 'linear-gradient(98.1deg, #5E3FDA 28.84%, #3C2AAC 96.46%)'
 }
