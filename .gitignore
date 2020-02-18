@@ -30,3 +30,6 @@ yarn-error.log*
 /terraform/terraform.tfstate
 /terraform/terraform.tfstate.backup
 terraform/shared/credentials
+
+# mongo data
+/data/db
