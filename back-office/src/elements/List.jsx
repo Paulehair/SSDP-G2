@@ -1,6 +1,10 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import { range, inRange } from 'lodash'
+
+import SectorContext from '../context/SectorContext'
+
+import API from '../utils/API';
 
 import ListHead from '../molecules/ListHead'
 import Table from '../molecules/Table'
@@ -27,12 +31,20 @@ const HEIGHT = 80;
 
 export default () => {
 
+  const { currentSector } = useContext(SectorContext)
+
   const items = range(MAX);
   const [state, setState] = useState({
     order: items,
     dragOrder: items, // items order while dragging
     draggedIndex: null
-  });
+  })
+
+  const [loading, setLoading] = useState(true)
+
+  const [list, setList] = useState(null)
+
+
 
   const handleDrag = useCallback(({ translation, id }) => {
     const delta = Math.round(translation.y / HEIGHT);
@@ -52,6 +64,18 @@ export default () => {
     }));
   }, [state.order, items.length]);
 
+  useEffect(_ => {
+    (async function getList() {
+      const response = await API.getList(currentSector);
+      setLoading(false);
+      console.log(response);
+      const { hotels } = response.data.data
+
+      setList(hotels)
+
+    })();
+  }, [currentSector]);
+
   const handleDragEnd = useCallback(() => {
     setState(state => ({
       ...state,
@@ -59,6 +83,13 @@ export default () => {
       draggedIndex: null
     }));
   }, []);
+
+  if (loading) {
+    return <p>Loading...</p>
+  }
+
+  console.log(list);
+
 
   return (
     <List>
