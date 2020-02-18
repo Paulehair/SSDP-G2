@@ -1,103 +1,93 @@
-import React, { useState, useEffect } from 'react'
-import './App.css'
-import './index.css'
-import styled, { ThemeProvider } from 'styled-components'
-import API from './utils/API'
-import Header from './elements/Header'
-import Sidebar from './elements/Sidebar'
-import Planning from './elements/Planning'
-
-const theme = {
-  black: '#241F1F',
-  opBlack: 'rgba(0, 0, 0, 0.35)',
-  white: '#FFFFFF',
-  grey: '#F3F3F3',
-  red: 'linear-gradient(180deg, #C63D2B 0%, #DE5543 100%)'
-}
+import React, {useState, useEffect, useRef} from 'react';
+import styled from 'styled-components';
+import SectorContext from './context/SectorContext';
+import './App.css';
+import './index.css';
+import API from './utils/API';
+import Header from './elements/Header';
+import Sidebar from './elements/Sidebar';
+import Planning from './elements/Planning';
+import List from './elements/List';
 
 const App = styled.main`
-  width: 100%;
-  margin: 0 auto;
-  position: relative;
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
 
-  .wrapper {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1400px;
-    margin: 0 auto;
-    width: 100%;
-    padding: 20px;
+	.wrapper {
+		display: flex;
+		justify-content: space-between;
+		max-width: 1400px;
+		margin: 0 auto;
+		width: 100%;
+		padding: 20px;
 
-    /* -64px = hauteur du header */
-    &.--main {
-      height: calc(100vh - 64px);
-    }
-  }
-`
+		/* -64px = hauteur du header */
+		&.--main {
+			height: calc(100vh - 64px);
+		}
 
-const zonesStart = [
-  {
-    code: 'Paris',
-    active: true
-  },
-  {
-    code: '92/94',
-    active: false
-  },
-  {
-    code: '93',
-    active: false
-  },
-  {
-    code: '77/91',
-    active: false
-  },
-  {
-    code: '78/95',
-    active: false
-  }
-]
+		&.--button {
+			display: none;
+		}
+	}
+`;
 
 export default () => {
-  const [planning, setPlanning] = useState(null)
-  const [zones, setZones] = useState(zonesStart)
+	const [loading, setLoading] = useState(true);
+	const [planning, setPlanning] = useState(null);
+	const [currentSector, setCurrentSector] = useState(null);
+	let sectors = useRef(null);
 
-  useEffect(_ => {
-    ;(async function getPlanning() {
-      const response = await API.getPlanning('Paris')
-      localStorage.setItem('current', 'Paris')
-      setPlanning(response.data.data.planning)
-    })()
-  }, [])
+	useEffect(_ => {
+		(async function getPlanning() {
+			const response = await API.getSectors();
+			const zones = response.data.sectors;
+			sectors.current = zones;
+			setCurrentSector(zones[0]._id);
+			setLoading(false);
+		})();
+	}, []);
 
-  const handleClick = async event => {
-    event.persist()
-    const response = await API.getPlanning(event.target.value)
-    localStorage.setItem('current', event.target.value)
-    setPlanning(response.data.data.planning)
-  }
+	const toggleSector = id => {
+		if (currentSector._id === id) {
+			return;
+		}
 
-  const download = () => {
-    let current = localStorage.getItem('current')
-    window.open(
-      `http://localhost:9000/api/exportPlanning/${current.replace('/', '')}`
-    )
-  }
+		const newSector = sectors.current.find(sector => sector._id === id);
+		setCurrentSector(newSector._id);
+	};
 
-  return (
-    <ThemeProvider theme={theme}>
-      <App>
-        <Header />
-        <div className='wrapper --button'>
-          <button className='download' onClick={download}>
-            Télécharger le planning
-          </button>
-        </div>
-        <div className='wrapper --main'>
-          {zones && <Sidebar onClick={handleClick} zones={zones} />}
-          {planning && <Planning planning={planning} />}
-        </div>
-      </App>
-    </ThemeProvider>
-  )
-}
+	const context = React.useMemo(
+		() => ({
+			currentSector,
+			toggleSector
+		}),
+		[currentSector]
+	);
+
+	const download = () => {
+		let current = localStorage.getItem('current');
+		window.open(
+			`http://localhost:9000/api/exportPlanning/${current.replace('/', '')}`
+		);
+	};
+
+	if (loading) {
+		return <p>Loading...</p>;
+	}
+
+	return (
+		<SectorContext.Provider value={context}>
+			<App>
+				<Header />
+				<div className="wrapper --main">
+					{sectors.current && <Sidebar sectors={sectors.current} />}
+					{planning && <Planning planning={planning} />}
+					{/* {list && <List list={list} />} */}
+					<List />
+				</div>
+			</App>
+		</SectorContext.Provider>
+	);
+};

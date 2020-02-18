@@ -1,8 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+
+
 import Text from '../atoms/Text'
 import Team from '../molecules/Team'
 import SecondaryText from '../atoms/SecondaryText'
+import labels from '../data/labels'
 
 const ModalBody = styled.div`
   width: 100%;
@@ -46,38 +49,25 @@ const ModalBody = styled.div`
 `
 
 export default ({ data }) => {
+
+  // TODO : filter les labels requis
+
   return (
     <ModalBody>
-      {/* TEMPORAIRE */}
-      <div className='team'>
-        <Text text={'Equipiers'} />
+      {Array.from(Object.keys(data)).map((key, i) => {
+        if (labels[key]) {
+          return (
+            <div key={i}>
+              <Text text={labels[key]} />
 
-        <Team team={data.team} />
-      </div>
+              <SecondaryText text={data[key]} />
+            </div>
+          )
+        }
+      }
+      )}
 
-      <div className='sector'>
-        <Text text={'Secteur'} />
 
-        <SecondaryText text={data.sector} />
-      </div>
-
-      <div className='rate'>
-        <Text text={"Taux d'anomalie"} />
-
-        <SecondaryText text={`${data.anomaly}%`} />
-      </div>
-
-      <div className='hour'>
-        <Text text={'Plage Horaire'} />
-
-        <SecondaryText text={'12h30 - 20h'} />
-      </div>
-
-      <div className='rooms'>
-        <Text text='Chambre à visiter' />
-
-        <SecondaryText text={data.rooms} />
-      </div>
     </ModalBody>
   )
 }

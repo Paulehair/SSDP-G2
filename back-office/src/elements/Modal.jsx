@@ -1,15 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-
 import ModalHead from '../molecules/ModalHead'
 import ModalBody from '../molecules/ModalBody'
-
-import useToggle from '../helpers/Toggle'
 
 const Modal = styled.section`
   width: 100vw;
   height: 100vh;
-  background: ${({ theme }) => theme.opBlack};
+  background: ${({ theme: { variables } }) => variables.opBlack};
   position: absolute;
   top: 0;
   left: 0;
@@ -24,7 +21,7 @@ const Modal = styled.section`
     justify-self: center;
     align-self: center;
     border-radius: 8px;
-    background: ${({ theme }) => theme.red};
+    background: ${({ theme: { variables } }) => variables.red};
   }
 `
 
@@ -36,16 +33,10 @@ export default ({ toggle, data }) => {
 
   return (
     <Modal onClick={toggle}>
-
       <div onClick={dontClose}>
-
         <ModalHead data={data} />
-
         <ModalBody data={data} />
-
       </div>
-
     </Modal>
   )
-
 }

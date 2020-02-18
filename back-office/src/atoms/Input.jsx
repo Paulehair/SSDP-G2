@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import Icon from '../atoms/Icon'
 
 const Input = styled.input`
   padding: 8px;
@@ -36,19 +35,33 @@ const Input = styled.input`
 `
 
 export default ({
-  type,
-  name,
-  placeholder,
-  value,
-  searchIcon,
-  checked,
-  onClick
-}) => {
+  data: {
+    type,
+    name,
+    placeholder,
+    value,
+    searchIcon = null,
+    checked = null,
+    onChange
+  }}) => {
+  
+  if(type === 'radio') {
+    return (
+      <Input
+        type={type}
+        name={name}
+        onChange={onChange}
+        defaultChecked={checked}
+        placeholder={placeholder}
+        defaultValue={value}
+      />
+    )
+  }
+
   return (
     <Input
       name={name}
-      onClick={onClick}
-      defaultChecked={checked}
+      onChange={onChange}
       searchIcon={searchIcon}
       placeholder={placeholder}
       type={type}
