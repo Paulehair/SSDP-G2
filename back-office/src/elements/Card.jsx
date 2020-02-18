@@ -14,6 +14,7 @@ const Card = styled.div`
   border-radius: 8px;
   padding: 16px 10px 10px 16px;
   margin: 8px 0 0 0;
+  color: #FFF;
 
   :first-child {
     margin: 15px 0 0 0;

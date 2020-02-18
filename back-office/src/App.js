@@ -27,7 +27,7 @@ const App = styled.main`
     }
 
     &.--button {
-      display: none;
+      /* display: none; */
     }
   }
 `
