@@ -16,7 +16,7 @@ const App = styled.main`
 
 	.wrapper {
 		display: flex;
-		justify-content: space-between;
+		justify-content: center;
 		max-width: 1400px;
 		margin: 0 auto;
 		width: 100%;
@@ -25,6 +25,7 @@ const App = styled.main`
 		/* -64px = hauteur du header */
 		&.--main {
 			/* height: calc(100vh - 64px); */
+			padding: 0;
 		}
 
 		&.--button {

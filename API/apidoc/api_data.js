@@ -393,6 +393,30 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "/hotels",
+    "title": "Request list of all hotels",
+    "name": "getHotels",
+    "group": "Hotels",
+    "version": "0.1.0",
+    "permission": [
+      {
+        "name": "none"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " HTTP/1.1 200 OK\n [{\n  \"_id\": \"5e4be5e0e72a3700899b9ecb\",\n  \"uuid\": 290,\n  \"name\": \"1ère Classe Chelles\",\n  \"address\": \"4 rue de l'Ormeteau\",\n  \"zipCode\": 77500,\n  \"city\": \"CHELLES\",\n  \"status\": \"0\",\n  \"rooms\": 10,\n  \"lastVisit\": \"2019-08-21T22:00:00.000Z\",\n  \"anomaly\": 29.1,\n  \"sector_id\": \"5e4bbcbd19a35001d2cdcbae\",\n  \"__v\": 0\n},\n {\n   ...\n }]",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/hotelRoutes.js",
+    "groupTitle": "Hotels"
+  },
+  {
+    "type": "get",
     "url": "/exportPlanning",
     "title": "Request planning file",
     "name": "getPlanning",
