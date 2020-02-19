@@ -9,9 +9,8 @@ exports.getVisit = async (req, res) => {
 		const hotels = await Hotel.aggregate([
 			{
 				$match: {
-					// anomaly: {$gte: 45},
 					lastVisit: {$lt: date},
-					sector: {$eq: req.body.sector}
+					sector_id: {$eq: req.params.sector}
 				}
 			},
 			{
@@ -61,15 +60,7 @@ exports.getVisit = async (req, res) => {
 			status: 'success',
 			numberOfHotels: hotels.length,
 			numberOfEmployees: employees.length,
-			data: {
-				planning
-				// hotels,
-				// employees,
-				// visit: {
-				// 	hotel1: hotels[1],
-				// 	visitor1: employees[1]
-				// }
-			}
+			planning
 		});
 	} catch (err) {
 		res.status(404).json({

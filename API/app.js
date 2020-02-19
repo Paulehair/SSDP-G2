@@ -24,6 +24,8 @@ const hotelRouter = require('./routes/hotelRoutes');
 app.use('/api/hotels', hotelRouter);
 const visitRouter = require('./routes/visitRoutes');
 app.use('/api/visits', visitRouter);
+const sectorRouter = require('./routes/sectorRoutes');
+app.use('/api/sectors', sectorRouter);
 const fileRouter = require('./routes/fileRoutes');
 app.use('/api/exportPlanning/', fileRouter);
 app.use('/api/documentation', express.static(__dirname + '/apidoc/'));

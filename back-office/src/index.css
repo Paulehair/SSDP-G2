@@ -134,7 +134,7 @@ table {
   border-spacing: 0;
 }
 
-body > * {
+body>* {
   box-sizing: border-box;
 }
 
@@ -235,6 +235,11 @@ code {
 
 /* '' */
 
+.home {
+  min-width: 1185px;
+  width: 100%;
+}
+
 .download {
   border: none;
   padding: 12px;
@@ -253,23 +258,37 @@ code {
 }
 
 .icon-logout:before {
-  content: "\e800";
-} /* '' */
+  content: '\e800';
+}
+
+/* '' */
 .icon-trash:before {
-  content: "\e801";
-} /* '' */
+  content: '\e801';
+}
+
+/* '' */
 .icon-cancel:before {
-  content: "\e802";
-} /* '' */
+  content: '\e802';
+}
+
+/* '' */
 .icon-bell:before {
-  content: "\e803";
-} /* '' */
+  content: '\e803';
+}
+
+/* '' */
 .icon-search:before {
-  content: "\e804";
-} /* '' */
+  content: '\e804';
+}
+
+/* '' */
 .icon-calendarplus:before {
-  content: "\f271";
-} /* '' */
+  content: '\f271';
+}
+
+/* '' */
 .icon-calendartimes:before {
-  content: "\f273";
-} /* '' */
+  content: '\f273';
+}
+
+/* '' */

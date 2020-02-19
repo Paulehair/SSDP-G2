@@ -1,0 +1,46 @@
+version: '3'
+services:
+    back-office:
+        image: 'paulehair/ssdp-back-office'
+        container_name: ssdp-back-office-prod
+        restart: always
+        ports:
+            - '8080:80'
+        environment:
+            - NODE_ENV=production
+            - CHOKIDAR_USEPOLLING=true
+        networks:
+            - webappnetwork
+
+    api:
+        image: 'paulehair/ssdp-api'
+        container_name: ssdp-api-prod
+        env_file: .env.production.local
+        restart: always
+        ports:
+            - '9000:9000'
+        environment:
+            - NODE_ENV=production
+        working_dir: /usr/src/app
+        networks:
+            - webappnetwork
+        entrypoint: ['npm', 'run', 'build']
+
+    mongodb:
+        image: mongo:4.2
+        restart: always
+        container_name: ssdp-mongodb-prod
+        env_file: .env.production.local
+        volumes:
+            - ./data/db:/data/db
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+            MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+        ports:
+            - '27017:27017'
+        networks:
+            - webappnetwork
+
+networks:
+    webappnetwork:
+        driver: bridge

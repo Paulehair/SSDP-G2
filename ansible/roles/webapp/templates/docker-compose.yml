@@ -1,0 +1,46 @@
+version: '3'
+services:
+    back-office:
+        image: '{{webapp_back_office_image}}:{{webapp_back_office_tag}}'
+        container_name: '{{webapp_back_office_name}}'
+        restart: always
+        ports:
+            - '{{webapp_back_office_port}}:80'
+        environment:
+            - NODE_ENV={{webapp_environment}}
+            - CHOKIDAR_USEPOLLING=true
+        networks:
+            - '{{webapp_network_name}}'
+
+    api:
+        image: '{{webapp_api_image}}:{{webapp_api_tag}}'
+        container_name: '{{webapp_api_name}}'
+        env_file: .env.production
+        restart: always
+        ports:
+            - '{{webapp_api_port}}:9000'
+        environment:
+            - NODE_ENV={{webapp_environment}}
+        working_dir: /usr/src/app
+        networks:
+            - '{{webapp_network_name}}'
+        command: yarn apidoc -i ./routes -o ./apidoc
+        entrypoint: ['npm', 'run', 'build']
+
+    mongodb:
+        image: mongo:4.2
+        restart: always
+        container_name: '{{webapp_db_name}}'
+        volumes:
+            - /home/ubuntu/data/db:/data/db
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: '{{webapp_db_user}}'
+            MONGO_INITDB_ROOT_PASSWORD: '{{webapp_db_password}}'
+        ports:
+            - '{{webapp_db_port}}:27017'
+        networks:
+            - '{{webapp_network_name}}'
+
+networks:
+    '{{webapp_network_name}}':
+        driver: bridge

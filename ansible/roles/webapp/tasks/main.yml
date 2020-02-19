@@ -1,0 +1,15 @@
+- name: Copy .env.production file
+  template:
+      src: templates/.env.production
+      dest: /home/ubuntu/.env.production
+
+- name: Copy docker-compose configuration file
+  template:
+      src: templates/docker-compose.yml
+      dest: /home/ubuntu/docker-compose.yml
+  notify: restart docker stack
+
+- name: Run docker compose application stack
+  docker_compose:
+      project_src: /home/ubuntu/
+      state: present

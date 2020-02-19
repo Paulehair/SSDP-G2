@@ -2,15 +2,14 @@ import React from "react";
 import styled from "styled-components";
 
 const PrimaryText = styled.p`
-  color: ${({ color }) => (color ? color : "black")};
-  font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : "400")};
+  font-weight: ${({fontWeight}) => (fontWeight ? fontWeight : '400')};
   font-size: 16px;
-`;
+`
 
-export default ({ text, color, fontWeight = "bold" }) => {
-  return (
-    <PrimaryText color={color} fontWeight={fontWeight}>
-      {text}
-    </PrimaryText>
-  );
-};
+export default ({text, fontWeight}) => {
+	return (
+		<PrimaryText textColor={textColor} fontWeight={fontWeight}>
+			{text}
+		</PrimaryText>
+	)
+}
