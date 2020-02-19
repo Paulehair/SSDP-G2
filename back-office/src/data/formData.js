@@ -4,6 +4,19 @@ export default {
 			name: 'zone',
 			type: 'radio'
 		},
+		login: [
+			{
+				name: 'login',
+				type: 'textlight',
+				text: 'Identifiez-vous',
+				placeholder: 'Exemple: YanSolo'
+			},
+			{
+				name: 'login',
+				type: 'textlight',
+				text: 'Mot de passe'
+			}
+		],
 		search: {
 			name: 'search',
 			type: 'text',
