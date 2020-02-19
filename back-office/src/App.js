@@ -36,14 +36,14 @@ const App = styled.main`
 
 export default () => {
 	const [loading, setLoading] = useState(true)
-	const [planning, setPlanning] = useState(null)
 	const [currentSector, setCurrentSector] = useState(null)
 	let sectors = useRef(null)
 
 	useEffect(_ => {
-		;(async function getPlanning() {
-			const response = await API.getSectors()
-			const zones = response.data.sectors
+		setLoading(true)
+		;(async function getSectors() {
+			const sectorResponse = await API.getSectors()
+			const zones = sectorResponse.data.sectors
 			sectors.current = zones
 			setCurrentSector(zones[0]._id)
 			setLoading(false)
@@ -83,10 +83,10 @@ export default () => {
 			<App>
 				<Header />
 				<div className="wrapper --main">
-					{sectors.current && <Sidebar sectors={sectors.current} />}
-					{planning && <Planning planning={planning} />}
+					<Sidebar sectors={sectors.current} />
+					<Planning />
 					{/* {list && <List list={list} />} */}
-					<List />
+					{/* <List /> */}
 				</div>
 			</App>
 			<EmployeeList />
