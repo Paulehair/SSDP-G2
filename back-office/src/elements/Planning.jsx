@@ -1,18 +1,10 @@
 import React, {useState, useContext, useEffect} from 'react'
 import styled from 'styled-components'
 import SectorContext from './../context/SectorContext'
-import AsyncBoard, {
-	customCardLayout,
-	onCardMoveAcrossLanes,
-	onDataChange,
-	handleDragStart,
-	handleDragEnd,
-	handleLaneDragStart,
-	handleLaneDragEnd
-} from 'react-trello'
+import Board from 'react-trello'
 import TableHead from '../molecules/TableHead'
 import Card from '../elements/Card'
-import NotifBanner from './NotifBanner'
+// import NotifBanner from './NotifBanner'
 import API from './../utils/API'
 
 const Planning = styled.section`
@@ -108,7 +100,7 @@ export default () => {
 			{loading ? (
 				<p>loading...</p>
 			) : (
-				<AsyncBoard
+				<Board
 					style={boardStyle}
 					components={{Card: Card}}
 					laneDraggable={false}

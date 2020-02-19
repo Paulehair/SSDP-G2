@@ -1,11 +1,11 @@
 import React from 'react'
-import Sidebar from './../elements/Sidebar'
+import Sectors from './../molecules/Sectors'
 import Planning from './../elements/Planning'
 
 export default ({sectors}) => {
 	return (
-		<div className="wrapper --main">
-			<Sidebar sectors={sectors} />
+		<div className="">
+			<Sectors sectors={sectors} />
 			<Planning />
 		</div>
 	)
