@@ -7,7 +7,7 @@ export default {
 };
 
 const teamData = {
-  team: [{ firstName: "firstName", lastName: "lastName" }]
+  team: [{ firstName: "Simon", lastName: "Soleau" }]
 };
 
 export const ModalStory = () => {

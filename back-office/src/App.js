@@ -24,6 +24,7 @@ const App = styled.main`
     /* -64px = hauteur du header */
     &.--main {
       height: calc(100vh - 64px);
+      background-color: #e5e5e5 !important;
     }
 
     &.--button {
