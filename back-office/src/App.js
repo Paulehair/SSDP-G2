@@ -7,7 +7,7 @@ import './index.css'
 import API from './utils/API'
 import Home from './views/Home'
 import Header from './elements/Header'
-import EmployeeList from './elements/EmployeeList'
+import List from './elements/List'
 
 const App = styled.main`
 	width: 100%;
@@ -89,7 +89,8 @@ export default () => {
 							path="/"
 							render={props => <Home sectors={sectors.current} />}
 						/>
-						<Route path="/employees" component={EmployeeList} />
+						<Route path="/employees" component={List} />
+						<Route path="/hotels" component={List} />
 					</div>
 				</App>
 			</Router>

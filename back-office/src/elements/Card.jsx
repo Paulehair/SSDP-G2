@@ -27,16 +27,6 @@ const Card = styled.div`
 `
 
 export default props => {
-	// const [initials, setInitials] = useState(null)
-
-	// if (!initials) {
-	//   return <p>loading...</p>
-	// }
-
-	// if (open) {
-	// 	return <Modal data={props} toggle={toggle} />
-	// }
-
 	return (
 		<Card key={props._id}>
 			<Details
