@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import styled from 'styled-components'
 // import Binome from './../molecules/Binome'
 import Details from './../molecules/Details'
 import Modal from './../elements/Modal'
 import useToggle from '../helpers/useToggle'
 
-import { backgroundColor } from './../data/theme'
+import {backgroundColor} from './../data/theme'
 
 const Card = styled.div`
 	display: flex;
@@ -26,31 +26,26 @@ const Card = styled.div`
 	}
 `
 
-export default (props) => {
-  const [initials, setInitials] = useState(null)
-  const [open, toggle] = useToggle(false)
+export default props => {
+	const [initials, setInitials] = useState(null)
+	const [open, toggle] = useToggle(false)
 
+	// if (!initials) {
+	//   return <p>loading...</p>
+	// }
 
-  // if (!initials) {
-  //   return <p>loading...</p>
-  // }
+	if (open) {
+		return <Modal data={props} toggle={toggle} />
+	}
 
-  if (open) {
-    return <Modal data={props} toggle={toggle} />
-  }
-
-  console.log(props)
-
-  return (
-    <div>
-      <Card onClick={toggle}>
-        <Details
-          hotel={props.name}
-          rooms={`${props.rooms} chambres`}
-          hour="10h30 - 13h"
-        />
-        {/* <Binome initials={initials} /> */}
-      </Card>
-    </div>
-  )
+	return (
+		<Card key={props._id}>
+			<Details
+				hotel={props.name}
+				rooms={`${props.rooms} chambres`}
+				hour="10h30 - 13h"
+			/>
+			{/* <Binome initials={initials} /> */}
+		</Card>
+	)
 }
