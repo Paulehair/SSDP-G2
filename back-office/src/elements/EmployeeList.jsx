@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Button from '../molecules/Button'
 import EmployeeCard from '../molecules/EmployeeCard'
-import Input from '../atoms/Input'
+// import Input from '../atoms/Input'
 import Modal from './../elements/Modal'
 import useToggle from '../helpers/useToggle'
 import input from './../data/formData'
@@ -29,43 +29,43 @@ const EmployeeList = styled.section`
 	}
 `
 export default () => {
-	const [employees, setEmployees] = useState(null)
-	const [loading, setLoading] = useState(true)
-	const [open, toggle] = useToggle(false)
+  const [employees, setEmployees] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [open, toggle] = useToggle(false)
 
-	useEffect(_ => {
-		;(async function getEmployees() {
-			const response = await API.getEmployees()
-			setEmployees(response.data.employees)
-			setLoading(false)
-		})()
-	}, [])
+  useEffect(_ => {
+    ; (async function getEmployees() {
+      const response = await API.getEmployees()
+      setEmployees(response.data.employees)
+      setLoading(false)
+    })()
+  }, [])
 
-	if (loading) {
-		return <p>loading</p>
-	}
+  if (loading) {
+    return <p>loading</p>
+  }
 
-	if (open) {
-		return <Modal data={input.addEmployee} toggle={toggle} />
-	}
+  if (open) {
+    return <Modal data={input.addEmployee} toggle={toggle} />
+  }
 
-	return (
-		<EmployeeList>
-			<div className="employeHeader">
-				<div className="title">Liste des employés</div>
-				<Button
-					onClick={toggle}
-					textColor="white"
-					fontWeight="500"
-					text="Ajouter un employé"
-				/>
-			</div>
-			{/* <Input searchIcon={true} placeholder='Rechercher nom / prénom...' type='text' /> */}
-			<div className="employeList">
-				{employees.map((employee, i) => (
-					<EmployeeCard key={i} data={employee} />
-				))}
-			</div>
-		</EmployeeList>
-	)
+  return (
+    <EmployeeList>
+      <div className="employeHeader">
+        <div className="title">Liste des employés</div>
+        <Button
+          onClick={toggle}
+          textColor="white"
+          fontWeight="500"
+          text="Ajouter un employé"
+        />
+      </div>
+      {/* <Input searchIcon={true} placeholder='Rechercher nom / prénom...' type='text' /> */}
+      <div className="employeList">
+        {employees.map((employee, i) => (
+          <EmployeeCard key={i} data={employee} />
+        ))}
+      </div>
+    </EmployeeList>
+  )
 }

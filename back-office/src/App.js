@@ -76,18 +76,17 @@ export default () => {
   if (loading) {
     return <p>Loading...</p>
   }
+  return (
 
-  <SectorContext.Provider value={context}>
-    <App>
-      <Header />
-      <div className="wrapper --main">
-        <Sidebar sectors={sectors.current} />
-        <Planning />
-        {/* {list && <List list={list} />} */}
-        {/* <List /> */}
-      </div>
-    </App>
-    <EmployeeList />
-  </SectorContext.Provider>
-	)
+    <SectorContext.Provider value={context}>
+      <App>
+        <Header />
+        <div className="wrapper --main">
+          <Sidebar sectors={sectors.current} />
+          <Planning />
+        </div>
+      </App>
+      <EmployeeList />
+    </SectorContext.Provider>
+  )
 }

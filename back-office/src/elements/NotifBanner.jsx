@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import PrimaryText from '../atoms/PrimaryText'
-import SecondaryText from '../atoms/SecondaryText'
+// import PrimaryText from '../atoms/PrimaryText'
+// import SecondaryText from '../atoms/SecondaryText'
 import { variables } from './../data/theme'
 
 const NotifBanner = styled.section`

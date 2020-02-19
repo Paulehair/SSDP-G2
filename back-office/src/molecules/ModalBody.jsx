@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import Text from '../atoms/Text'
-import Team from '../molecules/Team'
+// import Team from '../molecules/Team'
 import SecondaryText from '../atoms/SecondaryText'
 import labels from '../data/labels'
 
@@ -47,21 +47,20 @@ const ModalBody = styled.div`
 	}
 `
 
-export default ({data}) => {
-	//TODO: filter les labels requis
-
-	return (
-		<ModalBody>
-			{Array.from(Object.keys(data)).map((key, i) => {
-				if (labels[key]) {
-					return (
-						<div key={i}>
-							<Text text={labels[key]} />
-							<SecondaryText text={data[key]} />
-						</div>
-					)
-				}
-			})}
-		</ModalBody>
-	)
+export default ({ data }) => {
+  //TODO: filter les labels requis
+  return (
+    <ModalBody>
+      {Array.from(Object.keys(data)).map((key, i) => {
+        if (labels[key]) {
+          return (
+            <div key={i}>
+              <Text text={labels[key]} />
+              <SecondaryText text={data[key]} />
+            </div>
+          )
+        }
+      })}
+    </ModalBody>
+  )
 }
