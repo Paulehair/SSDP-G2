@@ -11,9 +11,7 @@ exports.getHotelList = async (req, res) => {
 
 		res.status(200).json({
 			status: 'success',
-			data: {
-				hotels
-			}
+			hotels
 		});
 	} catch (err) {
 		console.warn(err);

@@ -1,12 +1,12 @@
-import React, {useState, useCallback, useMemo, useEffect} from 'react';
-import styled from 'styled-components';
+import React, {useState, useCallback, useMemo, useEffect} from 'react'
+import styled from 'styled-components'
 
-import Text from '../atoms/Text';
-import SecondaryText from '../atoms/SecondaryText';
-import Icon from '../atoms/Icon';
-import data from '../data/data';
+import Text from '../atoms/Text'
+import SecondaryText from '../atoms/SecondaryText'
+import Icon from '../atoms/Icon'
+import data from '../data/formData'
 
-const HEIGHT = 80;
+const HEIGHT = 80
 
 const ListItem = styled.div.attrs(props => ({
 	style: {
@@ -35,61 +35,61 @@ const ListItem = styled.div.attrs(props => ({
 	/* max-height: 70px; */
 	margin: 0 auto;
 	border-bottom: 1px solid ${({theme: {variables}}) => variables.grey};
-`;
-const POSITION = {x: 0, y: 0};
+`
+const POSITION = {x: 0, y: 0}
 
 export default ({children, id, onDrag, onDragEnd, data}) => {
 	const [state, setState] = useState({
 		isDragging: false,
 		origin: POSITION,
 		translation: POSITION
-	});
+	})
 
 	const handleMouseDown = useCallback(({clientX, clientY}) => {
 		setState(state => ({
 			...state,
 			isDragging: true,
 			origin: {x: clientX, y: clientY}
-		}));
-	}, []);
+		}))
+	}, [])
 
 	const handleMouseMove = useCallback(
 		({clientX, clientY}) => {
 			const translation = {
 				x: clientX - state.origin.x,
 				y: clientY - state.origin.y
-			};
+			}
 
 			setState(state => ({
 				...state,
 				translation
-			}));
+			}))
 
-			onDrag({translation, id});
+			onDrag({translation, id})
 		},
 		[state.origin, onDrag, id]
-	);
+	)
 
 	const handleMouseUp = useCallback(() => {
 		setState(state => ({
 			...state,
 			isDragging: false
-		}));
+		}))
 
-		onDragEnd();
-	}, [onDragEnd]);
+		onDragEnd()
+	}, [onDragEnd])
 
 	useEffect(() => {
 		if (state.isDragging) {
-			window.addEventListener('mousemove', handleMouseMove);
-			window.addEventListener('mouseup', handleMouseUp);
+			window.addEventListener('mousemove', handleMouseMove)
+			window.addEventListener('mouseup', handleMouseUp)
 		} else {
-			window.removeEventListener('mousemove', handleMouseMove);
-			window.removeEventListener('mouseup', handleMouseUp);
+			window.removeEventListener('mousemove', handleMouseMove)
+			window.removeEventListener('mouseup', handleMouseUp)
 
-			setState(state => ({...state, translation: {x: 0, y: 0}}));
+			setState(state => ({...state, translation: {x: 0, y: 0}}))
 		}
-	}, [state.isDragging, handleMouseMove, handleMouseUp]);
+	}, [state.isDragging, handleMouseMove, handleMouseUp])
 
 	const styles = useMemo(
 		() => ({
@@ -100,7 +100,7 @@ export default ({children, id, onDrag, onDragEnd, data}) => {
 			position: state.isDragging ? 'absolute' : 'relative'
 		}),
 		[state.isDragging, state.translation]
-	);
+	)
 
 	return (
 		<ListItem style={styles} onMouseDown={handleMouseDown}>
@@ -125,5 +125,5 @@ export default ({children, id, onDrag, onDragEnd, data}) => {
 				type={`cancel`}
 			/>
 		</ListItem>
-	);
-};
+	)
+}

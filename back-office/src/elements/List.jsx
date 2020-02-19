@@ -1,15 +1,15 @@
-import React, {useState, useCallback, useContext, useEffect} from 'react';
-import styled from 'styled-components';
-import {range, inRange} from 'lodash';
+import React, {useState, useCallback, useContext, useEffect} from 'react'
+import styled from 'styled-components'
+import {range, inRange} from 'lodash'
 
-import SectorContext from '../context/SectorContext';
+import SectorContext from '../context/SectorContext'
 
-import API from '../utils/API';
+import API from '../utils/API'
 
-import ListHead from '../molecules/ListHead';
-import Table from '../molecules/Table';
-import NotifBanner from './NotifBanner';
-import ListItem from '../molecules/ListItem';
+import ListHead from '../molecules/ListHead'
+import Table from '../molecules/Table'
+import NotifBanner from './NotifBanner'
+import ListItem from '../molecules/ListItem'
 
 const List = styled.section`
 	/* position: relative; */
@@ -23,68 +23,68 @@ const List = styled.section`
 	ol {
 		position: relative;
 	}
-`;
+`
 
-const MAX = 5;
-const HEIGHT = 80;
+const MAX = 5
+const HEIGHT = 80
 
 export default () => {
-	const {currentSector} = useContext(SectorContext);
+	const {currentSector} = useContext(SectorContext)
 
-	const items = range(MAX);
+	const items = range(MAX)
 	const [state, setState] = useState({
 		order: items,
 		dragOrder: items, // items order while dragging
 		draggedIndex: null
-	});
+	})
 
-	const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(true)
 
-	const [list, setList] = useState(null);
+	const [list, setList] = useState(null)
 
 	const handleDrag = useCallback(
 		({translation, id}) => {
-			const delta = Math.round(translation.y / HEIGHT);
-			const index = state.order.indexOf(id);
-			const dragOrder = state.order.filter(index => index !== id);
+			const delta = Math.round(translation.y / HEIGHT)
+			const index = state.order.indexOf(id)
+			const dragOrder = state.order.filter(index => index !== id)
 
 			if (!inRange(index + delta, 0, items.length)) {
-				return;
+				return
 			}
 
-			dragOrder.splice(index + delta, 0, id);
+			dragOrder.splice(index + delta, 0, id)
 
 			setState(state => ({
 				...state,
 				draggedIndex: id,
 				dragOrder
-			}));
+			}))
 		},
 		[state.order, items.length]
-	);
+	)
 
 	useEffect(
 		_ => {
-			(async function getList() {
-				const response = await API.getList(currentSector);
-				const {hotels} = response.data.data;
-				setList(hotels);
-				setLoading(false);
-			})();
+			;(async function getList() {
+				const response = await API.getList(currentSector)
+				const {hotels} = response.data
+				setList(hotels)
+				setLoading(false)
+			})()
 		},
 		[currentSector]
-	);
+	)
 
 	const handleDragEnd = useCallback(() => {
 		setState(state => ({
 			...state,
 			order: state.dragOrder,
 			draggedIndex: null
-		}));
-	}, []);
+		}))
+	}, [])
 
 	if (loading) {
-		return <p>Loading...</p>;
+		return <p>Loading...</p>
 	}
 
 	return (
@@ -92,10 +92,10 @@ export default () => {
 			<ListHead />
 			<ol>
 				{list.map((item, index) => {
-					const isDragging = state.draggedIndex === index;
-					const top = state.dragOrder.indexOf(index) * (HEIGHT + 10);
-					const draggedTop = state.order.indexOf(index) * (HEIGHT + 10);
-					const lastVisit = new Date(item.lastVisit).toLocaleDateString();
+					const isDragging = state.draggedIndex === index
+					const top = state.dragOrder.indexOf(index) * (HEIGHT + 10)
+					const draggedTop = state.order.indexOf(index) * (HEIGHT + 10)
+					const lastVisit = new Date(item.lastVisit).toLocaleDateString()
 
 					return (
 						<ListItem
@@ -109,10 +109,10 @@ export default () => {
 						>
 							{index}
 						</ListItem>
-					);
+					)
 				})}
 			</ol>
 			{/* <NotifBanner /> */}
 		</List>
-	);
-};
+	)
+}

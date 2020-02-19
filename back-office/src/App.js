@@ -1,14 +1,14 @@
-import React, {useState, useEffect, useRef} from 'react';
-import styled from 'styled-components';
-import SectorContext from './context/SectorContext';
-import './App.css';
-import './index.css';
-import API from './utils/API';
-import Header from './elements/Header';
-import Sidebar from './elements/Sidebar';
-import Planning from './elements/Planning';
-import EmployeeList from './elements/EmployeList';
-import List from './elements/List';
+import React, {useState, useEffect, useRef} from 'react'
+import styled from 'styled-components'
+import SectorContext from './context/SectorContext'
+import './App.css'
+import './index.css'
+import API from './utils/API'
+import Header from './elements/Header'
+import Sidebar from './elements/Sidebar'
+import Planning from './elements/Planning'
+import EmployeeList from './elements/EmployeeList'
+import List from './elements/List'
 
 const App = styled.main`
 	width: 100%;
@@ -32,32 +32,32 @@ const App = styled.main`
 			display: none;
 		}
 	}
-`;
+`
 
 export default () => {
-	const [loading, setLoading] = useState(true);
-	const [planning, setPlanning] = useState(null);
-	const [currentSector, setCurrentSector] = useState(null);
-	let sectors = useRef(null);
+	const [loading, setLoading] = useState(true)
+	const [planning, setPlanning] = useState(null)
+	const [currentSector, setCurrentSector] = useState(null)
+	let sectors = useRef(null)
 
 	useEffect(_ => {
-		(async function getPlanning() {
-			const response = await API.getSectors();
-			const zones = response.data.sectors;
-			sectors.current = zones;
-			setCurrentSector(zones[0]._id);
-			setLoading(false);
-		})();
-	}, []);
+		;(async function getPlanning() {
+			const response = await API.getSectors()
+			const zones = response.data.sectors
+			sectors.current = zones
+			setCurrentSector(zones[0]._id)
+			setLoading(false)
+		})()
+	}, [])
 
 	const toggleSector = id => {
 		if (currentSector._id === id) {
-			return;
+			return
 		}
 
-		const newSector = sectors.current.find(sector => sector._id === id);
-		setCurrentSector(newSector._id);
-	};
+		const newSector = sectors.current.find(sector => sector._id === id)
+		setCurrentSector(newSector._id)
+	}
 
 	const context = React.useMemo(
 		() => ({
@@ -65,17 +65,17 @@ export default () => {
 			toggleSector
 		}),
 		[currentSector]
-	);
+	)
 
 	const download = () => {
-		let current = localStorage.getItem('current');
+		let current = localStorage.getItem('current')
 		window.open(
 			`http://localhost:9000/api/exportPlanning/${current.replace('/', '')}`
-		);
-	};
+		)
+	}
 
 	if (loading) {
-		return <p>Loading...</p>;
+		return <p>Loading...</p>
 	}
 
 	return (
@@ -91,5 +91,5 @@ export default () => {
 			</App>
 			<EmployeeList />
 		</SectorContext.Provider>
-	);
-};
+	)
+}
