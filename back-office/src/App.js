@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import {Route, BrowserRouter as Router} from 'react-router-dom'
+import { Route, BrowserRouter as Router } from 'react-router-dom'
 import SectorContext from './context/SectorContext'
 import './App.css'
 import './index.css'
@@ -17,7 +17,7 @@ const App = styled.main`
 	.wrapper {
 		display: flex;
 		justify-content: space-between;
-		max-width: 1400px;
+		/* max-width: 1400px; */
 		margin: 0 auto;
 		width: 100%;
 		padding: 20px;
@@ -25,6 +25,7 @@ const App = styled.main`
 		/* -64px = hauteur du header */
 		&.--main {
 			/* height: calc(100vh - 64px); */
+      padding: 0;
 		}
 
 		&.--button {
@@ -77,21 +78,21 @@ export default () => {
     return <p>Loading...</p>
   }
 
-	return (
-		<SectorContext.Provider value={context}>
-			<Router>
-				<Header />
-				<App>
-					<div className="wrapper --main">
-						<Route
-							exact
-							path="/"
-							render={props => <Home sectors={sectors.current} />}
-						/>
-						<Route path="/employees" component={EmployeeList} />
-					</div>
-				</App>
-			</Router>
-		</SectorContext.Provider>
-	)
+  return (
+    <SectorContext.Provider value={context}>
+      <Router>
+        <Header />
+        <App>
+          <div className="wrapper --main">
+            <Route
+              exact
+              path="/"
+              render={props => <Home sectors={sectors.current} />}
+            />
+            <Route path="/employees" component={EmployeeList} />
+          </div>
+        </App>
+      </Router>
+    </SectorContext.Provider>
+  )
 }

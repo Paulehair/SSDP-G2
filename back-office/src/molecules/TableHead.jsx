@@ -14,7 +14,7 @@ const TableHead = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  max-width: 1115px;
+  /* max-width: 1115px; */
   max-height: 70px;
   margin: 0 auto;
   border-bottom: 1px solid ${({ theme: { variables } }) => variables.grey};
