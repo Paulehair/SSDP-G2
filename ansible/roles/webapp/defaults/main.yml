@@ -1,0 +1,5 @@
+webapp_back_office_port: '8080'
+webapp_api_port: '9000'
+webapp_db_port: '27017'
+webapp_environment: 'production'
+webapp_network_name: 'webappnetwork'
