@@ -25,6 +25,7 @@ const App = styled.main`
 		/* -64px = hauteur du header */
 		&.--main {
 			/* height: calc(100vh - 64px); */
+      padding: 0;
 		}
 
 		&.--button {

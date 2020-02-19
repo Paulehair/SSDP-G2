@@ -19,32 +19,39 @@ const Planning = styled.section`
 	position: relative;
 	width: 100%;
 	height: 100%;
-	margin: 0 0 0 15px;
+	margin: 0;
 	background: ${({ theme: { variables } }) => variables.white};
 	border-radius: 8px;
-	/* overflow: hidden; */
+  padding: 15px;
+  margin: 15px;
+	overflow: hidden;
 
   .react-trello-board {
-    /* display: flex; */
-    height: 100%;
+    width: 100%;
+    height: 90vh;
+    /* max-width: 1115px; */
+    margin: 0 auto;
+    overflow-y: scroll;
+    padding: 0;
 
     > div {
+      display: flex;
+      justify-content: center;
+      width: 100%;
       height: 100%;
     
       .smooth-dnd-container.horizontal {
-        max-width: 1115px;
+        /* max-width: 1115px; */
         margin: 0 auto;
         width: 100%;
         height: 100%;
         display: grid;
-        grid-template-rows: 1fr;
+        grid-template-rows: auto;
         grid-template-columns: repeat(5,1fr);
 
         .react-trello-lane {
           padding: 0;
           margin: 0;
-          /* height: 100%;
-          max-width: 222px; */
           background: ${({ theme: { variables } }) => variables.white};
           border-right: 1px solid  ${({ theme: { variables } }) => variables.grey};
 
@@ -54,6 +61,10 @@ const Planning = styled.section`
 
           .sc-fzXfLV.gzqtHV {
             min-width: 196px;
+          }
+
+          .smooth-dnd-container.vertical {
+            height: 100%;
           }
         }
       }
