@@ -1,6 +1,6 @@
 import React from "react";
 
-import Vignette from "../atoms/Vignette.jsx";
+import Vignette from "../../atoms/Vignette.jsx";
 
 export default {
   title: "Vignette",

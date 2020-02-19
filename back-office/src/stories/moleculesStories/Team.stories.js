@@ -1,6 +1,6 @@
 import React from "react";
 
-import Team from "../molecules/Team.jsx";
+import Team from "../../molecules/Team.jsx";
 
 export default {
   title: "Team"

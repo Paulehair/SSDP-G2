@@ -1,7 +1,7 @@
 import React from "react";
 import { action } from "@storybook/addon-actions";
 
-import Card from "../elements/Card.jsx";
+import Card from "../../elements/Card.jsx";
 
 export default {
   title: "Card",

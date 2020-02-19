@@ -141,7 +141,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: '';
+  content: "";
   content: none;
 }
 
@@ -156,28 +156,28 @@ body > * {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 @font-face {
-  font-family: 'fontello';
-  src: url('/font/fontello.eot?23349820');
-  src: url('/font/fontello.eot?23349820#iefix') format('embedded-opentype'),
-    url('/font/fontello.woff?23349820') format('woff'),
-    url('/font/fontello.ttf?23349820') format('truetype'),
-    url('/font/fontello.svg?23349820#fontello') format('svg');
+  font-family: "fontello";
+  src: url("/font/fontello.eot?23349820");
+  src: url("/font/fontello.eot?23349820#iefix") format("embedded-opentype"),
+    url("/font/fontello.woff?23349820") format("woff"),
+    url("/font/fontello.ttf?23349820") format("truetype"),
+    url("/font/fontello.svg?23349820#fontello") format("svg");
   font-weight: normal;
   font-style: normal;
 }
-
 
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
@@ -189,7 +189,7 @@ code {
   display: inline-block;
   text-decoration: inherit;
   width: 1em;
-  margin-right: .2em;
+  margin-right: 0.2em;
   text-align: center;
   /* opacity: .8; */
 
@@ -203,7 +203,7 @@ code {
 
   /* Animation center compensation - margins should be symmetric */
   /* remove if not needed */
-  margin-left: .2em;
+  margin-left: 0.2em;
 
   /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
@@ -217,41 +217,40 @@ code {
 }
 
 .icon-logout:before {
-  content: '\e800';
+  content: "\e800";
 }
 
 /* '' */
 .icon-trash:before {
-  content: '\e801';
+  content: "\e801";
 }
 
 /* '' */
 .icon-cancel:before {
-  content: '\e802';
+  content: "\e802";
 }
 
 /* '' */
 .icon-bell:before {
-  content: '\e803';
+  content: "\e803";
 }
 
 /* '' */
 .icon-search:before {
-  content: '\e804';
+  content: "\e804";
 }
 
 /* '' */
 .icon-calendarplus:before {
-  content: '\f271';
+  content: "\f271";
 }
 
 /* '' */
 .icon-calendartimes:before {
-  content: '\f273';
+  content: "\f273";
 }
 
 /* '' */
-
 
 .download {
   border: none;
@@ -262,20 +261,34 @@ code {
   color: white;
   font-weight: bold;
   display: -webkit-box;
-  background-color: #006CB1;
+  background-color: #006cb1;
   display: flex;
   outline: none;
   cursor: pointer;
   align-items: center;
 }
 
-.icon-logout:before { content: '\e800'; } /* '' */
-.icon-trash:before { content: '\e801'; } /* '' */
-.icon-cancel:before { content: '\e802'; } /* '' */
-.icon-bell:before { content: '\e803'; } /* '' */
-.icon-search:before { content: '\e804'; } /* '' */
-.icon-calendarplus:before { content: '\f271'; } /* '' */
-.icon-calendartimes:before { content: '\f273'; } /* '' */
+.icon-logout:before {
+  content: "\e800";
+} /* '' */
+.icon-trash:before {
+  content: "\e801";
+} /* '' */
+.icon-cancel:before {
+  content: "\e802";
+} /* '' */
+.icon-bell:before {
+  content: "\e803";
+} /* '' */
+.icon-search:before {
+  content: "\e804";
+} /* '' */
+.icon-calendarplus:before {
+  content: "\f271";
+} /* '' */
+.icon-calendartimes:before {
+  content: "\f273";
+} /* '' */
 
 
-/*# sourceMappingURL=main.e2540785.chunk.css.map*/
+/*# sourceMappingURL=main.234b4a33.chunk.css.map*/
