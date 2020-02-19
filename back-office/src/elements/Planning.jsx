@@ -4,6 +4,8 @@ import SectorContext from './../context/SectorContext'
 import Board from 'react-trello'
 import TableHead from '../molecules/TableHead'
 import Card from '../elements/Card'
+import useToggle from '../helpers/useToggle'
+
 // import NotifBanner from './NotifBanner'
 import API from './../utils/API'
 
@@ -14,7 +16,6 @@ const Planning = styled.section`
 	margin: 0;
 	background: ${({theme: {variables}}) => variables.white};
 	border-radius: 8px;
-	padding: 15px;
 	margin: 15px;
 	overflow: hidden;
 
@@ -68,6 +69,7 @@ export default () => {
 	const [planning, setPlanning] = useState(null)
 	const [draggablePlanning, setDraggablePlanning] = useState(null)
 	const [loading, setLoading] = useState(true)
+	const [open, toggle] = useToggle(false)
 	const {currentSector} = useContext(SectorContext)
 
 	useEffect(
@@ -92,6 +94,11 @@ export default () => {
 		array.forEach((el, i) => {
 			el.forEach((card, i) => {
 				card.id = card._id
+				card.initials = []
+				card.team.forEach(el => {
+					let initials = `${el.firstName[0]}${el.lastName[0]}`
+					card.initials.push(initials)
+				})
 			})
 			let lane = {
 				id: `lane${i + 1}`,
@@ -119,6 +126,7 @@ export default () => {
 				<p>loading...</p>
 			) : (
 				<Board
+					onCardClick={toggle}
 					style={boardStyle}
 					components={{Card: Card}}
 					laneDraggable={false}

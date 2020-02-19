@@ -10,6 +10,7 @@ const Sectors = styled.ul`
 	justify-content: flex-end;
 	align-items: center;
 	margin-bottom: 20px;
+	margin-top: 30px;
 	p {
 		font-weight: bold;
 	}

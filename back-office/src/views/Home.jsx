@@ -4,7 +4,7 @@ import Planning from './../elements/Planning'
 
 export default ({sectors}) => {
 	return (
-		<div className="">
+		<div className="home">
 			<Sectors sectors={sectors} />
 			<Planning />
 		</div>

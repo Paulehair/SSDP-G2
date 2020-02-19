@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import styled from 'styled-components'
-// import Binome from './../molecules/Binome'
+import Binome from './../molecules/Binome'
 import Details from './../molecules/Details'
 import Modal from './../elements/Modal'
 import useToggle from '../helpers/useToggle'
@@ -27,16 +27,15 @@ const Card = styled.div`
 `
 
 export default props => {
-	const [initials, setInitials] = useState(null)
-	const [open, toggle] = useToggle(false)
+	// const [initials, setInitials] = useState(null)
 
 	// if (!initials) {
 	//   return <p>loading...</p>
 	// }
 
-	if (open) {
-		return <Modal data={props} toggle={toggle} />
-	}
+	// if (open) {
+	// 	return <Modal data={props} toggle={toggle} />
+	// }
 
 	return (
 		<Card key={props._id}>
@@ -45,7 +44,7 @@ export default props => {
 				rooms={`${props.rooms} chambres`}
 				hour="10h30 - 13h"
 			/>
-			{/* <Binome initials={initials} /> */}
+			<Binome initials={props.initials} />
 		</Card>
 	)
 }
