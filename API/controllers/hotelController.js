@@ -1,4 +1,5 @@
 const Hotel = require('./../models/hotelModel');
+const Sector = require('./../models/sectorModel');
 const fs = require('fs');
 
 exports.getHotelList = async (req, res) => {
@@ -20,12 +21,17 @@ exports.getHotelList = async (req, res) => {
 
 exports.getHotels = async (req, res) => {
 	try {
-		const hotels = await Hotel.find();
+		const hotels = await Hotel.find().lean();
+		const sectors = await Sector.find().lean();
+
+		hotels.forEach(hotel => {
+			const sector = sectors.find(sector => sector._id == hotel.sector_id);
+			hotel.sector = sector.zone;
+		});
+
 		res.status(200).json({
 			status: 'success',
-			data: {
-				hotels
-			}
+			hotels
 		});
 	} catch (err) {
 		res.status(404).json({
