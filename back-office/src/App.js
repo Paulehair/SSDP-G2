@@ -82,15 +82,16 @@ export default () => {
 	return (
 		<SectorContext.Provider value={context}>
 			<App>
-				<Header />
+				<LoginPage />
+				{/* <Header />
 				<div className="wrapper --main">
 					{sectors.current && <Sidebar sectors={sectors.current} />}
 					{planning && <Planning planning={planning} />}
-					{/* {list && <List list={list} />} */}
+					{list && <List list={list} />}
 					<List />
-				</div>
+				</div> */}
 			</App>
-			<EmployeeList />
+			{/* <EmployeeList /> */}
 		</SectorContext.Provider>
 	)
 }

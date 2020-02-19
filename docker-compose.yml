@@ -1,41 +1,41 @@
-version: '3'
+version: "3"
 services:
-    back-office:
-        image: 'node:alpine'
-        container_name: ssdp-back-office
-        restart: always
-        ports:
-            - '3000:3000'
-        environment:
-            - NODE_ENV=development
-            - CHOKIDAR_USEPOLLING=true
-        working_dir: /home/node
-        volumes:
-            - ./back-office:/home/node
-            - ./back-office/node_modules
-        networks:
-            - webappnetwork
-        entrypoint: ['npm', 'start']
+  back-office:
+    image: "node:alpine"
+    container_name: ssdp-back-office
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    working_dir: /home/node
+    volumes:
+      - ./back-office:/home/node
+      - ./back-office/node_modules
+    networks:
+      - webappnetwork
+    entrypoint: ["npm", "start"]
 
-    api:
-        image: 'node:12'
-        container_name: ssdp-api
-        env_file: .env
-        restart: always
-        depends_on:
-            - mongodb
-        ports:
-            - '9000:9000'
-        environment:
-            - NODE_ENV=development
-        working_dir: /usr/src/app
-        volumes:
-            - ./API:/usr/src/app
-            - /API/node_modules
-        networks:
-            - webappnetwork
-        entrypoint: ['npm', 'start']
+  api:
+    image: "node:12"
+    container_name: ssdp-api
+    env_file: .env
+    restart: always
+    # depends_on:
+    #     - mongodb
+    ports:
+      - "9000:9000"
+    environment:
+      - NODE_ENV=development
+    working_dir: /usr/src/app
+    volumes:
+      - ./API:/usr/src/app
+      - /API/node_modules
+    networks:
+      - webappnetwork
+    entrypoint: ["npm", "start"]
 
 networks:
-    webappnetwork:
-        driver: bridge
+  webappnetwork:
+    driver: bridge
