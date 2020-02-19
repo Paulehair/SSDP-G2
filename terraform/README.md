@@ -94,4 +94,6 @@ Copy the public DNS then go back to your terminal and run from terraform folder
 
 ### Start doing stuff
 
+If you want to see how to deploy the webapp with ansible ➜ click [here](https://github.com/Paulehair/SSDP-G2/tree/DEV/ansible)
+
 ![cat video](https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif)

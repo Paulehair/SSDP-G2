@@ -4,7 +4,7 @@
 	"description": "API for the use of Samu Social de Paris",
 	"apidoc": {
 		"title": "API Documentation for SAMU Social project",
-		"url": "http://localhost:9000/api",
+		"url": "http://35.180.253.143:9000",
 		"version": "0.1.0"
 	},
 	"main": "index.js",

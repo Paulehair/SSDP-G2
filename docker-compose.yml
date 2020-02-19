@@ -1,11 +1,11 @@
-version: "3"
+version: '3'
 services:
   back-office:
-    image: "node:alpine"
+    image: 'node:alpine'
     container_name: ssdp-back-office
     restart: always
     ports:
-      - "3000:3000"
+      - '3000:3000'
     environment:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
@@ -15,17 +15,17 @@ services:
       - ./back-office/node_modules
     networks:
       - webappnetwork
-    entrypoint: ["npm", "start"]
+    entrypoint: ['npm', 'start']
 
   api:
-    image: "node:12"
+    image: 'node:12'
     container_name: ssdp-api
     env_file: .env
     restart: always
     # depends_on:
     #     - mongodb
     ports:
-      - "9000:9000"
+      - '9000:9000'
     environment:
       - NODE_ENV=development
     working_dir: /usr/src/app
@@ -34,7 +34,7 @@ services:
       - /API/node_modules
     networks:
       - webappnetwork
-    entrypoint: ["npm", "start"]
+    entrypoint: ['npm', 'start']
 
 networks:
   webappnetwork:

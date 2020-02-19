@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import {useState} from 'react'
 
 const useToggle = initial => {
-  const [open, setOpen] = useState(initial)
-  return [open, () => setOpen(status => !status)]
+	const [open, setOpen] = useState(initial)
+	return [open, () => setOpen(status => !status)]
 }
 
 export default useToggle

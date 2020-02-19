@@ -1,19 +1,19 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import Button from '../molecules/Button'
+import Button from './../atoms/Button'
 import EmployeeCard from '../molecules/EmployeeCard'
-import Input from '../atoms/Input'
+// import Input from '../atoms/Input'
 import Modal from './../elements/Modal'
 import useToggle from '../helpers/useToggle'
-import input from './../data/formData'
+import form from './../data/formData'
 import API from '../utils/API'
 
 const EmployeeList = styled.section`
-	padding: 72px 120px;
+	padding: 40px 20px;
 	width: 100%;
+	color: ${({theme: {variables}}) => variables.black};
 	.title {
 		font-size: 32px;
-		color: #000000;
 	}
 	.employeHeader {
 		display: flex;
@@ -29,25 +29,21 @@ const EmployeeList = styled.section`
 	}
 `
 export default () => {
-	const [employees, setEmployees] = useState(null)
-	const [loading, setLoading] = useState(true)
-	const [open, toggle] = useToggle(false)
+  const [employees, setEmployees] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [open, toggle] = useToggle(false)
 
-	useEffect(_ => {
-		;(async function getEmployees() {
-			const response = await API.getEmployees()
-			setEmployees(response.data.employees)
-			setLoading(false)
-		})()
-	}, [])
+  useEffect(_ => {
+    ; (async function getEmployees() {
+      const response = await API.getEmployees()
+      setEmployees(response.data.employees)
+      setLoading(false)
+    })()
+  }, [])
 
-	if (loading) {
-		return <p>loading</p>
-	}
-
-	if (open) {
-		return <Modal data={input.addEmployee} toggle={toggle} />
-	}
+  if (loading) {
+    return <p>loading</p>
+  }
 
 	return (
 		<EmployeeList>
@@ -66,6 +62,14 @@ export default () => {
 					<EmployeeCard key={i} data={employee} />
 				))}
 			</div>
+			{open && (
+				<Modal
+					data={form.input.addEmployee}
+					title="Ajouter un employé"
+					type="form"
+					toggle={toggle}
+				/>
+			)}
 		</EmployeeList>
 	)
 }
