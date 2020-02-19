@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import Button from '../molecules/Button'
+import Button from './../atoms/Button'
 import EmployeeCard from '../molecules/EmployeeCard'
 // import Input from '../atoms/Input'
 import Modal from './../elements/Modal'
 import useToggle from '../helpers/useToggle'
-import input from './../data/formData'
+import form from './../data/formData'
 import API from '../utils/API'
 
 const EmployeeList = styled.section`
-	padding: 72px 120px;
+	padding: 40px 20px;
 	width: 100%;
+	color: ${({theme: {variables}}) => variables.black};
 	.title {
 		font-size: 32px;
-		color: #000000;
 	}
 	.employeHeader {
 		display: flex;
@@ -45,27 +45,31 @@ export default () => {
     return <p>loading</p>
   }
 
-  if (open) {
-    return <Modal data={input.addEmployee} toggle={toggle} />
-  }
-
-  return (
-    <EmployeeList>
-      <div className="employeHeader">
-        <div className="title">Liste des employés</div>
-        <Button
-          onClick={toggle}
-          textColor="white"
-          fontWeight="500"
-          text="Ajouter un employé"
-        />
-      </div>
-      {/* <Input searchIcon={true} placeholder='Rechercher nom / prénom...' type='text' /> */}
-      <div className="employeList">
-        {employees.map((employee, i) => (
-          <EmployeeCard key={i} data={employee} />
-        ))}
-      </div>
-    </EmployeeList>
-  )
+	return (
+		<EmployeeList>
+			<div className="employeHeader">
+				<div className="title">Liste des employés</div>
+				<Button
+					onClick={toggle}
+					textColor="white"
+					fontWeight="500"
+					text="Ajouter un employé"
+				/>
+			</div>
+			{/* <Input searchIcon={true} placeholder='Rechercher nom / prénom...' type='text' /> */}
+			<div className="employeList">
+				{employees.map((employee, i) => (
+					<EmployeeCard key={i} data={employee} />
+				))}
+			</div>
+			{open && (
+				<Modal
+					data={form.input.addEmployee}
+					title="Ajouter un employé"
+					type="form"
+					toggle={toggle}
+				/>
+			)}
+		</EmployeeList>
+	)
 }

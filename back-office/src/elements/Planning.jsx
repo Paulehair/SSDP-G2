@@ -2,8 +2,6 @@ import React, { useState, useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import SectorContext from './../context/SectorContext'
 import Board from 'react-trello'
-
-
 import TableHead from '../molecules/TableHead'
 import Card from '../elements/Card'
 import NotifBanner from './NotifBanner'
@@ -64,7 +62,6 @@ const components = {
 }
 
 export default () => {
-
   const [planning, setPlanning] = useState(null)
   const [loading, setLoading] = useState(true)
   const { currentSector } = useContext(SectorContext)
@@ -126,5 +123,4 @@ export default () => {
       {/* <NotifBanner /> */}
     </Planning>
   )
-
 }
