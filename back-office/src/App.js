@@ -9,6 +9,7 @@ import Sidebar from './elements/Sidebar'
 import Planning from './elements/Planning'
 import EmployeeList from './elements/EmployeeList'
 import List from './elements/List'
+import LoginPage from './elements/LoginPage'
 
 const App = styled.main`
 	width: 100%;
