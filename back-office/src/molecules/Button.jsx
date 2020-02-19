@@ -1,7 +1,7 @@
-import React from 'react'
-import PrimaryText from '../atoms/PrimaryText'
-import Icon from '../atoms/Icon'
-import styled from 'styled-components'
+import React from "react";
+import PrimaryText from "../atoms/PrimaryText";
+import Icon from "../atoms/Icon";
+import styled from "styled-components";
 
 const Button = styled.button`
 	display: flex;

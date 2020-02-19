@@ -1,10 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
-
-import Date from '../atoms/Date'
-import Arrow from '../atoms/Arrow'
-
-// import vars from '../../global/variables.scss'
+import React from "react";
+import styled from "styled-components";
+import Date from "../atoms/Date";
+import Arrow from "../atoms/Arrow";
 
 const TableHead = styled.div`
 	display: grid;

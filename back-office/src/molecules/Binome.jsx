@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import Vignette from './../atoms/Vignette'
+import React from "react";
+import styled from "styled-components";
+import Vignette from "./../atoms/Vignette";
 
 const Binome = styled.div`
 	display: flex;

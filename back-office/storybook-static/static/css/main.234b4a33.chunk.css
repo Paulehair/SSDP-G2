@@ -1,3 +1,19 @@
+.ant-fullcalendar-header {
+  display: flex;
+  margin: 0 auto 10px;
+  width: 100%;
+  min-width: 260px;
+  padding: 0 !important;
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
+}
+
+/* HIDE SCROLLBAR, STILL SCROLLABLE */
+::-webkit-scrollbar {
+  display: none;
+}
+
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -134,7 +150,7 @@ table {
   border-spacing: 0;
 }
 
-body>* {
+body > * {
   box-sizing: border-box;
 }
 
@@ -178,6 +194,7 @@ code {
   /* opacity: .8; */
 
   /* For safety - reset parent styles, that can break glyph codes*/
+  font-feature-settings: normal;
   font-variant: normal;
   text-transform: none;
 
@@ -235,11 +252,6 @@ code {
 
 /* '' */
 
-.home {
-  min-width: 1185px;
-  width: 100%;
-}
-
 .download {
   border: none;
   padding: 12px;
@@ -253,42 +265,30 @@ code {
   display: flex;
   outline: none;
   cursor: pointer;
-  -webkit-box-align: center;
   align-items: center;
 }
 
 .icon-logout:before {
-  content: '\e800';
-}
-
-/* '' */
+  content: "\e800";
+} /* '' */
 .icon-trash:before {
-  content: '\e801';
-}
-
-/* '' */
+  content: "\e801";
+} /* '' */
 .icon-cancel:before {
-  content: '\e802';
-}
-
-/* '' */
+  content: "\e802";
+} /* '' */
 .icon-bell:before {
-  content: '\e803';
-}
-
-/* '' */
+  content: "\e803";
+} /* '' */
 .icon-search:before {
-  content: '\e804';
-}
-
-/* '' */
+  content: "\e804";
+} /* '' */
 .icon-calendarplus:before {
-  content: '\f271';
-}
-
-/* '' */
+  content: "\f271";
+} /* '' */
 .icon-calendartimes:before {
-  content: '\f273';
-}
+  content: "\f273";
+} /* '' */
 
-/* '' */
+
+/*# sourceMappingURL=main.234b4a33.chunk.css.map*/

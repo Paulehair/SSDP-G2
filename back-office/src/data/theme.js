@@ -1,4 +1,4 @@
-import theme from 'styled-theming'
+import theme from "styled-theming";
 
 export const backgroundColor = theme('area', {
 	// Paris: 'linear-gradient(180deg, #C63D2B 0%, #DE5543 100%, #DE5543 100%);',
