@@ -1,6 +1,6 @@
 define({
   "title": "API Documentation for SAMU Social project",
-  "url": "http://localhost:9000/api",
+  "url": "http://35.180.253.143:9000",
   "version": "0.1.0",
   "name": "api",
   "description": "API for the use of Samu Social de Paris",
@@ -9,7 +9,7 @@ define({
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2020-02-12T16:11:54.079Z",
+    "time": "2020-02-19T15:00:35.507Z",
     "url": "http://apidocjs.com",
     "version": "0.20.0"
   }

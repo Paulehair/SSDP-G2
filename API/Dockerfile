@@ -4,4 +4,5 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 EXPOSE 9000
-CMD [ "node", "server.js" ]
+COPY entrypoint.sh ./
+ENTRYPOINT [ "/usr/src/app/entrypoint.sh" ]
