@@ -17,6 +17,7 @@ services:
       - webappnetwork
     entrypoint: ['npm', 'start']
 
+<<<<<<< HEAD
   api:
     image: 'node:12'
     container_name: ssdp-api
@@ -35,6 +36,26 @@ services:
     networks:
       - webappnetwork
     entrypoint: ['npm', 'start']
+=======
+    api:
+        image: 'node:12'
+        container_name: ssdp-api
+        env_file: .env
+        restart: always
+        # depends_on:
+        #     - mongodb
+        ports:
+            - '9000:9000'
+        environment:
+            - NODE_ENV=development
+        working_dir: /usr/src/app
+        volumes:
+            - ./API:/usr/src/app
+            - /API/node_modules
+        networks:
+            - webappnetwork
+        entrypoint: ['npm', 'start']
+>>>>>>> [DEV] remove old drag and add trello
 
 networks:
   webappnetwork:
