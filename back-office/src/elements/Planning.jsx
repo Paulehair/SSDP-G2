@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import SectorContext from './../context/SectorContext'
 import TableHead from '../molecules/TableHead'
 import Table from '../molecules/Table'
-import NotifBanner from './NotifBanner'
 import API from './../utils/API'
 
 const Planning = styled.section`
@@ -37,7 +36,6 @@ export default () => {
 		<Planning>
 			<TableHead />
 			{loading ? <p>loading...</p> : <Table planning={planning} />}
-			<NotifBanner />
 		</Planning>
 	)
 }
