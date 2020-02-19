@@ -14,14 +14,14 @@ const primaryTextData = {
   color: "#FF0000"
 };
 const secondaryTextData = {
-  text: "Primary Text",
+  text: "Secondary Text",
   color: "#000"
 };
 const defaultTextData = {
-  text: "Primary Text"
+  text: "Default Text"
 };
 const TitleTextData = {
-  title: "Primary title"
+  title: "title"
 };
 
 export const Primary = () => {
