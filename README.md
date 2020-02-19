@@ -33,17 +33,7 @@ Start working !:tada:
 
 ---
 
-## Running Project
-
-### Tests
-
-To run tests run the followings commands
-
-###### `in API`
-
-###### `in back-office`
-
-###### `in mobile app`
+## About API
 
 ### API Documentation
 
@@ -56,8 +46,6 @@ Run the following command ==from API folder==
 
 You can see the api documentation [here](http://35.180.253.143:9000/api/documentation/)
 
-## Deployment
-
 ### Architecture
 
 ```sequence
@@ -67,6 +55,8 @@ API->Database: 3 - Request Data
 Database-->API: 4 - Send Data
 API->Back Office or Mobile App: 5 - Send Data to front
 ```
+
+## Deployment
 
 ### Terraform
 
@@ -93,5 +83,11 @@ See documentation in [here](https://github.com/Paulehair/SSDP-G2/tree/DEV/ansibl
 -   Storybook
 
 ## Authors
+
+-   [Paule Herman](https://github.com/Paulehair) - cheffe de projet, devops et développeuse back
+-   [Marion Ott](https://github.com/marion-ott) - développeuse front et back
+-   [Anthony Reynaud](https://github.com/ynohtn) - développeur front
+-   [Simon Soleau](https://github.com/SoleauSimon) - développeur front
+-   [Ketsia Pedro](https://github.com/faithpedro) - développeuse back
 
 ## Licence
