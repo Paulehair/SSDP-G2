@@ -98,6 +98,12 @@ If you want to see how to deploy the webapp with ansible ➜ click [here](https:
 
 ![cat video](https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif)
 
+---
+
+## How it work
+
+---
+
 ## Author
 
 Paule Herman

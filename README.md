@@ -39,7 +39,15 @@ See documentation in [here](https://github.com/Paulehair/SSDP-G2/tree/DEV/API)
 
 ---
 
+## About back office
+
+See documentation in [here](https://github.com/Paulehair/SSDP-G2/tree/DEV/back-office)
+
+---
+
 ## Deployment
+
+### Docker
 
 ### Terraform
 
