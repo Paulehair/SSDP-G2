@@ -54,6 +54,8 @@ Run the following command ==from API folder==
 	yarn apidoc -i ./routes -o ./apidoc
 </code>
 
+You can see the api documentation [here](http://35.180.253.143:9000/api/documentation/)
+
 ## Deployment
 
 ### Architecture
@@ -69,6 +71,10 @@ API->Back Office or Mobile App: 5 - Send Data to front
 ### Terraform
 
 See documentation in [here](https://github.com/Paulehair/SSDP-G2/tree/DEV/terraform)
+
+### Ansible
+
+See documentation in [here](https://github.com/Paulehair/SSDP-G2/tree/DEV/ansible)
 
 ## :link: Built with
 
