@@ -43,7 +43,8 @@ export default {
 				name: 'sector',
 				type: 'select',
 				value: '',
-				required: true
+				required: true,
+				options: ['75', '92-94', '93']
 			}
 		]
 	},
