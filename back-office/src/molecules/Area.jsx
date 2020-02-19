@@ -22,7 +22,6 @@ export default ({sectors}) => {
 
 	const handleChange = event => {
 		const id = event.target.value
-		console.log(id)
 		toggleSector(id)
 	}
 
