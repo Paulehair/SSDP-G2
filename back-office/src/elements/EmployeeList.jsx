@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Button from './../atoms/Button'
 import EmployeeCard from '../molecules/EmployeeCard'
@@ -29,21 +29,21 @@ const EmployeeList = styled.section`
 	}
 `
 export default () => {
-	const [employees, setEmployees] = useState(null)
-	const [loading, setLoading] = useState(true)
-	const [open, toggle] = useToggle(false)
+  const [employees, setEmployees] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [open, toggle] = useToggle(false)
 
-	useEffect(_ => {
-		;(async function getEmployees() {
-			const response = await API.getEmployees()
-			setEmployees(response.data.employees)
-			setLoading(false)
-		})()
-	}, [])
+  useEffect(_ => {
+    ; (async function getEmployees() {
+      const response = await API.getEmployees()
+      setEmployees(response.data.employees)
+      setLoading(false)
+    })()
+  }, [])
 
-	if (loading) {
-		return <p>loading</p>
-	}
+  if (loading) {
+    return <p>loading</p>
+  }
 
 	return (
 		<EmployeeList>
