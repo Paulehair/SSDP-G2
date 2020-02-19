@@ -1,83 +1,81 @@
-import axios from 'axios';
+import axios from 'axios'
 
 const URL = {
-  global: 'http://localhost:9000/api',
-  params: {
-    employees: 'employees',
-    hotels: 'hotels',
-    planning: 'planning',
-    visits: 'visits',
-    sectors: 'sectors'
-  }
-};
+	global: 'http://localhost:9000/api',
+	params: {
+		employees: 'employees',
+		hotels: 'hotels',
+		planning: 'planning',
+		visits: 'visits',
+		sectors: 'sectors'
+	}
+}
 export default {
-  getEmployees() {
-    return axios.get(`${URL.global}/${URL.params.employees}`);
-  },
+	getEmployees() {
+		return axios.get(`${URL.global}/${URL.params.employees}`)
+	},
 
-  getEmployee(id) {
-    return axios.get(`${URL.global}/${URL.params.employees}/${id}`);
-  },
+	getEmployee(id) {
+		return axios.get(`${URL.global}/${URL.params.employees}/${id}`)
+	},
 
-  createEmployee(body) {
-    return axios.post(`${URL.global}/${URL.params.employees}`, body);
-  },
+	createEmployee(body) {
+		return axios.post(`${URL.global}/${URL.params.employees}`, body)
+	},
 
-  updateEmployee(id, body) {
-    return axios.patch(`${URL.global}/${URL.params.employees}/${id}`, body);
-  },
+	updateEmployee(id, body) {
+		return axios.patch(`${URL.global}/${URL.params.employees}/${id}`, body)
+	},
 
-  deleteEmployee(id) {
-    return axios.delete(`${URL.global}/${URL.params.employees}/${id}`);
-  },
+	deleteEmployee(id) {
+		return axios.delete(`${URL.global}/${URL.params.employees}/${id}`)
+	},
 
-  getHotels() {
-    return axios.get(`${URL.global}/${URL.params.hotels}`);
-  },
+	getHotels() {
+		return axios.get(`${URL.global}/${URL.params.hotels}`)
+	},
 
-  getHotel(id) {
-    return axios.get(`${URL.global}/${URL.params.hotels}/${id}`);
-  },
+	getHotel(id) {
+		return axios.get(`${URL.global}/${URL.params.hotels}/${id}`)
+	},
 
-  createHotel(body) {
-    return axios.post(`${URL.global}/${URL.params.hotels}`, body);
-  },
+	createHotel(body) {
+		return axios.post(`${URL.global}/${URL.params.hotels}`, body)
+	},
 
-  updateHotel(id, body) {
-    return axios.patch(`${URL.global}/${URL.params.hotels}/${id}`, body);
-  },
+	updateHotel(id, body) {
+		return axios.patch(`${URL.global}/${URL.params.hotels}/${id}`, body)
+	},
 
-  deleteHotel(id) {
-    return axios.delete(`${URL.global}/${URL.params.hotels}/${id}`);
-  },
+	deleteHotel(id) {
+		return axios.delete(`${URL.global}/${URL.params.hotels}/${id}`)
+	},
 
-  getSectors() {
-    return axios.get(`${URL.global}/${URL.params.sectors}`);
-  },
+	getSectors() {
+		return axios.get(`${URL.global}/${URL.params.sectors}`)
+	},
 
-  getSector(id) {
-    return axios.get(`${URL.global}/${URL.params.sectors}/${id}`);
-  },
+	getSector(id) {
+		return axios.get(`${URL.global}/${URL.params.sectors}/${id}`)
+	},
 
-  createSector(body) {
-    return axios.post(`${URL.global}/${URL.params.sectors}`, body);
-  },
+	createSector(body) {
+		return axios.post(`${URL.global}/${URL.params.sectors}`, body)
+	},
 
-  updateSector(id, body) {
-    return axios.patch(`${URL.global}/${URL.params.sectors}/${id}`, body);
-  },
+	updateSector(id, body) {
+		return axios.patch(`${URL.global}/${URL.params.sectors}/${id}`, body)
+	},
 
-  deleteSector(id) {
-    return axios.delete(`${URL.global}/${URL.params.sectors}/${id}`);
-  },
+	deleteSector(id) {
+		return axios.delete(`${URL.global}/${URL.params.sectors}/${id}`)
+	},
 
-  getPlanning(sector) {
-    return axios.post(`${URL.global}/${URL.params.visits}/`, {
-      sector
-    });
-  },
+	getPlanning(sector) {
+		return axios.get(`${URL.global}/${URL.params.visits}/${sector}`)
+	},
 
-  getList(sector) {
-    return axios.get(`${URL.global}/${URL.params.hotels}/list/${sector}`)
-  }
-};
+	getList(sector) {
+		return axios.get(`${URL.global}/${URL.params.hotels}/list/${sector}`)
+	}
+}
