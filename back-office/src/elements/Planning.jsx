@@ -1,7 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react'
 import styled from 'styled-components'
 import SectorContext from './../context/SectorContext'
-import Board, {onCardClick} from 'react-trello'
+import Board, {onCardClick, onDataChange} from 'react-trello'
 import TableHead from '../molecules/TableHead'
 import Card from '../elements/Card'
 import useToggle from '../helpers/useToggle'
@@ -114,7 +114,9 @@ export default () => {
 
 		return newPlanning
 	}
-
+	const handleChange = () => {
+		console.log('changing')
+	}
 	const boardStyle = {
 		backgroundColor: '#FFFFFF'
 	}
@@ -126,6 +128,7 @@ export default () => {
 				<p>loading...</p>
 			) : (
 				<Board
+					onDataChange={handleChange}
 					onCardClick={onCardClick}
 					style={boardStyle}
 					components={{Card: Card}}

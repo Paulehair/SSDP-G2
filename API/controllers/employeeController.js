@@ -10,10 +10,12 @@ exports.getEmployees = catchAsync(async (req, res) => {
 		.lean();
 	const sectors = await Sector.find().lean();
 
-	employees.forEach(employee => {
-		const sector = sectors.find(sector => sector._id == employee.sector_id);
-		employee.sector = sector.zone;
-	});
+  employees.forEach(employee => {
+			const relevantSector = sectors.find(
+				sector => sector._id == employee.sector_id
+			);
+			employee.sector = relevantSector.zone;
+		});
 
 	res.status(200).json({
 		status: 'success',

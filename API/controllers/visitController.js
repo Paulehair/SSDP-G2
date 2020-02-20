@@ -1,5 +1,6 @@
 const Hotel = require('./../models/hotelModel');
 const Employee = require('./../models/employeeModel');
+const Team = require('./../models/teamModel');
 
 exports.getVisit = async (req, res) => {
 	try {
