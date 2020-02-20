@@ -21,6 +21,9 @@ app.use(cors());
 const employeeRouter = require('./routes/employeeRoutes');
 app.use('/api/employees', employeeRouter);
 
+const authRouter = require('./routes/authRoutes');
+app.use('/api/login', authRouter);
+
 const hotelRouter = require('./routes/hotelRoutes');
 app.use('/api/hotels', hotelRouter);
 
