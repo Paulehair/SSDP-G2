@@ -2,6 +2,8 @@ const Employee = require('./../models/employeeModel');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const {promisify} = require('util');
+const catchAsync = require('../utils/catchAsync');
+const AppError = require('../utils/appError');
 const config = require('../config/config');
 
 // Create token to allow server/client connection
@@ -17,39 +19,34 @@ const signToken = id => {
 	);
 };
 
-exports.login = async (req, res) => {
-	try {
-		const {email, password, role} = req.body;
+exports.login = catchAsync(async (req, res) => {
+	const {email, password, role} = req.body;
 
-		if (!email || !password) {
-			console.log('Entrez un mdp et un identifiant');
-			return;
-		}
-
-		const user = await Employee.findOne({
-			email
-		});
-
-		if (!(await bcrypt.compare(password, user.password))) {
-			console.log(password, user.password);
-
-			console.log('Mauvais mdp');
-			return;
-		}
-
-		const token = signToken(user._id);
-
-		res.json({
-			status: 'connected',
-			user,
-			token
-		});
-	} catch (err) {
-		return err;
+	if (!email || !password) {
+		return next(
+			new AppError('Veuillez entrer votre identifiant et votre mot de passe'),
+			400
+		);
 	}
-};
 
-exports.checkLogin = async (req, res, next) => {
+	const user = await Employee.findOne({
+		email
+	});
+
+	if (!(await bcrypt.compare(password, user.password))) {
+		return next(new AppError('Mot de passe incorrect'), 401);
+	}
+
+	const token = signToken(user._id);
+
+	res.json({
+		status: 'connected',
+		user,
+		token
+	});
+});
+
+exports.checkLogin = catchAsync(async (req, res, next) => {
 	let token;
 
 	if (req.headers.authorization) {
@@ -57,34 +54,31 @@ exports.checkLogin = async (req, res, next) => {
 	}
 
 	if (!token) {
-		console.log('no token');
-		return;
+		return next(new AppError("Vous n'êtes pas connecté."), 401);
 	}
 
 	// Token verification
 	const decoded = await promisify(jwt.verify)(token, config.JWT_SECRET);
 
 	const currentUser = await Employee.findById(decoded.id);
+
 	if (!currentUser) {
-		console.log('user non connecté ou pas existant');
-		return;
+		return next(
+			new AppError("Cet utilisateur n'existe pas ou n'est pas connecté."),
+			401
+		);
 	}
 
 	req.user = currentUser;
 	next();
-};
+});
 
-exports.checkPermission = async (req, res, next) => {
-	/**
-	 * ADMIN INFO:
-	 * mail : salarie.admin@samusocial.net
-	 * password : admin
-	 */
-	try {
-		if (req.user.role !== 'admin') {
-			console.log("Vous n'avez pas les droits");
-			return;
-		}
-	} catch (err) {}
+exports.checkPermission = catchAsync(async (req, res, next) => {
+	if (req.user.role !== 'admin') {
+		return next(
+			new AppError("Vous n'avez pas les droits pour effectuer cette action."),
+			401
+		);
+	}
 	next();
-};
+});
