@@ -69,9 +69,6 @@ exports.deleteEmployee = catchAsync(async (req, res) => {
 	if (!employee) {
 		return next(new AppError('No employee found with that id', 404));
 	}
-<<<<<<< HEAD
-};
-=======
 
 	res.status(200).json({
 		status: 'success',
@@ -89,4 +86,3 @@ exports.importEmployees = catchAsync(async (req, res) => {
 		status: 'success'
 	});
 });
->>>>>>> [API][errors] handle errors in employee hotel & sector controllers
