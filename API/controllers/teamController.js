@@ -19,3 +19,10 @@ exports.createTeam = async (req, res) => {
 		console.warn(err);
 	}
 };
+
+exports.getTeams = async (req, res) => {
+	const teams = await Team.find();
+	res.json({
+		teams
+	});
+};

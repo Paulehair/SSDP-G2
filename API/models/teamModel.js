@@ -5,12 +5,7 @@ const teamSchema = new mongoose.Schema({
 	team: [
 		{
 			_id: false,
-			employees: [
-				{
-					_id: false,
-					employee_id: String
-				}
-			]
+			staff_id: String
 		}
 	]
 });
