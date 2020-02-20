@@ -1,8 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import Calendar from './../molecules/Calendar';
-import Search from './../molecules/Search';
-import Area from './../molecules/Area';
+import React from 'react'
+import styled from 'styled-components'
+import Title from './../atoms/Title'
+import Area from './../molecules/Area'
 
 const Sidebar = styled.section`
 	display: flex;
@@ -14,12 +13,11 @@ const Sidebar = styled.section`
 	border-radius: 8px;
 	background-color: ${({theme: {variables}}) => variables.white};
 	overflow-y: scroll;
-`;
+`
 
 export default ({sectors}) => (
 	<Sidebar>
-		<Calendar />
-		<Search />
+		<Title text="Filtres" />
 		<Area sectors={sectors} />
 	</Sidebar>
-);
+)

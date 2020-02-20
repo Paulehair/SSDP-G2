@@ -64,37 +64,7 @@ const Planning = styled.section`
 		}
 	}
 `
-const data = {
-	lanes: [
-		{
-			id: 'lane1',
-			title: 'Planned Tasks',
-			label: '2/2',
-			cards: [
-				{
-					id: 'Card1',
-					title: 'Write Blog',
-					description: 'Can AI make memes',
-					label: '30 mins',
-					draggable: false
-				},
-				{
-					id: 'Card2',
-					title: 'Pay Rent',
-					description: 'Transfer via NEFT',
-					label: '5 mins',
-					metadata: {sha: 'be312a1'}
-				}
-			]
-		},
-		{
-			id: 'lane2',
-			title: 'Completed',
-			label: '0/0',
-			cards: []
-		}
-	]
-}
+
 export default () => {
 	const [planning, setPlanning] = useState(null)
 	const [draggablePlanning, setDraggablePlanning] = useState(null)
@@ -115,10 +85,6 @@ export default () => {
 		},
 		[currentSector]
 	)
-
-	const handleClick = (cardId, metadata, laneId) => {
-		console.log(cardId)
-	}
 
 	const format = array => {
 		const newPlanning = {
