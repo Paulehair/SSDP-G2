@@ -1,9 +1,9 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import styled from 'styled-components'
 import labels from './../data/list'
 import SecondaryText from '../atoms/SecondaryText'
-import Icon from '../atoms/Icon'
-import Button from '../atoms/Button'
+import Modal from '../elements/Modal'
+import useToggle from '../helpers/useToggle'
 
 const ListItem = styled.div`
 	display: flex;
@@ -58,19 +58,26 @@ const ListItem = styled.div`
 	}
 `
 
-export default ({data, type, onClick}) => (
-	<ListItem>
-		{Array.from(Object.keys(data)).map((key, i) => {
-			if (labels[type][key]) {
-				return (
-					<div key={i} className={`cell ${key}`}>
-						<SecondaryText text={data[key]} />
-					</div>
-				)
-			}
-		})}
-		<div className="cell"></div>
-		{/* <div className="cell name">
+export default ({data, type, onClick}) => {
+	const [open, toggle] = useToggle(false)
+
+	return (
+		<ListItem>
+			{Array.from(Object.keys(data)).map((key, i) => {
+				if (labels[type][key]) {
+					return (
+						<Fragment key={i}>
+							<div onClick={toggle} className={`cell ${key}`}>
+								<SecondaryText text={data[key]} />
+							</div>
+							{open && <Modal data={data} title="Hôtel" toggle={toggle} />}
+						</Fragment>
+					)
+				}
+			})}
+			<div className="cell"></div>
+
+			{/* <div className="cell name">
 			<SecondaryText text={`${data.firstName} ${data.lastName}`} />
 		</div>
 		<div className="cell sector">
@@ -97,5 +104,6 @@ export default ({data, type, onClick}) => (
 			<Icon size="24" type="caltimes" />
 			<Icon size="24" iconColor="#D80000" type="trash" />
 		</div> */}
-	</ListItem>
-)
+		</ListItem>
+	)
+}

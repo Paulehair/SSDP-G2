@@ -12,6 +12,7 @@ const ModalHead = styled.div`
 	height: 100%;
 	max-height: 70px;
 	margin: 0 0 40px 0;
+	color: white;
 `
 
 export default ({data, title}) => {
