@@ -43,7 +43,7 @@ router
 	.get(hotelController.getHotels)
 	.post(hotelController.createHotel);
 
-router.route('/list/:sector').get(hotelController.getHotelList);
+// router.route('/list/:sector').get(hotelController.getHotelList);
 
 router
 	.route('/:id')
