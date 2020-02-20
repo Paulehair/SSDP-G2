@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 const Input = styled.input`
 	padding: 8px;
@@ -41,7 +41,7 @@ const Input = styled.input`
     margin-top: 9px;
     margin-left: 4px;
   } */
-`;
+`
 
 export default ({
 	data: {
