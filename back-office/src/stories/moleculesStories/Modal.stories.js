@@ -4,8 +4,6 @@ import ModalBody from '../../molecules/ModalBody.jsx'
 import ModalHead from '../../molecules/ModalHead.jsx'
 import Modal from '../../elements/Modal.jsx'
 
-import {action} from '@storybook/addon-actions'
-
 export default {
 	title: 'Modal'
 }
@@ -52,10 +50,6 @@ const modalBodyData = {
 
 const modalHeadBody = {
 	title: 'title'
-}
-
-const actionsData = {
-	onClick: action('onChange')
 }
 
 export const ModalBodyStory = () => {

@@ -20,6 +20,7 @@ const Column = styled.div`
 	}
 `
 export default ({visits}) => {
+	console.log('visits', visits)
 	return (
 		<Column>
 			{visits !== null &&
