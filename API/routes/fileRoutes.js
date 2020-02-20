@@ -10,7 +10,7 @@ const fileController = require('./../controllers/fileController');
  * @apiParam {String} sector Name of the sector
  *
  * @apiSuccess {String} planning Planning for a week by sector
-*/
+ */
 router.route('/:sector').get(fileController.generatePdf);
 
 module.exports = router;

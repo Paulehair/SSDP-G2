@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import Card from './../elements/Card'
+import React from "react";
+import styled from "styled-components";
+import Card from "./../elements/Card";
 
 const Column = styled.div`
   /* SOLUTION TEMPORAIRE NE PAS EFFACER */
@@ -18,12 +18,12 @@ const Column = styled.div`
   &:last-child {
     border-right: none;
   }
-`
+`;
 export default ({ visits }) => {
   return (
     <Column>
       {visits !== null &&
         visits.map((visit, i) => <Card key={i} visit={visit} />)}
     </Column>
-  )
-}
+  );
+};

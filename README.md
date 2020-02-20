@@ -35,28 +35,19 @@ Start working !:tada:
 
 ## About API
 
-### API Documentation
+See documentation in [here](https://github.com/Paulehair/SSDP-G2/tree/DEV/API)
 
-Automatically generate api documentation with comments.
-Run the following command ==from API folder==
+---
 
-<code>
-	yarn apidoc -i ./routes -o ./apidoc
-</code>
+## About back office
 
-You can see the api documentation [here](http://35.180.253.143:9000/api/documentation/)
+See documentation in [here](https://github.com/Paulehair/SSDP-G2/tree/DEV/back-office)
 
-### Architecture
-
-```sequence
-Back Office or Mobile App->API: 1 - Request URL to API
-Note right of API: 2 - API process request
-API->Database: 3 - Request Data
-Database-->API: 4 - Send Data
-API->Back Office or Mobile App: 5 - Send Data to front
-```
+---
 
 ## Deployment
+
+### Docker
 
 ### Terraform
 
@@ -65,6 +56,8 @@ See documentation in [here](https://github.com/Paulehair/SSDP-G2/tree/DEV/terraf
 ### Ansible
 
 See documentation in [here](https://github.com/Paulehair/SSDP-G2/tree/DEV/ansible)
+
+---
 
 ## :link: Built with
 
@@ -89,5 +82,3 @@ See documentation in [here](https://github.com/Paulehair/SSDP-G2/tree/DEV/ansibl
 -   [Anthony Reynaud](https://github.com/ynohtn) - développeur front
 -   [Simon Soleau](https://github.com/SoleauSimon) - développeur front
 -   [Ketsia Pedro](https://github.com/faithpedro) - développeuse back
-
-## Licence

@@ -10,8 +10,8 @@ webapp_api_tag: 'latest'
 webapp_api_name: 'ssdp-api-prod'
 
 webapp_public_ip: '35.180.253.143'
-webapp_api_endpoint: http://{{webapp_public_ip}}:9000
+webapp_api_endpoint: '{{webapp_public_ip}}:9000'
 
-webapp_db_password: db_password;
-webapp_db_user: db_user
+webapp_db_password: xYarJ01b;
+webapp_db_user: dbUser
 webapp_db_name: ssdp-mongodb-prod

@@ -1,0 +1,294 @@
+.ant-fullcalendar-header {
+  display: flex;
+  margin: 0 auto 10px;
+  width: 100%;
+  min-width: 260px;
+  padding: 0 !important;
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
+}
+
+/* HIDE SCROLLBAR, STILL SCROLLABLE */
+::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body > * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+@font-face {
+  font-family: "fontello";
+  src: url("/font/fontello.eot?23349820");
+  src: url("/font/fontello.eot?23349820#iefix") format("embedded-opentype"),
+    url("/font/fontello.woff?23349820") format("woff"),
+    url("/font/fontello.ttf?23349820") format("truetype"),
+    url("/font/fontello.svg?23349820#fontello") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: 0.2em;
+  text-align: center;
+  /* opacity: .8; */
+
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-feature-settings: normal;
+  font-variant: normal;
+  text-transform: none;
+
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: 0.2em;
+
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.icon-logout:before {
+  content: "\e800";
+}
+
+/* '' */
+.icon-trash:before {
+  content: "\e801";
+}
+
+/* '' */
+.icon-cancel:before {
+  content: "\e802";
+}
+
+/* '' */
+.icon-bell:before {
+  content: "\e803";
+}
+
+/* '' */
+.icon-search:before {
+  content: "\e804";
+}
+
+/* '' */
+.icon-calendarplus:before {
+  content: "\f271";
+}
+
+/* '' */
+.icon-calendartimes:before {
+  content: "\f273";
+}
+
+/* '' */
+
+.download {
+  border: none;
+  padding: 12px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  display: -webkit-box;
+  background-color: #006cb1;
+  display: flex;
+  outline: none;
+  cursor: pointer;
+  align-items: center;
+}
+
+.icon-logout:before {
+  content: "\e800";
+} /* '' */
+.icon-trash:before {
+  content: "\e801";
+} /* '' */
+.icon-cancel:before {
+  content: "\e802";
+} /* '' */
+.icon-bell:before {
+  content: "\e803";
+} /* '' */
+.icon-search:before {
+  content: "\e804";
+} /* '' */
+.icon-calendarplus:before {
+  content: "\f271";
+} /* '' */
+.icon-calendartimes:before {
+  content: "\f273";
+} /* '' */
+
+
+/*# sourceMappingURL=main.234b4a33.chunk.css.map*/

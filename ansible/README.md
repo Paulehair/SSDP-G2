@@ -21,3 +21,7 @@ In group_vars/webapp.yml you can change database credentials to whatever you wan
 
 Replace <path-to-your-private-key> with the path to key generated in previous step (should be "../terraform/id_rsa_aws") an run this command from ansible folder
 <code>\$ ansible-playbook -i inventory/inventory common.yml --user ubuntu --key <path-to-your-private-key></code>
+
+## Author
+
+Paule Herman

@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const hotelController = require('./../controllers/hotelController');
+const authController = require('./../controllers/authController');
 
 // Uncomment route to import Hotels data
 // router.route('/import').get(hotelController.importHotels);
@@ -182,7 +183,7 @@ router
  *    }
  */
 
-router.route('/list/:sector').get(hotelController.getHotelList);
+// router.route('/list/:sector').get(hotelController.getHotelList);
 
 router
 	.route('/:id')

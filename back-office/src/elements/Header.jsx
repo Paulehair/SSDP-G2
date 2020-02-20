@@ -25,7 +25,7 @@ const Header = styled.header`
 	}
 `
 
-export default () => {
+export default props => {
 	return (
 		<Header>
 			<div className="headerContent wrapper">
