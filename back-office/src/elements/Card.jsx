@@ -27,7 +27,6 @@ const Card = styled.div`
 `
 
 export default props => {
-	console.log('props', props)
 	return (
 		<Card key={props._id}>
 			<Details
