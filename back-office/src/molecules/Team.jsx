@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
-import Vignette from '../atoms/Vignette'
-import SecondaryText from '../atoms/SecondaryText'
+import Vignette from "../atoms/Vignette";
+import SecondaryText from "../atoms/SecondaryText";
 
 const Team = styled.div`
   width: 100%;
@@ -34,20 +34,21 @@ const Team = styled.div`
       /* padding-left: 20px; */
     }
   }
-`
+`;
 
 export default ({ team }) => {
   return (
     <Team>
-      {team.map((e, i) => (
-        <div key={i}>
-          <Vignette
-            primary={i % 2 === 0 ? true : false}
-            initials={`${e.firstName[0]}${e.lastName[0]}`}
-          />
-          <SecondaryText text={`${e.firstName} ${e.lastName}`} key={i} />
-        </div>
-      ))}
+      {team &&
+        team.map((e, i) => (
+          <div key={i}>
+            <Vignette
+              primary={i % 2 === 0 ? true : false}
+              initials={`${e.firstName[0]}${e.lastName[0]}`}
+            />
+            <SecondaryText text={`${e.firstName} ${e.lastName}`} key={i} />
+          </div>
+        ))}
     </Team>
-  )
-}
+  );
+};

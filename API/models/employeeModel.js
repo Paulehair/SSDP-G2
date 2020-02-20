@@ -28,10 +28,7 @@ const employeeSchema = new mongoose.Schema({
 			],
 			default: 'user'
 	},
-	sector: {
-		type: String,
-		required: [true, 'An employee must have a sector']
-	},
+	sector_id: String,
 	address: {
 		type: String
 	},

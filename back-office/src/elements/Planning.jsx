@@ -1,23 +1,173 @@
-import React from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import styled from 'styled-components'
-
+import SectorContext from './../context/SectorContext'
+import Board, {onCardClick} from 'react-trello'
 import TableHead from '../molecules/TableHead'
-import Table from '../molecules/Table'
+import Card from '../elements/Card'
+import useToggle from '../helpers/useToggle'
+
+// import NotifBanner from './NotifBanner'
+import API from './../utils/API'
 
 const Planning = styled.section`
-  width: 100%;
-  height: 100%;
-  margin: 0 0 0 15px;
-  background: ${({ theme: { variables } }) => variables.white};
-  border-radius: 8px;
-  overflow: hidden;
-`
+	position: relative;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	background: ${({theme: {variables}}) => variables.white};
+	border-radius: 8px;
+	margin: 15px;
+	overflow: hidden;
 
-export default ({ planning }) => {
-  return (
-    <Planning>
-      <TableHead />
-      <Table planning={planning} />
-    </Planning>
-  )
+	.react-trello-board {
+		width: 100%;
+		height: 90vh;
+		/* max-width: 1115px; */
+		margin: 0 auto;
+		overflow-y: scroll;
+		padding: 0;
+
+		> div {
+			display: flex;
+			justify-content: center;
+			width: 100%;
+			height: 100%;
+
+			.smooth-dnd-container.horizontal {
+				/* max-width: 1115px; */
+				margin: 0 auto;
+				width: 100%;
+				height: 100%;
+				display: grid;
+				grid-template-rows: auto;
+				grid-template-columns: repeat(5, 1fr);
+
+				.react-trello-lane {
+					padding: 0;
+					margin: 0;
+					background: ${({theme: {variables}}) => variables.white};
+					border-right: 1px solid ${({theme: {variables}}) => variables.grey};
+
+					&:last-child {
+						border-right: none;
+					}
+
+					.sc-fzXfLV.gzqtHV {
+						min-width: 196px;
+					}
+
+					.smooth-dnd-container.vertical {
+						height: 100%;
+					}
+				}
+			}
+		}
+	}
+`
+const data = {
+	lanes: [
+		{
+			id: 'lane1',
+			title: 'Planned Tasks',
+			label: '2/2',
+			cards: [
+				{
+					id: 'Card1',
+					title: 'Write Blog',
+					description: 'Can AI make memes',
+					label: '30 mins',
+					draggable: false
+				},
+				{
+					id: 'Card2',
+					title: 'Pay Rent',
+					description: 'Transfer via NEFT',
+					label: '5 mins',
+					metadata: {sha: 'be312a1'}
+				}
+			]
+		},
+		{
+			id: 'lane2',
+			title: 'Completed',
+			label: '0/0',
+			cards: []
+		}
+	]
+}
+export default () => {
+	const [planning, setPlanning] = useState(null)
+	const [draggablePlanning, setDraggablePlanning] = useState(null)
+	const [loading, setLoading] = useState(true)
+	const [open, toggle] = useToggle(false)
+	const {currentSector} = useContext(SectorContext)
+
+	useEffect(
+		_ => {
+			setLoading(true)
+			;(async function getPlanning() {
+				const planningResponse = await API.getPlanning(currentSector)
+				const formattedPlanning = format(planningResponse.data.planning)
+				setPlanning(planningResponse.data.planning)
+				setDraggablePlanning(formattedPlanning)
+				setLoading(false)
+			})()
+		},
+		[currentSector]
+	)
+
+	const handleClick = (cardId, metadata, laneId) => {
+		console.log(cardId)
+	}
+
+	const format = array => {
+		const newPlanning = {
+			lanes: []
+		}
+
+		array.forEach((el, i) => {
+			el.forEach((card, i) => {
+				card.id = card._id
+				card.initials = []
+				card.team.forEach(el => {
+					let initials = `${el.firstName[0]}${el.lastName[0]}`
+					card.initials.push(initials)
+				})
+			})
+			let lane = {
+				id: `lane${i + 1}`,
+				cards: el
+			}
+			newPlanning.lanes.push(lane)
+		})
+
+		newPlanning.lanes.push({
+			id: 'lane5',
+			cards: []
+		})
+
+		return newPlanning
+	}
+
+	const boardStyle = {
+		backgroundColor: '#FFFFFF'
+	}
+
+	return (
+		<Planning>
+			<TableHead />
+			{loading ? (
+				<p>loading...</p>
+			) : (
+				<Board
+					onCardClick={onCardClick}
+					style={boardStyle}
+					components={{Card: Card}}
+					laneDraggable={false}
+					data={draggablePlanning}
+				/>
+			)}
+			{/* <NotifBanner /> */}
+		</Planning>
+	)
 }

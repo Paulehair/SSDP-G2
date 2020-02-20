@@ -23,3 +23,13 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# terraform
+/terraform/ssh_keys
+/terraform/.terraform
+/terraform/terraform.tfstate
+/terraform/terraform.tfstate.backup
+terraform/shared/credentials
+
+# mongo data
+/data/db

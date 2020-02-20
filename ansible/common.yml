@@ -1,0 +1,12 @@
+---
+- name: Install common libs and packages
+  hosts: webapp
+  gather_facts: no
+  roles:
+      - { role: common, tags: ['common'] }
+      - { role: geerlingguy.docker, tags: ['docker'] }
+
+- name: Install web service
+  hosts: webapp
+  roles:
+      - { role: webapp, tags: ['webapp'] }

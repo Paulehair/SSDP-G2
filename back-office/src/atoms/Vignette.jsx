@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
 const Vignette = styled.div`
   display: flex;
@@ -10,13 +10,13 @@ const Vignette = styled.div`
   font-size: 12px;
   line-height: 24px;
   letter-spacing: 1px;
-  color: ${({ theme: {variables} }) => variables.black};
+  color: ${({ theme: { variables } }) => variables.black};
   border-radius: 100%;
-  background-color: ${({ theme: {variables} }) => variables.white};
+  background-color: ${({ theme: { variables } }) => variables.white};
   position: absolute;
-  right: ${({ primary }) => (primary ? 'auto' : '0')};
-`
+  right: ${({ primary }) => (primary ? "auto" : "0")};
+`;
 
 export default ({ initials, primary }) => {
-  return <Vignette primary={primary}>{initials}</Vignette>
-}
+  return <Vignette primary={primary}>{initials}</Vignette>;
+};
