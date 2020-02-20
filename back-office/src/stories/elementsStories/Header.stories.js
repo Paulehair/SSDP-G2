@@ -12,6 +12,6 @@ const actionsData = {
 	onClick: action('test onclick')
 }
 
-export const CardStory = () => {
+export const HeaderStory = () => {
 	return <Header />
 }

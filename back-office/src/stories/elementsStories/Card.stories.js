@@ -20,5 +20,9 @@ const cardData = {
 }
 
 export const CardStory = () => {
-	return <Card {...cardData} />
+	return (
+		<div style={{width: 250}}>
+			<Card {...cardData} />
+		</div>
+	)
 }
