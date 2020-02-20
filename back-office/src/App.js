@@ -13,7 +13,7 @@ const App = styled.main`
 	width: 100%;
 	margin: 0 auto;
 	position: relative;
-
+	background-color: ${({theme: {variables}}) => variables.grey};
 	.wrapper {
 		display: flex;
 		justify-content: center;

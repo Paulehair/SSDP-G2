@@ -90,18 +90,3 @@ exports.deleteEmployee = async (req, res) => {
 		});
 	}
 };
-
-exports.importEmployees = async (req, res) => {
-	try {
-		const data = JSON.parse(
-			fs.readFileSync(`${__dirname}/../data/employees.json`)
-		);
-
-		await Employee.create(data.employees);
-		res.json({
-			status: 'success'
-		});
-	} catch (err) {
-		console.warn(err);
-	}
-};
