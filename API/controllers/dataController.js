@@ -54,7 +54,10 @@ exports.importEmployees = async (req, res, next) => {
 
 		await Employee.create(data.employees);
 
-		next();
+		// console.log('💾 Data inserted successfully.');
+		// res.json({
+		// 	status: 'success'
+		// });
 	} catch (err) {
 		console.warn(err);
 	}
@@ -63,11 +66,25 @@ exports.importEmployees = async (req, res, next) => {
 exports.importTeams = async (req, res) => {
 	try {
 		const data = JSON.parse(fs.readFileSync(`${__dirname}/../data/teams.json`));
-		await Team.create(data.teams);
+		const sectors = await Sector.find();
+		const employees = await Employee.find();
+
+		data.teams.forEach(team => {
+			const teamSector = sectors.find(sector => sector.zone === team.sector_id);
+			team.sector_id = teamSector._id;
+			team.team.forEach(employee => {
+				const teamEmployee = employees.find(
+					el => el.email === employee.staff_id
+				);
+				employee.staff_id = teamEmployee._id;
+			});
+		});
+		const teams = await Team.create(data.teams);
 
 		console.log('💾 Data inserted successfully.');
 		res.json({
-			status: 'success'
+			status: 'success',
+			teams
 		});
 	} catch (err) {
 		console.warn(err);

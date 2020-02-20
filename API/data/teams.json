@@ -1,0 +1,102 @@
+{
+  "teams": [{
+      "sector_id": "75",
+      "team": [{
+          "staff_id": "youssouf.salarie9@samusocial.net"
+        },
+        {
+          "staff_id": "stephane.salarie11@samusocial.net"
+        }
+      ]
+    },
+    {
+      "sector_id": "75",
+      "team": [{
+          "staff_id": "flora.salarie37@samusocial.net"
+        },
+        {
+          "staff_id": "ramdane.salarie42@samusocial.net"
+        },
+        {
+          "staff_id": "jeannette.salarie28@samusocial.net"
+        }
+      ]
+    },
+    {
+      "sector_id": "93",
+      "team": [{
+          "staff_id": "clement.salarie27@samusocial.net"
+        },
+        {
+          "staff_id": "alain.salarie34@samusocial.net"
+        }
+      ]
+    },
+    {
+      "sector_id": "93",
+      "team": [{
+          "staff_id": "salarie.admin@samusocial.net"
+        },
+        {
+          "staff_id": "rehan.salarie40@samusocial.net"
+        }
+      ]
+    },
+    {
+      "sector_id": "93",
+      "team": [{
+          "staff_id": "anouck.salarie2@samusocial.net"
+        },
+        {
+          "staff_id": "mokrane.salarie8@samusocial.net"
+        }
+      ]
+    },
+    {
+      "sector_id": "92-94",
+      "team": [{
+          "staff_id": "quebuathe.salarie4@samusocial.net"
+        },
+        {
+          "staff_id": "leo.salarie17@samusocial.net"
+        },
+        {
+          "staff_id": "sarah.salarie21@samusocial.net"
+        }
+      ]
+    },
+    {
+      "sector_id": "78-95",
+      "team": [{
+          "staff_id": "patricia.salarie22@samusocial.net"
+        },
+        {
+          "staff_id": "oumar.salarie26@samusocial.net"
+        },
+        {
+          "staff_id": "dominique.salarie39@samusocial.net"
+        }
+      ]
+    },
+    {
+      "sector_id": "77-91",
+      "team": [{
+          "staff_id": "georgioangelo.salarie43@samusocial.net"
+        },
+        {
+          "staff_id": "jacques-philippe.salarie41@samusocial.net"
+        }
+      ]
+    },
+    {
+      "sector_id": "77-91",
+      "team": [{
+          "staff_id": "vanessa.salarie5@samusocial.net"
+        },
+        {
+          "staff_id": "jonathan.salarie31@samusocial.net"
+        }
+      ]
+    }
+  ]
+}
