@@ -6,14 +6,14 @@ export default {
 		},
 		login: [
 			{
-				name: 'login',
-				type: 'textlight',
-				text: 'Identifiez-vous',
-				placeholder: 'Exemple: YanSolo'
+				name: 'email',
+				type: 'email',
+				text: 'Identifiant',
+				placeholder: 'Exemple: eric.priou@samu-social.net'
 			},
 			{
-				name: 'login',
-				type: 'textlight',
+				name: 'password',
+				type: 'password',
 				text: 'Mot de passe'
 			}
 		],

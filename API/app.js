@@ -30,6 +30,9 @@ app.use('/api/hotels', hotelRouter);
 const visitRouter = require('./routes/visitRoutes');
 app.use('/api/visits', visitRouter);
 
+const planningRouter = require('./routes/planningRoutes');
+app.use('/api/planning', planningRouter);
+
 const sectorRouter = require('./routes/sectorRoutes');
 app.use('/api/sectors', sectorRouter);
 

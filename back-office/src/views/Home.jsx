@@ -8,7 +8,7 @@ export default ({sectors}) => {
 		<div className="home">
 			<Sectors sectors={sectors} />
 			<div className="wrapper --main">
-				<Sidebar sectors={sectors} />
+				{/* <Sidebar sectors={sectors} /> */}
 				<Planning />
 			</div>
 		</div>

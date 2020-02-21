@@ -62,6 +62,13 @@ export default ({data, type, onClick}) => (
 	<ListItem>
 		{Array.from(Object.keys(data)).map((key, i) => {
 			if (labels[type][key]) {
+				if (key === 'lastVisit') {
+					return (
+						<div key={i} className={`cell ${key}`}>
+							<SecondaryText text={new Date(data[key]).toLocaleDateString()} />
+						</div>
+					)
+				}
 				return (
 					<div key={i} className={`cell ${key}`}>
 						<SecondaryText text={data[key]} />

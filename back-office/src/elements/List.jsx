@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 import PrimaryText from '../atoms/PrimaryText'
 import ListItem from '../molecules/ListItem'
-// import Input from '../atoms/Input'
+import Loader from '../atoms/Loader'
 import Modal from './Modal'
 import useToggle from '../helpers/useToggle'
 import form from '../data/formData'
@@ -112,7 +112,7 @@ export default props => {
 	}
 
 	if (loading) {
-		return <p>loading</p>
+		return <Loader />
 	}
 
 	return (

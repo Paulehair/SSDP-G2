@@ -19,7 +19,9 @@ const fs = require('fs');
 // });
 
 exports.getHotels = catchAsync(async (req, res) => {
-	const hotels = await Hotel.find().lean();
+	const hotels = await Hotel.find()
+		.sort({sector_id: 1, anomaly: 1})
+		.lean();
 	const sectors = await Sector.find().lean();
 
 	hotels.forEach(hotel => {

@@ -1,11 +1,14 @@
 const mongoose = require('mongoose');
 
 const planningSchema = new mongoose.Schema({
-	visits: [
-		{
-			_id: false,
-			visit_id: String
-		}
+	sector_id: String,
+	lanes: [
+		[
+			{
+				_id: false,
+				visit_id: String
+			}
+		]
 	]
 });
 
