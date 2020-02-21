@@ -17,7 +17,7 @@ const employeeSchema = new mongoose.Schema({
 	password: {
 		type: String,
 		required: [true, 'An employee must have a password'],
-		default: 'intervenant'
+		default: 'admin'
 	},
 	role: {
 		type: String,

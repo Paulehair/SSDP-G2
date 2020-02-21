@@ -1,0 +1,4 @@
+- name: Install web service
+  hosts: webapp
+  roles:
+      - { role: dockerLauncher, tags: ['dockerLauncher'] }

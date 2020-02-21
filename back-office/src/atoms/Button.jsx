@@ -21,9 +21,17 @@ const Button = styled.button`
 	}
 `
 
-export default ({color, fontWeight, text, type, backgroundColor, onClick}) => {
+export default ({
+	color,
+	fontWeight,
+	text,
+	type,
+	btnType,
+	backgroundColor,
+	onClick
+}) => {
 	return (
-		<Button onClick={onClick} backgroundColor={backgroundColor}>
+		<Button onClick={onClick} type={btnType} backgroundColor={backgroundColor}>
 			<PrimaryText
 				backgroundColor={backgroundColor}
 				textColor={backgroundColor === '#006CB1' ? 'white' : 'black'}

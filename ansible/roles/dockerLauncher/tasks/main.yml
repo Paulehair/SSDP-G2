@@ -1,0 +1,15 @@
+- name: Docker-compose down
+  docker_compose:
+      project_src: /opt/app/
+      state: absent
+
+- name: Pull docker images
+  docker_compose:
+      project_src: /opt/app/
+      pull: yes
+      state: present
+
+- name: Run docker compose
+  docker_compose:
+      project_src: /opt/app/
+      state: present

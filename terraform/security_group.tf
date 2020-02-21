@@ -6,7 +6,7 @@ resource "aws_default_security_group" "default" {
     to_port     = 22
     protocol    = "tcp"
     description = "HETIC IP"
-    cidr_blocks = ["78.31.41.54/32"]
+    cidr_blocks = ["78.31.41.54/32", "90.22.234.151/32"]
   }
   ingress {
     # TLS
@@ -14,7 +14,7 @@ resource "aws_default_security_group" "default" {
     to_port     = 8080
     protocol    = "tcp"
     description = "HETIC IP"
-    cidr_blocks = ["78.31.41.54/32"]
+    cidr_blocks = ["78.31.41.54/32", "90.22.234.151/32"]
   }
   ingress {
     # TLS
@@ -22,7 +22,7 @@ resource "aws_default_security_group" "default" {
     to_port     = 9000
     protocol    = "tcp"
     description = "HETIC IP"
-    cidr_blocks = ["78.31.41.54/32"]
+    cidr_blocks = ["78.31.41.54/32", "90.22.234.151/32"]
   }
   egress {
     from_port   = 0

@@ -1,15 +1,32 @@
+- name: Create Application directory
+  file:
+      path: /opt/app
+      state: directory
+  become: yes
+  become_method: sudo
+
+- name: Change folder ownership, group and permissions
+  file:
+      dest: /opt/app
+      owner: ubuntu
+      group: ubuntu
+      mode: u=rwX,g=rX,o=rX
+      recurse: yes
+  become: yes
+  become_method: sudo
+
 - name: Copy .env.production file
   template:
       src: templates/.env.production
-      dest: /home/ubuntu/.env.production
+      dest: /opt/app/.env.production
 
 - name: Copy docker-compose configuration file
   template:
       src: templates/docker-compose.yml
-      dest: /home/ubuntu/docker-compose.yml
+      dest: /opt/app/docker-compose.yml
   notify: restart docker stack
 
-- name: Run docker compose application stack
-  docker_compose:
-      project_src: /home/ubuntu/
-      state: present
+- name: Run docker compose
+docker_compose:
+    project_src: /opt/app/
+    state: present

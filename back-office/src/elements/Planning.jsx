@@ -1,7 +1,8 @@
 import React, {useState, useContext, useEffect} from 'react'
 import styled from 'styled-components'
+import Loader from './../atoms/Loader'
 import SectorContext from './../context/SectorContext'
-import Board, {onCardClick} from 'react-trello'
+import Board, {onCardClick, onDataChange} from 'react-trello'
 import TableHead from '../molecules/TableHead'
 import Card from '../elements/Card'
 import useToggle from '../helpers/useToggle'
@@ -12,7 +13,7 @@ import API from './../utils/API'
 const Planning = styled.section`
 	position: relative;
 	width: 100%;
-	height: 100%;
+	height: 100vh;
 	margin: 0;
 	background: ${({theme: {variables}}) => variables.white};
 	border-radius: 8px;
@@ -22,7 +23,6 @@ const Planning = styled.section`
 	.react-trello-board {
 		width: 100%;
 		height: 90vh;
-		/* max-width: 1115px; */
 		margin: 0 auto;
 		overflow-y: scroll;
 		padding: 0;
@@ -34,7 +34,6 @@ const Planning = styled.section`
 			height: 100%;
 
 			.smooth-dnd-container.horizontal {
-				/* max-width: 1115px; */
 				margin: 0 auto;
 				width: 100%;
 				height: 100%;
@@ -65,8 +64,36 @@ const Planning = styled.section`
 	}
 `
 
+const plannings = [
+	{
+		sector_id: '5e4ebe3ad8333901e34cea18',
+		planning_id: '5e4f28aca60a7704f9e13104'
+	},
+
+	{
+		sector_id: '5e4ebe3ad8333901e34cea19',
+		planning_id: '5e4f28bda60a7704f9e13128'
+	},
+
+	{
+		sector_id: '5e4ebe3ad8333901e34cea1b',
+		planning_id: '5e4f28cca60a7704f9e13134'
+	},
+
+	{
+		sector_id: '5e4ebe3ad8333901e34cea1a',
+		planning_id: '5e4f28dba60a7704f9e13143'
+	},
+
+	{
+		sector_id: '5e4ebe3ad8333901e34cea1c',
+		planning_id: '5e4f28eca60a7704f9e13166'
+	}
+]
+
 export default () => {
-	const [planning, setPlanning] = useState(null)
+	// const [planning, setPlanning] = useState(null)
+	const [planningId, setPlanningId] = useState(null)
 	const [draggablePlanning, setDraggablePlanning] = useState(null)
 	const [loading, setLoading] = useState(true)
 	const [open, toggle] = useToggle(false)
@@ -76,10 +103,13 @@ export default () => {
 		_ => {
 			setLoading(true)
 			;(async function getPlanning() {
-				const planningResponse = await API.getPlanning(currentSector)
-				const formattedPlanning = format(planningResponse.data.planning)
-				setPlanning(planningResponse.data.planning)
-				setDraggablePlanning(formattedPlanning)
+				const pl = plannings.find(p => p.sector_id === currentSector)
+				const planningResponse = await API.getPlanning(pl.planning_id)
+				setPlanningId(pl.planning_id)
+				// const formattedPlanning = format(planningResponse.data.planning)
+				const planningFormatted = format(planningResponse.data.planning)
+				// setPlanning(planningResponse.data.planning)
+				setDraggablePlanning(planningFormatted)
 				setLoading(false)
 			})()
 		},
@@ -87,53 +117,51 @@ export default () => {
 	)
 
 	const format = array => {
-		const newPlanning = {
+		const planningFormatted = {
 			lanes: []
 		}
-
-		array.forEach((el, i) => {
-			el.forEach((card, i) => {
-				card.id = card._id
-				card.initials = []
-				card.team.forEach(el => {
-					let initials = `${el.firstName[0]}${el.lastName[0]}`
-					card.initials.push(initials)
-				})
+		array.lanes.forEach((lane, i) => {
+			let newLane = {}
+			newLane.id = `lane${i}`
+			newLane.cards = lane
+			newLane.cards.forEach(card => {
+				card.id = card.visit_id
 			})
-			let lane = {
-				id: `lane${i + 1}`,
-				cards: el
-			}
-			newPlanning.lanes.push(lane)
+			planningFormatted.lanes.push(newLane)
 		})
-
-		newPlanning.lanes.push({
-			id: 'lane5',
-			cards: []
-		})
-
-		return newPlanning
+		return planningFormatted
 	}
 
 	const boardStyle = {
 		backgroundColor: '#FFFFFF'
 	}
 
+	const onDataChange = async lanes => {
+		await API.updatePlanning(planningId, lanes)
+	}
+
+	const onCardDelete = id => {
+		// log l'id de la carte supprimée
+		console.log(id)
+	}
+
 	return (
 		<Planning>
 			<TableHead />
 			{loading ? (
-				<p>loading...</p>
+				<Loader />
 			) : (
 				<Board
-					onCardClick={onCardClick}
 					style={boardStyle}
-					components={{Card: Card}}
+					components={{
+						Card: Card
+					}}
 					laneDraggable={false}
+					onDataChange={onDataChange}
+					onCardDelete={onCardDelete}
 					data={draggablePlanning}
 				/>
 			)}
-			{/* <NotifBanner /> */}
 		</Planning>
 	)
 }

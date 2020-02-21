@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
-import PrimaryText from '../atoms/PrimaryText'
+import Input from '../atoms/Input'
 import ListItem from '../molecules/ListItem'
-// import Input from '../atoms/Input'
+import Loader from '../atoms/Loader'
 import Modal from './Modal'
 import useToggle from '../helpers/useToggle'
 import form from '../data/formData'
@@ -36,9 +36,13 @@ const List = styled.section`
 			flex: 1;
 		}
 	}
+	.listInput {
+		padding: 25px 20px;
+	}
 `
 export default props => {
 	const [data, setData] = useState(null)
+	const [search, setSearch] = useState('')
 	const [type, setType] = useState(null)
 	const [loading, setLoading] = useState(true)
 	const [open, toggle] = useToggle(false)
@@ -112,20 +116,39 @@ export default props => {
 	}
 
 	if (loading) {
-		return <p>loading</p>
+		return <Loader />
+	}
+
+	const filtered = el =>
+		el.name.toLowerCase().includes(search.replace(/ +?/g, '').toLowerCase()) ||
+		(el.address &&
+			el.address
+				.toLowerCase()
+				.includes(search.replace(/ +?/g, '').toLowerCase()))
+
+	const propsData = {
+		name: 'Search',
+		type: 'textlight',
+		placeholder: `Rechercher un ${
+			type == 'employees' ? 'employé' : 'hôtel'
+		} ...`,
+		value: search,
+		onChange: evt => setSearch(evt.target.value)
 	}
 
 	return (
 		<List>
+			<div className="listInput">
+				<Input data={propsData} searchIcon={true} />
+			</div>
 			<div>
 				{setHead()}
 				<div className="container">
-					{data.map((el, i) => (
+					{data.filter(filtered).map((el, i) => (
 						<ListItem key={i} type={type} data={el} onClick={toggle} />
 					))}
 				</div>
 			</div>
-			{/* <Input searchIcon={true} placeholder='Rechercher nom / prénom...' type='text' /> */}
 			{open && (
 				<Modal
 					data={form.input.addEmployee}
