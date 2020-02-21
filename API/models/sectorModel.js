@@ -3,8 +3,8 @@ const bcrypt = require('bcryptjs');
 
 const sectorSchema = new mongoose.Schema({
 	zone: {
-    type: String,
-    unique: true,
+		type: String,
+		unique: true,
 		required: true
 	}
 });

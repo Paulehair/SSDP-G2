@@ -1,9 +1,7 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import Binome from './../molecules/Binome'
+import Icon from '../atoms/Icon'
 import Details from './../molecules/Details'
-import Modal from './../elements/Modal'
-import useToggle from '../helpers/useToggle'
 
 import {backgroundColor} from './../data/theme'
 
@@ -13,8 +11,8 @@ const Card = styled.div`
 	justify-content: space-between;
 	background: ${backgroundColor};
 	border-radius: 8px;
-	padding: 16px 10px 10px 16px;
 	margin: 8px 0 0 0;
+	padding-bottom: 10px;
 	color: #fff;
 
 	:first-child {
@@ -24,17 +22,69 @@ const Card = styled.div`
 	:last-child {
 		margin: 8px 0;
 	}
+
+	div.inner_ctn {
+		padding: 16px 10px 10px 16px;
+	}
+
+	p {
+		font-size: 14px;
+		opacity: 1;
+		&:not(:last-child) {
+			margin-bottom: 5px;
+		}
+		&.team {
+			text-align: right;
+		}
+	}
+
+	i {
+		font-size: 18px;
+		color: #fff;
+		position: absolute;
+		cursor: pointer;
+		top: 15px;
+		right: 10px;
+	}
 `
 
 export default props => {
+	const minToHours = num => {
+		var hours = Math.floor(num / 60)
+		var minutes = num % 60
+		if (hours === 0) {
+			return minutes + ' minutes'
+		}
+		return hours + 'h' + minutes
+	}
+
+	const dontDelete = e => {
+		// console.log(e)
+		e.stopPropagation()
+	}
+
 	return (
-		<Card key={props._id}>
-			<Details
-				hotel={props.name}
-				rooms={`${props.rooms} chambres`}
-				hour="10h30 - 13h"
+		<Card key={props._id} onClick={() => props.onDelete()}>
+			<div className="inner_ctn" onClick={dontDelete}>
+				<Details
+					hotel={props.hotel_name}
+					anomaly={`Note actuelle : ${props.anomaly}`}
+					rooms={`${props.rooms} chambres`}
+					hour={`Durée estimée : ${minToHours(props.duration)}`}
+				/>
+				<br />
+				{props.team.map((el, i) => (
+					<p className="team" key={i}>
+						{el.firstName} {el.lastName}
+					</p>
+				))}
+			</div>
+
+			<Icon
+				iconColor={({theme: {variables}}) => variables.white}
+				size={20}
+				type={`trash`}
 			/>
-			<Binome initials={props.initials} />
 		</Card>
 	)
 }
