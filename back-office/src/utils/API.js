@@ -72,8 +72,8 @@ export default {
 		return axios.delete(`${URL.global}/${URL.params.sectors}/${id}`)
 	},
 
-	getPlanning(id) {
-		return axios.get(`${URL.global}/${URL.params.planning}/${id}`)
+	getPlanning(sector) {
+		return axios.get(`${URL.global}/${URL.params.planning}/${sector}`)
 	},
 
 	updatePlanning(id, body) {

@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
-import ArrowAsset from "../assets/arrow.svg";
+import ArrowAsset from '../assets/arrow.svg'
 
 const Arrow = styled.div`
   width: 30px;
@@ -12,12 +12,12 @@ const Arrow = styled.div`
   position: absolute;
   top: calc( 50% - 15px);
   border-radius: 8px;
-  right: ${({ direction }) => direction == "right" && 0};
+  right: ${({direction}) => direction === 'right' && 0};
   cursor: pointer;
-  transform: ${({ direction }) =>
-    direction == "left" ? null : "rotate(180deg)"};
-`;
+  transform: ${({direction}) =>
+		direction === 'left' ? null : 'rotate(180deg)'};
+`
 
-export default ({ direction }) => {
-  return <Arrow direction={direction}></Arrow>;
-};
+export default ({direction}) => {
+	return <Arrow direction={direction}></Arrow>
+}

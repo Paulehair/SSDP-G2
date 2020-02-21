@@ -2,10 +2,9 @@ import React, {useState, useContext, useEffect} from 'react'
 import styled from 'styled-components'
 import Loader from './../atoms/Loader'
 import SectorContext from './../context/SectorContext'
-import Board, {onCardClick, onDataChange} from 'react-trello'
+import Board from 'react-trello'
 import TableHead from '../molecules/TableHead'
 import Card from '../elements/Card'
-import useToggle from '../helpers/useToggle'
 
 // import NotifBanner from './NotifBanner'
 import API from './../utils/API'
@@ -64,51 +63,20 @@ const Planning = styled.section`
 	}
 `
 
-const plannings = [
-	{
-		sector_id: '5e4ebe3ad8333901e34cea18',
-		planning_id: '5e4f28aca60a7704f9e13104'
-	},
-
-	{
-		sector_id: '5e4ebe3ad8333901e34cea19',
-		planning_id: '5e4f28bda60a7704f9e13128'
-	},
-
-	{
-		sector_id: '5e4ebe3ad8333901e34cea1b',
-		planning_id: '5e4f28cca60a7704f9e13134'
-	},
-
-	{
-		sector_id: '5e4ebe3ad8333901e34cea1a',
-		planning_id: '5e4f28dba60a7704f9e13143'
-	},
-
-	{
-		sector_id: '5e4ebe3ad8333901e34cea1c',
-		planning_id: '5e4f28eca60a7704f9e13166'
-	}
-]
-
 export default () => {
 	// const [planning, setPlanning] = useState(null)
 	const [planningId, setPlanningId] = useState(null)
 	const [draggablePlanning, setDraggablePlanning] = useState(null)
 	const [loading, setLoading] = useState(true)
-	const [open, toggle] = useToggle(false)
 	const {currentSector} = useContext(SectorContext)
 
 	useEffect(
 		_ => {
 			setLoading(true)
 			;(async function getPlanning() {
-				const pl = plannings.find(p => p.sector_id === currentSector)
-				const planningResponse = await API.getPlanning(pl.planning_id)
-				setPlanningId(pl.planning_id)
-				// const formattedPlanning = format(planningResponse.data.planning)
+				const planningResponse = await API.getPlanning(currentSector)
+				setPlanningId(planningResponse.data.planning.planning_id)
 				const planningFormatted = format(planningResponse.data.planning)
-				// setPlanning(planningResponse.data.planning)
 				setDraggablePlanning(planningFormatted)
 				setLoading(false)
 			})()

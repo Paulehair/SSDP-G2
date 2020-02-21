@@ -74,6 +74,7 @@ export default ({data, type, onClick}) => {
 						</Fragment>
 					)
 				}
+				return
 			})}
 			<div className="cell"></div>
 

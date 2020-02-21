@@ -68,6 +68,8 @@ export default props => {
 					setData(response.data.hotels)
 					setType('hotels')
 					break
+				default:
+					break
 			}
 			setLoading(false)
 		})()
@@ -130,7 +132,7 @@ export default props => {
 		name: 'Search',
 		type: 'textlight',
 		placeholder: `Rechercher un ${
-			type == 'employees' ? 'employé' : 'hôtel'
+			type === 'employees' ? 'employé' : 'hôtel'
 		} ...`,
 		value: search,
 		onChange: evt => setSearch(evt.target.value)

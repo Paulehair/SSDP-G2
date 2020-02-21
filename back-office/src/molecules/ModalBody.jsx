@@ -62,9 +62,8 @@ export default ({data, type}) => {
 				{data.map(el => {
 					if (el.type === 'select') {
 						return <Select options={el.options} />
-					} else {
-						return <Input data={el} />
 					}
+					return <Input data={el} />
 				})}
 				<Button />
 			</ModalBody>
@@ -83,6 +82,7 @@ export default ({data, type}) => {
 						</div>
 					)
 				}
+				return
 			})}
 		</ModalBody>
 	)

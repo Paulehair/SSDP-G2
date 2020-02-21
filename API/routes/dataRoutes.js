@@ -7,7 +7,8 @@ router
 		dataController.importSectors,
 		dataController.importHotels,
 		dataController.importEmployees,
-		dataController.importTeams
+		dataController.importTeams,
+		dataController.importPlanning
 	);
 
 router.route('/delete').get(dataController.deleteData);

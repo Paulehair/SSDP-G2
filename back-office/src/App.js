@@ -74,12 +74,12 @@ export default () => {
 		[currentSector]
 	)
 
-	const download = () => {
-		let current = localStorage.getItem('current')
-		window.open(
-			`http://localhost:9000/api/exportPlanning/${current.replace('/', '')}`
-		)
-	}
+	// const download = () => {
+	// 	let current = localStorage.getItem('current')
+	// 	window.open(
+	// 		`http://localhost:9000/api/exportPlanning/${current.replace('/', '')}`
+	// 	)
+	// }
 
 	if (loading) {
 		return <Loader />

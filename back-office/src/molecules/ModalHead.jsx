@@ -18,7 +18,7 @@ const ModalHead = styled.div`
 export default ({data, title}) => {
 	return (
 		<ModalHead>
-			<Title title={title} />
+			<Title title={''} />
 			<Icon
 				iconColor={({theme: {variables}}) => variables.white}
 				size={20}

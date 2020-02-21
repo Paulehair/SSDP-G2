@@ -6,7 +6,7 @@ const Visit = require('./../models/visitModel');
 const Planning = require('./../models/planningModel');
 const fs = require('fs');
 
-exports.importSectors = async (req, res, next) => {
+const importSectors = async () => {
 	try {
 		const data = JSON.parse(
 			fs.readFileSync(`${__dirname}/../data/sectors.json`)
@@ -14,13 +14,13 @@ exports.importSectors = async (req, res, next) => {
 
 		await Sector.create(data.sectors);
 		console.log('Keep waiting...');
-		next();
+		importHotels();
 	} catch (err) {
 		console.warn(err);
 	}
 };
 
-exports.importHotels = async (req, res, next) => {
+const importHotels = async () => {
 	try {
 		const data = JSON.parse(
 			fs.readFileSync(`${__dirname}/../data/hotels-formatted.json`)
@@ -35,13 +35,13 @@ exports.importHotels = async (req, res, next) => {
 
 		await Hotel.create(data.hotels);
 		console.log('Keep waiting...');
-		next();
+		importEmployees();
 	} catch (err) {
 		console.warn(err);
 	}
 };
 
-exports.importEmployees = async (req, res, next) => {
+const importEmployees = async () => {
 	try {
 		const data = JSON.parse(
 			fs.readFileSync(`${__dirname}/../data/employees.json`)
@@ -63,17 +63,17 @@ exports.importEmployees = async (req, res, next) => {
 		// 	status: 'success'
 		// });
 		console.log('Keep waiting...');
-		next();
+		importTeams();
 	} catch (err) {
 		console.warn(err);
 	}
 };
 
-exports.importTeams = async (req, res, next) => {
+const importTeams = async () => {
 	try {
 		const data = JSON.parse(fs.readFileSync(`${__dirname}/../data/teams.json`));
-		const sectors = await Sector.find().lean();
-		const employees = await Employee.find().lean();
+		const sectors = await Sector.find();
+		const employees = await Employee.find();
 
 		data.teams.forEach(team => {
 			const teamSector = sectors.find(sector => sector.zone === team.sector_id);
@@ -86,24 +86,26 @@ exports.importTeams = async (req, res, next) => {
 			});
 		});
 		await Team.create(data.teams);
-		console.log('Keep waiting...');
-		next();
+		console.log('💾 Data inserted successfully.');
+		res.json({
+			status: 'success'
+		});
 	} catch (err) {
 		console.warn(err);
 	}
 };
 
-exports.importPlanning = async (req, res) => {
+const importPlanning = async () => {
 	try {
-		const planningSectors = await Sector.find().lean();
+		const planningSectors = await Sector.find();
 
 		for await (const pSector of planningSectors) {
 			let date = new Date();
 			date.setMonth(date.getMonth() - 3);
-			const teams = await Team.find({sector_id: pSector._id}).lean();
+			const teams = await Team.find({sector_id: pSector}).lean();
 
 			const hotels = await Hotel.find({
-				sector_id: pSector._id,
+				sector_id: pSector,
 				rooms: {$gte: 1}
 			})
 				.sort({lastVisit: -1, anomaly: 1})
@@ -177,7 +179,7 @@ exports.importPlanning = async (req, res) => {
 
 			// const files = await getFilePaths();
 			let planningFormatted = {
-				sector_id: pSector._id,
+				sector_id: pSector,
 				lanes: []
 			};
 			for (const day of planning) {
@@ -194,27 +196,9 @@ exports.importPlanning = async (req, res) => {
 		}
 
 		console.log('💾 Data inserted successfully.');
-		res.json({
-			status: 'success'
-		});
 	} catch (err) {
 		console.warn(err);
 	}
 };
 
-exports.deleteData = async (req, res) => {
-	try {
-		await Sector.deleteMany();
-		await Hotel.deleteMany();
-		await Employee.deleteMany();
-		await Team.deleteMany();
-		await Visit.deleteMany();
-		await Planning.deleteMany();
-		console.log('🗑 Data deleted successfully.');
-		res.json({
-			status: 'success'
-		});
-	} catch (err) {
-		console.warn(err);
-	}
-};
+importSectors();
