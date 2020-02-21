@@ -3,15 +3,14 @@ import styled from 'styled-components'
 import Input from './../atoms/Input'
 import Button from './../atoms/Button'
 import Select from './../atoms/Select'
-import Text from '../atoms/Text'
-// import Team from '../molecules/Team'
 import SecondaryText from '../atoms/SecondaryText'
+import PrimaryText from '../atoms/PrimaryText'
 import labels from '../data/labels'
 
 const ModalBody = styled.div`
 	width: 100%;
 	height: 100%;
-	/* display: grid;
+	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: repeat(2, 80px);
 
@@ -45,7 +44,13 @@ const ModalBody = styled.div`
 	.rooms {
 		grid-row: 2;
 		grid-column: 3;
-	} */
+	}
+	.dataModal {
+		color: white;
+	}
+	.dataModalTitle {
+		opacity: 0.6;
+	}
 `
 
 export default ({data, type}) => {
@@ -70,9 +75,11 @@ export default ({data, type}) => {
 			{Array.from(Object.keys(data)).map((key, i) => {
 				if (labels[key]) {
 					return (
-						<div key={i}>
-							<Text text={labels[key]} />
-							<SecondaryText text={data[key]} />
+						<div className="dataModal" key={i}>
+							<div className="dataModalTitle">
+								<SecondaryText text={labels[key]} />
+							</div>
+							<PrimaryText text={data[key]} />
 						</div>
 					)
 				}

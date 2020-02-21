@@ -8,7 +8,7 @@ const Modal = styled.section`
 	width: 100vw;
 	height: 100vh;
 	background: ${({theme: {variables}}) => variables.opBlack};
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: 666;

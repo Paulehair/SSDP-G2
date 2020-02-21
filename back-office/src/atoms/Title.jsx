@@ -8,6 +8,7 @@ const Title = styled.h2`
   font-size: 24px;
   line-height: 28px;
   grid-column: 1;
+  color: white;
 `
 
 export default ({title}) => <Title>{title}</Title>
