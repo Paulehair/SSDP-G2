@@ -10,10 +10,9 @@ Have terraform installed
 
 ### Generate ssh key pair
 
-Run the folowing commands from project folder to generate your ssh key
-:::info
+Run the following commands from project folder to generate your ssh key.
+
 :pushpin: You will need it to connect to your EC2 AWS instances
-:::
 
 <code>$ cd terraform</code>
 <code>$ mkdir ssh-keys</code>
@@ -22,7 +21,7 @@ Run the folowing commands from project folder to generate your ssh key
 
 ### Modify terraform files
 
-In file ec2.tf, on line 3, replace ==public_key== value with your public key
+In file ec2.tf, on line 3, replace **public_key** value with your public key
 
 ```javascript=1
 resource "aws_key_pair" "admin" {
@@ -31,7 +30,7 @@ resource "aws_key_pair" "admin" {
 }
 ```
 
-In file security_group.tf, on line 9, replace ==cidr_blocks== value with your IP address (here I've only put HETIC's)
+In file security_group.tf, on line 9, replace **cidr_blocks** value with your IP address (here I've only put HETIC's)
 
 ```javascript=3
 ingress {
@@ -48,7 +47,7 @@ ingress {
 
 In AWS, in IAM section, create a User and add it to a GroupUser with AmazonEC2FullAccess granted.
 
-AWS will generate you an ==access key id== and a ==secret access key==.
+AWS will generate you an **access key id** and a **secret access key**.
 
 ### Add credentials
 
@@ -76,17 +75,15 @@ Run the following commands
 Check if there is no error, then run
 
 <code>\$ terraform apply</code>
-:::warning
+
 Type **yes** to confirm
-:::
 
 ### Check if instance has been created
 
 Go to AWS in section **Instances**.
 Your instance should be running :tada:
-:::info
+
 If you can't see it, make sure you are in **eu-west-3** tab
-:::
 
 Copy the public DNS then go back to your terminal and run from terraform folder
 
@@ -100,7 +97,7 @@ If you want to see how to deploy the webapp with ansible ➜ click [here](https:
 
 ---
 
-## How it work
+## How it works
 
 ---
 

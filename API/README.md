@@ -24,7 +24,7 @@ See full api documentation [here](http://35.180.253.143:9000/api/documentation/)
 ## API Documentation
 
 Automatically generate api documentation with comments.
-Run the following command ==from API folder==
+Run the following command **from API folder**
 
 <code>
 	yarn apidoc -i ./routes -o ./apidoc
