@@ -132,9 +132,6 @@ export default () => {
 		return planningFormatted
 	}
 
-	const handleChange = () => {
-		console.log('changing')
-	}
 	const boardStyle = {
 		backgroundColor: '#FFFFFF'
 	}
@@ -155,7 +152,6 @@ export default () => {
 				<Loader />
 			) : (
 				<Board
-					onDataChange={handleChange}
 					style={boardStyle}
 					components={{
 						Card: Card
@@ -166,7 +162,6 @@ export default () => {
 					data={draggablePlanning}
 				/>
 			)}
-			{/* <NotifBanner /> */}
 		</Planning>
 	)
 }

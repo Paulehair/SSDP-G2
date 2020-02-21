@@ -56,6 +56,7 @@ export default ({onAuth}) => {
 		event.preventDefault()
 		setTimeout(() => {
 			onAuth()
+			localStorage.setItem('isAuth', true)
 		}, 500)
 	}
 	return (

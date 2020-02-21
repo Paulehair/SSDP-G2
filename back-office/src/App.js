@@ -88,7 +88,7 @@ export default () => {
 	return (
 		<SectorContext.Provider value={context}>
 			<Router>
-				{!isAuth ? (
+				{!isAuth && !localStorage.getItem('isAuth') ? (
 					<Login onAuth={handleLogin} />
 				) : (
 					<div>

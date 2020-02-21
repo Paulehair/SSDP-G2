@@ -26,6 +26,7 @@ const Loader = styled.div`
 	.c {
 		animation: ball-c 0.7s ease-out 0.4s infinite alternate;
 	}
+	/*ANIMATION STORAGE*/
 	@keyframes ball-a {
 		from {
 			height: 20px;
@@ -35,7 +36,7 @@ const Loader = styled.div`
 		to {
 			height: 70px;
 			opacity: 1;
-			background: #ffde00;
+			background: ${({theme: {variables}}) => variables.blue};
 		}
 	}
 	@keyframes ball-b {
@@ -47,7 +48,7 @@ const Loader = styled.div`
 		to {
 			height: 65px;
 			opacity: 1;
-			background: #ed1c24;
+			background: ${({theme: {variables}}) => variables.blue};
 		}
 	}
 	@keyframes ball-c {
@@ -59,15 +60,15 @@ const Loader = styled.div`
 		to {
 			height: 60px;
 			opacity: 1;
-			background: #044d70;
+			background: ${({theme: {variables}}) => variables.blue};
 		}
 	}
 `
 
 export default () => (
 	<Loader>
-		<div class="ball a"></div>
-		<div class="ball b"></div>
-		<div class="ball c"></div>
+		<div className="ball a"></div>
+		<div className="ball b"></div>
+		<div className="ball c"></div>
 	</Loader>
 )
