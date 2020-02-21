@@ -3,6 +3,7 @@ import axios from 'axios'
 const URL = {
 	global: 'http://localhost:9000/api',
 	params: {
+		auth: 'login',
 		employees: 'employees',
 		hotels: 'hotels',
 		planning: 'planning',
@@ -71,11 +72,15 @@ export default {
 		return axios.delete(`${URL.global}/${URL.params.sectors}/${id}`)
 	},
 
-	getPlanning(sector) {
-		return axios.get(`${URL.global}/${URL.params.visits}/${sector}`)
+	getPlanning(id) {
+		return axios.get(`${URL.global}/${URL.params.planning}/${id}`)
 	},
 
-	getList(sector) {
-		return axios.get(`${URL.global}/${URL.params.hotels}/list/${sector}`)
+	updatePlanning(id, body) {
+		return axios.patch(`${URL.global}/${URL.params.planning}/${id}`, body)
+	},
+
+	login(body) {
+		return axios.post(`${URL.global}/${URL.params.auth}/`, body)
 	}
 }
