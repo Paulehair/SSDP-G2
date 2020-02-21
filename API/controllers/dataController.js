@@ -58,6 +58,7 @@ exports.importEmployees = async (req, res, next) => {
 		// res.json({
 		// 	status: 'success'
 		// });
+		next();
 	} catch (err) {
 		console.warn(err);
 	}
