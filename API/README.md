@@ -43,7 +43,7 @@ API->Back Office or Mobile App: 5 - Send Data to front
 ```
 
 ## Data Modelling
-
+![database schema](./data/db_schema.jpeg)
 ## Authentication principles
 
 ## Author
