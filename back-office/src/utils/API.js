@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 const URL = {
-	global: 'http://localhost:9000/api',
+	global:
+		`${process.env.REACT_APP_BACKEND_URL}/api` || 'https://localhost:9000/api',
 	params: {
 		auth: 'login',
 		employees: 'employees',

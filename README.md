@@ -77,6 +77,10 @@ This implies the use of the script [entrypoint.sh](https://github.com/Paulehair/
 
 The back-office image is built on node:alpine for the react app which is itself copied on an nginx image. The configuration file for nginx is directly copied from the [project](https://github.com/Paulehair/SSDP/backoffice/nginx/nginx.conf) to /etc/nginx/conf.d while the image is built.
 
+To build the image run the following comment from back-office folder
+
+<code>\$ docker build -t paulehair/ssdp-back-office --build-arg=BACKEND_URL=your_backend_url .</code>
+
 ### Terraform
 
 See [documentation](https://github.com/Paulehair/SSDP-G2/tree/DEV/terraform)

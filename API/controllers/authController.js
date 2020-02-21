@@ -19,7 +19,6 @@ const signToken = id => {
 	);
 };
 
-
 exports.login = catchAsync(async (req, res, next) => {
 	const {email, password} = req.body;
 
@@ -34,8 +33,7 @@ exports.login = catchAsync(async (req, res, next) => {
 		email
 	});
 
-
-	if (!(await bcrypt.compare('admin', user.password))) {
+	if (!(await bcrypt.compare(password, user.password))) {
 		return next(new AppError('Mot de passe incorrect'), 401);
 	}
 
