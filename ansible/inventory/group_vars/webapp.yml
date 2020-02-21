@@ -6,7 +6,7 @@ webapp_back_office_tag: 'latest'
 webapp_back_office_name: 'ssdp-back-office-prod'
 
 webapp_api_image: '{{ webapp_docker_username }}/ssdp-api'
-webapp_api_tag: 'latest'
+webapp_api_tag: '0.1'
 webapp_api_name: 'ssdp-api-prod'
 
 webapp_public_ip: '35.180.253.143'

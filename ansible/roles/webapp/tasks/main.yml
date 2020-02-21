@@ -26,7 +26,7 @@
       dest: /opt/app/docker-compose.yml
   notify: restart docker stack
 
-- name: Run docker compose application stack
-  docker_compose:
-      project_src: /opt/app/
-      state: present
+- name: Run docker compose
+docker_compose:
+    project_src: /opt/app/
+    state: present
