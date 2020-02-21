@@ -1,0 +1,35 @@
+---
+# Install Python, as it is needed to execute ansible modules on remote hosts
+- name: 'install python'
+  become: yes
+  become_method: sudo
+  raw: apt update && apt-get -y install python
+  tags: ['install']
+
+- name: Install nginx
+  apt:
+      name: nginx
+      update_cache: yes
+      state: present
+  become: yes
+  become_method: sudo
+
+- name: Gather facts
+  setup:
+
+- name: install packages
+  apt:
+      pkg:
+          - python-setuptools
+          - python-pip
+          - docker-compose
+      state: present
+      update_cache: yes
+  become: yes
+  become_method: sudo
+
+# Install PIP Dependencies
+- name: Install pip dependencies
+  pip:
+      name:
+          - docker

@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
+let DB = ``;
 
-const DB = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@ssdp-9bgwa.mongodb.net/test?retryWrites=true&w=majority`;
+if (process.env.NODE_ENV === 'development')
+	DB = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@ssdp-9bgwa.mongodb.net/test?retryWrites=true&w=majority`;
+if (process.env.NODE_ENV === 'production')
+	DB = `mongodb://${process.env.DB_USER}:${process.env.DB_PASSWORD}@mongodb:27017/`;
 const PORT = 9000;
 
 // Connect to database

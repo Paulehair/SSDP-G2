@@ -3,23 +3,25 @@ const mongoose = require('mongoose');
 const hotelSchema = new mongoose.Schema({
 	uuid: {
 		type: Number,
-		required: true
+		required: true,
+		unique: true
 	},
 	name: {
 		type: String,
-		required: true
+		required: [true, 'A hotel must have a name']
 	},
 	address: {
-		type: String
+		type: String,
+		required: [true, 'A hotel must have an address']
 	},
 	zipCode: {
-		type: Number
+		type: Number,
+		required: [true, 'A hotel must have a zip code']
 	},
-	sector: {
-		type: String
-	},
+	sector_id: String,
 	city: {
-		type: String
+		type: String,
+		required: [true, 'A hotel must have a city']
 	},
 	status: {
 		type: String
@@ -31,7 +33,8 @@ const hotelSchema = new mongoose.Schema({
 		type: Date
 	},
 	anomaly: {
-		type: Number
+		type: Number,
+		max: [100, 'Anomaly is a percentage and must be below 100']
 	}
 });
 

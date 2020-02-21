@@ -1,86 +1,99 @@
 const Hotel = require('./../models/hotelModel');
+const Sector = require('./../models/sectorModel');
+const catchAsync = require('./../utils/catchAsync');
+const AppError = require('./../utils/appError');
+const fs = require('fs');
 
-exports.getHotels = async (req, res) => {
-	try {
-		const hotels = await Hotel.find();
+// exports.getHotelList = catchAsync(async (req, res) => {
+// 	const sector_id = req.params.sector;
+// 	const hotels = await Hotel.find({sector_id}).sort({
+// 		lastVisit: -1,
+// 		anomaly: 1
+// 	});
 
-		console.log('!!!!!', hotels);
+// 	res.status(200).json({
+// 		status: 'success',
+// 		results: hotels.length,
+// 		hotels
+// 	});
+// });
 
-		res.status(200).json({
-			status: 'success',
-			data: {
-				hotels
-			}
-		});
-	} catch (err) {
-		res.status(404).json({
-			status: 'fail',
-			error: err.message
-		});
-	}
-};
+exports.getHotels = catchAsync(async (req, res) => {
+	const hotels = await Hotel.find()
+		.sort({sector_id: 1, anomaly: 1})
+		.lean();
+	const sectors = await Sector.find().lean();
 
-exports.getHotel = async (req, res) => {
-	try {
-		const hotel = Hotel.find(req.params.id);
-
-		res.status(200).json({
-			status: 'success',
-			data: {
-				hotel
-			}
-		});
-	} catch (err) {
-		res.status(404).json({
-			status: 'fail',
-			error: err.message
-		});
-	}
-};
-
-exports.createHotel = async (req, res, next) => {
-	const newHotel = await Hotel.create({
-		uuid: req.body.uuid,
-		name: req.body.name
+	hotels.forEach(hotel => {
+		const sector = sectors.find(sector => sector._id == hotel.sector_id);
+		hotel.sector = sector.zone;
 	});
 
+	res.status(200).json({
+		status: 'success',
+		results: hotels.length,
+		hotels
+	});
+});
+
+exports.getHotel = catchAsync(async (req, res) => {
+	const hotel = await Hotel.findById(req.params.id);
+	res.status(200).json({
+		status: 'success',
+		data: {
+			hotel
+		}
+	});
+});
+
+exports.createHotel = catchAsync(async (req, res, next) => {
+	const newHotel = await Hotel.create(req.body);
 	res.status(200).json({
 		status: 'Success',
 		data: {
 			hotel: newHotel
 		}
 	});
-};
+});
 
-exports.updateHotel = (req, res) => {
-	try {
-		Hotel.findByIdAndUpdate(req.params.id, req.body, {
-			new: true,
-			runValidators: true
-		});
+exports.updateHotel = catchAsync(async (req, res) => {
+	const hotel = await Hotel.findByIdAndUpdate(req.params.id, req.body, {
+		new: true,
+		runValidators: true
+	});
 
-		res.status(200).json({
-			status: 'success'
-		});
-	} catch (err) {
-		res.status(404).json({
-			status: 'fail',
-			error: err.message
-		});
+	if (!hotel) {
+		return next(new AppError('No hotel found with that id', 404));
 	}
-};
 
-exports.deleteHotel = (req, res) => {
-	try {
-		Hotel.findByIdAndDelete(req.params.id);
+	res.status(200).json({
+		status: 'success',
+		data: {
+			hotel
+		}
+	});
+});
 
-		res.status(200).json({
-			status: 'success'
-		});
-	} catch (err) {
-		res.status(404).json({
-			status: 'fail',
-			error: err.message
-		});
+exports.deleteHotel = catchAsync(async (req, res) => {
+	const hotel = await Hotel.findByIdAndDelete(req.params.id);
+
+	if (!hotel) {
+		return next(new AppError('No hotel found with that id', 404));
 	}
-};
+
+	res.status(200).json({
+		status: 'success',
+		data: null
+	});
+});
+
+exports.importHotels = catchAsync(async (req, res) => {
+	const data = JSON.parse(
+		fs.readFileSync(`${__dirname}/../data/hotels-formatted.json`)
+	);
+
+	await Hotel.create(data.hotels);
+	res.json({
+		status: 'success'
+	});
+});
